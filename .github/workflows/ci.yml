@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  ci:
+    name: build
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.14.1]
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Yarn CLI
+        uses: CultureHQ/actions-yarn@v1.0.1
+
+      - uses: actions/cache@v2
+        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        with:
+          path: |
+            node_modules
+            **/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock', '**/package.json') }}
+
+      - name: Yarn Install
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: yarn --frozen-lockfile --prefer-offline
+
+      - name: Build
+        run: |
+          yarn build
