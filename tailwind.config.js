@@ -46,6 +46,9 @@ module.exports = {
       32: '32px',
       520: '520px',
     },
+    gap: theme => ({
+      ...theme('spacing'),
+    }),
     width: theme => ({
       auto: 'auto',
       ...theme('spacing'),
