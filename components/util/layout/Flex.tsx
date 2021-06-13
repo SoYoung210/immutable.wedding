@@ -38,25 +38,29 @@ export function flex(
   `;
 }
 
-type Props<ElementType extends keyof JSX.IntrinsicElements = 'div'> =
+type Props<ElementType extends keyof JSX.IntrinsicElements> =
   JSX.IntrinsicElements[ElementType] &
     FlexOptions & {
-      elementType?: ElementType | NonNullable<ReactElement>;
+      elementType?: keyof JSX.IntrinsicElements;
     };
 
-export const Flex = ({
+export const Flex = <E extends keyof JSX.IntrinsicElements>({
   align = 'flex-start',
   direction = 'row',
   justify = 'flex-start',
-  elementType: ElementType = 'div',
+  elementType = 'div',
   ...props
-}: Props) => {
-  const Component = ElementType as any;
+}: Props<E>) => {
+  const Component = elementType as any;
   return <Component css={flex({ align, direction, justify })} {...props} />;
 };
 
-Flex.Center = (props: Props) => (
+Flex.Center = <E extends keyof JSX.IntrinsicElements>(props: Props<E>) => (
   <Flex align="center" justify="center" {...props} />
 );
-Flex.CenterVertical = (props: Props) => <Flex align="center" {...props} />;
-Flex.CenterHorizontal = (props: Props) => <Flex justify="center" {...props} />;
+Flex.CenterVertical = <E extends keyof JSX.IntrinsicElements>(
+  props: Props<E>
+) => <Flex align="center" {...props} />;
+Flex.CenterHorizontal = <E extends keyof JSX.IntrinsicElements>(
+  props: Props<E>
+) => <Flex justify="center" {...props} />;
