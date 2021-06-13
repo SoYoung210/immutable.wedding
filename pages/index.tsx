@@ -1,6 +1,6 @@
+import StoryContainer from 'container/StoryContainer';
 import Head from 'next/head';
-import Image from 'next/image';
-import Button from '../components/Button';
+import React from 'react';
 
 export default function Home() {
   return (
@@ -11,11 +11,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <h1>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-        <Button />
+      <main className="max-w-520 mx-auto">
+        <StoryContainer />
       </main>
     </div>
   );
