@@ -1,4 +1,4 @@
-import React, { CSSProperties, ReactElement } from 'react';
+import React, { CSSProperties } from 'react';
 import { css } from '@emotion/react';
 
 interface FlexOptions {
@@ -56,11 +56,11 @@ export const Flex = <E extends keyof JSX.IntrinsicElements>({
 };
 
 Flex.Center = <E extends keyof JSX.IntrinsicElements>(props: Props<E>) => (
-  <Flex align="center" justify="center" {...props} />
+  <Flex<E> align="center" justify="center" {...props} />
 );
 Flex.CenterVertical = <E extends keyof JSX.IntrinsicElements>(
   props: Props<E>
-) => <Flex align="center" {...props} />;
+) => <Flex<E> align="center" {...props} />;
 Flex.CenterHorizontal = <E extends keyof JSX.IntrinsicElements>(
   props: Props<E>
-) => <Flex justify="center" {...props} />;
+) => <Flex<E> justify="center" {...props} />;
