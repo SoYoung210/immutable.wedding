@@ -1,3 +1,4 @@
+import FeedContainer from 'container/FeedContainer';
 import StoryContainer from 'container/StoryContainer';
 import Head from 'next/head';
 import React from 'react';
@@ -13,6 +14,7 @@ export default function Home() {
 
       <main className="max-w-520 mx-auto">
         <StoryContainer />
+        <FeedContainer />
       </main>
     </div>
   );
