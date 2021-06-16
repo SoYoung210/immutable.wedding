@@ -11,7 +11,10 @@ const imageWrapperProps: React.HTMLProps<HTMLImageElement> = {
 
 const StoryContainer = () => {
   return (
-    <Flex elementType="ol" className="flex space-x-24 pt-14 px-8">
+    <Flex
+      elementType="ol"
+      className="flex space-x-24 py-14 px-8 border-solid border-b border-gray-300"
+    >
       {storiesData.data.map(story => {
         return (
           <Flex.CenterVertical
