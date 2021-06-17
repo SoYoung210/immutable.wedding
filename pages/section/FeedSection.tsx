@@ -6,7 +6,7 @@ import Image from '@components/image';
 import { 스크린_너비 } from 'constants/styles';
 import { 계정_이름, 계정_프로필_사진 } from 'constants/config';
 
-const FeedContainer = () => {
+const FeedSection = () => {
   return (
     <div className="pt-10">
       {feedData.data.map(feed => {
@@ -53,4 +53,4 @@ const Header = () => (
   </Flex.CenterVertical>
 );
 
-export default FeedContainer;
+export default FeedSection;

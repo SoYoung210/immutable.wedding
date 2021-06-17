@@ -1,5 +1,5 @@
-import FeedContainer from 'container/FeedContainer';
-import StoryContainer from 'container/StoryContainer';
+import FeedSection from 'pages/section/FeedSection';
+import StorySection from 'pages/section/StorySection';
 import Head from 'next/head';
 import React from 'react';
 
@@ -13,8 +13,8 @@ export default function Home() {
       </Head>
 
       <main className="max-w-520 min-w-320 mx-auto">
-        <StoryContainer />
-        <FeedContainer />
+        <StorySection />
+        <FeedSection />
       </main>
     </div>
   );

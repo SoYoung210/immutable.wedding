@@ -9,7 +9,7 @@ const imageWrapperProps: React.HTMLProps<HTMLImageElement> = {
   className: 'relative',
 };
 
-const StoryContainer = () => {
+const StorySection = () => {
   return (
     <Flex
       elementType="ol"
@@ -52,4 +52,4 @@ const StoryContainer = () => {
   );
 };
 
-export default StoryContainer;
+export default StorySection;
