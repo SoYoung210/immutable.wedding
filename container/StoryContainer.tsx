@@ -24,7 +24,8 @@ const StoryContainer = () => {
           >
             <Image.RoundShape
               wrapperProps={imageWrapperProps}
-              size={60}
+              width={60}
+              height={60}
               variants={
                 <div className="absolute -top-6 -left-6">
                   <Gradient.Circle
