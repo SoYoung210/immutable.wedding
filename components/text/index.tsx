@@ -2,6 +2,23 @@ import { ComponentPassThrough } from '@utils/types';
 import React, { HTMLProps, ReactText } from 'react';
 import cx from 'classnames';
 
+type ColorKey =
+  | 'gray'
+  | 'trueGray'
+  | 'blueGray'
+  | 'coolGray'
+  | 'warmGray'
+  | 'red'
+  | 'orange'
+  | 'green'
+  | 'yellow '
+  | 'emerald'
+  | 'blue'
+  | 'deepBlue'
+  | 'blue'
+  | 'lightGreen';
+type ColorWeight = 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
+type Color = `${ColorKey}-${ColorWeight}`;
 interface Props extends Omit<HTMLProps<HTMLDivElement>, 'size'> {
   children: ReactText;
   size?: 'xs' | 'sm' | 'base' | 'lg' | 'xl';
@@ -14,8 +31,8 @@ interface Props extends Omit<HTMLProps<HTMLDivElement>, 'size'> {
     | 'semibold'
     | 'bold'
     | 'extrabold';
-  // TODO: 템플릿 리터럴 타입으로 변경
-  color?: string;
+
+  color?: Color;
   /* text-transform css property */
   transform?: 'capitalize' | 'uppercase' | 'lowercase';
 
@@ -31,11 +48,11 @@ const Text = <T extends React.ElementType = 'div', U = HTMLDivElement>({
   component = 'div',
   children,
   size = 'base',
-  weight,
+  weight = 'normal',
   transform,
   style,
   color,
-  align,
+  align = 'left',
   variant = 'text',
   elementRef,
   ...others
