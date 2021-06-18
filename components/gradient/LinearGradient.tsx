@@ -7,7 +7,11 @@ const LinearGradient = ({ colors }: Pick<GradientProps, 'colors'>) => {
     <defs>
       <linearGradient id={GRADIENT_ID} x1="0" y1="1" x2="1" y2="0">
         {colors.map((color, index) => (
-          <stop offset={`${index}`} stopColor={color} />
+          <stop
+            key={`${color}-${index}`}
+            offset={`${index}`}
+            stopColor={color}
+          />
         ))}
       </linearGradient>
     </defs>

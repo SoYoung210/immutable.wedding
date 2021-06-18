@@ -44,6 +44,7 @@ module.exports = {
       29: '29px',
       30: '30px',
       32: '32px',
+      320: '320px',
       520: '520px',
     },
     gap: theme => ({

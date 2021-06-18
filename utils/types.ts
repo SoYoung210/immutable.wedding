@@ -6,3 +6,13 @@ export type WithRequiredKeys<OriginType, Keys extends keyof OriginType> = Omit<
   Keys
 > &
   Required<Pick<OriginType, Keys>>;
+
+/**
+ * @description rootElement를 ReactElement 혹은 html tag로 사용하기 위한 타입
+ */
+export type ComponentPassThrough<
+  T extends React.ElementType,
+  Props
+> = React.ComponentPropsWithoutRef<T> & {
+  component?: T;
+} & Props;

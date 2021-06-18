@@ -3,8 +3,10 @@ import NextImage, { ImageProps } from 'next/image';
 import { WithRequiredKeys } from 'utils/types';
 
 interface Props
-  extends Omit<ImageProps, 'width' | 'height' | 'placeholder' | 'src' | 'alt'> {
-  size?: number;
+  extends WithRequiredKeys<
+    Omit<ImageProps, 'placeholder' | 'src' | 'alt'>,
+    'width' | 'height'
+  > {
   variants?: ReactNode;
   children: ReactElement<
     WithRequiredKeys<React.HTMLProps<HTMLImageElement>, 'src' | 'alt'>
@@ -13,7 +15,8 @@ interface Props
 }
 const Image = ({
   className,
-  size = 30,
+  width,
+  height,
   variants,
   children,
   wrapperProps,
@@ -26,8 +29,8 @@ const Image = ({
       <NextImage
         src={imageSource.props.src}
         alt={imageSource.props.alt}
-        width={size}
-        height={size}
+        width={width}
+        height={height}
         className={className}
         placeholder="blur"
         blurDataURL=""

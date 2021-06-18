@@ -9,7 +9,7 @@ const imageWrapperProps: React.HTMLProps<HTMLImageElement> = {
   className: 'relative',
 };
 
-const StoryContainer = () => {
+const StorySection = () => {
   return (
     <Flex
       elementType="ol"
@@ -24,7 +24,8 @@ const StoryContainer = () => {
           >
             <Image.RoundShape
               wrapperProps={imageWrapperProps}
-              size={60}
+              width={60}
+              height={60}
               variants={
                 <div className="absolute -top-6 -left-6">
                   <Gradient.Circle
@@ -51,4 +52,4 @@ const StoryContainer = () => {
   );
 };
 
-export default StoryContainer;
+export default StorySection;
