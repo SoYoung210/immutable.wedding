@@ -1,21 +1,22 @@
-import React from 'react';
-import storiesData from '@assets/stories.json';
-import { Flex } from '@components/util/layout/Flex';
-import { theme } from 'tailwind.config';
 import Gradient from '@components/gradient';
 import Image from '@components/image';
+import { Flex } from '@components/util/layout/Flex';
+import { theme } from 'tailwind.config';
+import { useStories } from './useStories';
 
 const imageWrapperProps: React.HTMLProps<HTMLImageElement> = {
   className: 'relative',
 };
 
-const StorySection = () => {
+export function Story() {
+  const { data: stories } = useStories();
+
   return (
     <Flex
       elementType="ol"
       className="flex space-x-24 py-14 px-8 border-solid border-b border-gray-300"
     >
-      {storiesData.data.map(story => {
+      {stories.data.map(story => {
         return (
           <Flex.CenterVertical
             elementType="li"
@@ -50,6 +51,4 @@ const StorySection = () => {
       })}
     </Flex>
   );
-};
-
-export default StorySection;
+}

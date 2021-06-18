@@ -20,7 +20,7 @@ type ColorKey =
 type ColorWeight = 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
 type Color = `${ColorKey}-${ColorWeight}`;
 interface Props extends Omit<HTMLProps<HTMLDivElement>, 'size'> {
-  children: ReactText;
+  children: ReactNode;
   size?: 'xs' | 'sm' | 'base' | 'lg' | 'xl';
   weight?:
     | 'thin'
