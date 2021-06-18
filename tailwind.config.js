@@ -1,6 +1,7 @@
 const twColors = require('tailwindcss/colors');
 
 module.exports = {
+  purge: ['./pages/**/*.{ts,tsx}', './components/**/*.{ts,tsx}'],
   theme: {
     colors: {
       transparent: 'transparent',
@@ -43,6 +44,38 @@ module.exports = {
       29: '29px',
       30: '30px',
       32: '32px',
+      520: '520px',
     },
+    gap: theme => ({
+      ...theme('spacing'),
+    }),
+    width: theme => ({
+      auto: 'auto',
+      ...theme('spacing'),
+      full: '100%',
+      screen: '100vw',
+    }),
+    maxWidth: theme => ({
+      ...theme('spacing'),
+      '1/2': '50%',
+      '80vw': '80vw',
+      full: '100%',
+      screen: '100vw',
+    }),
+    minWidth: theme => ({
+      ...theme('spacing'),
+      '1/2': '50%',
+      '80vw': '80vw',
+      full: '100%',
+      screen: '100vw',
+    }),
+    maxHeight: theme => ({
+      ...theme('spacing'),
+      full: '100%',
+    }),
+    minHeight: theme => ({
+      ...theme('spacing'),
+      full: '100%',
+    }),
   },
 };
