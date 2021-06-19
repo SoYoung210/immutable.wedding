@@ -1,5 +1,5 @@
 import { ComponentPassThrough } from '@utils/types';
-import React, { HTMLProps, ReactText } from 'react';
+import React, { HTMLProps, ReactNode } from 'react';
 import cx from 'classnames';
 import { theme } from 'tailwind.config';
 
