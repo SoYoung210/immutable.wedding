@@ -1,5 +1,6 @@
 import Image from '@components/image';
 import Text from '@components/text';
+import Carousel from '@components/carousel';
 import React, { Fragment } from 'react';
 import { Header } from './Header';
 import { useAccount } from './useAccount';
@@ -17,9 +18,17 @@ export function Feed() {
         return (
           <Fragment key={feed.id}>
             <Header />
-            <Image width={스크린_너비} height={스크린_너비}>
-              <Image.Source src={feed.imageContents[0]} alt="feed_사진" />
-            </Image>
+            <Carousel indicator={false}>
+              {feed.imageContents.map((imageSource, index) => {
+                return (
+                  <Image.Root key={index}>
+                    <Image key={index} width={스크린_너비} height={스크린_너비}>
+                      <Image.Source src={imageSource} alt="feed_사진" />
+                    </Image>
+                  </Image.Root>
+                );
+              })}
+            </Carousel>
 
             <Text component="span" weight="bold" size="sm">
               {account.name}

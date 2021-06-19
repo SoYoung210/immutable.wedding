@@ -8,13 +8,11 @@ export function Header() {
 
   return (
     <Flex.CenterVertical className="py-9 px-8">
-      <Image.RoundShape
-        width={30}
-        height={30}
-        wrapperProps={{ className: 'flex' }}
-      >
-        <Image.Source src={account.profileSrc} alt={account.profileAlt} />
-      </Image.RoundShape>
+      <Image.Root className="flex">
+        <Image.RoundShape width={30} height={30}>
+          <Image.Source src={account.profileSrc} alt={account.profileAlt} />
+        </Image.RoundShape>
+      </Image.Root>
       <Text weight="bold" className="ml-6">
         {account.name}
       </Text>

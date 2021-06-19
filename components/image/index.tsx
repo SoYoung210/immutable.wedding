@@ -1,4 +1,10 @@
-import React, { Children, ReactElement, ReactNode } from 'react';
+import React, {
+  Children,
+  HTMLProps,
+  PropsWithChildren,
+  ReactElement,
+  ReactNode,
+} from 'react';
 import NextImage, { ImageProps } from 'next/image';
 import { WithRequiredKeys } from 'utils/types';
 
@@ -11,7 +17,6 @@ interface Props
   children: ReactElement<
     WithRequiredKeys<React.HTMLProps<HTMLImageElement>, 'src' | 'alt'>
   >;
-  wrapperProps?: React.HTMLProps<HTMLDivElement>;
 }
 const Image = ({
   className,
@@ -19,13 +24,12 @@ const Image = ({
   height,
   variants,
   children,
-  wrapperProps,
   ...props
 }: Props) => {
   const imageSource = Children.only(children);
 
   return (
-    <div {...wrapperProps}>
+    <>
       <NextImage
         src={imageSource.props.src}
         alt={imageSource.props.alt}
@@ -37,10 +41,16 @@ const Image = ({
         {...props}
       />
       {variants}
-    </div>
+    </>
   );
 };
 
+Image.Root = ({
+  children,
+  ...props
+}: PropsWithChildren<HTMLProps<HTMLDivElement>>) => {
+  return <div {...props}>{children}</div>;
+};
 Image.Source = ({ src, alt }: { src: string; alt: string }) => {
   return <img src={src} alt={alt} />;
 };

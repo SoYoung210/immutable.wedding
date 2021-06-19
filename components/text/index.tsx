@@ -1,23 +1,10 @@
 import { ComponentPassThrough } from '@utils/types';
 import React, { HTMLProps, ReactText } from 'react';
 import cx from 'classnames';
+import { theme } from 'tailwind.config';
 
-type ColorKey =
-  | 'gray'
-  | 'trueGray'
-  | 'blueGray'
-  | 'coolGray'
-  | 'warmGray'
-  | 'red'
-  | 'orange'
-  | 'green'
-  | 'yellow '
-  | 'emerald'
-  | 'blue'
-  | 'deepBlue'
-  | 'blue'
-  | 'lightGreen';
-type ColorWeight = 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
+type ColorKey = keyof typeof theme.colors;
+type ColorWeight = keyof typeof theme.colors.amber;
 type Color = `${ColorKey}-${ColorWeight}`;
 interface Props extends Omit<HTMLProps<HTMLDivElement>, 'size'> {
   children: ReactNode;
