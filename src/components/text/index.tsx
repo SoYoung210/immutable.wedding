@@ -1,11 +1,8 @@
 import { ComponentPassThrough } from '@utils/types';
 import React, { HTMLProps, ReactNode } from 'react';
 import cx from 'classnames';
-import { theme } from 'tailwind.config';
+import { Color } from '@utils/styles';
 
-type ColorKey = keyof typeof theme.colors;
-type ColorWeight = keyof typeof theme.colors.amber;
-type Color = `${ColorKey}-${ColorWeight}`;
 interface Props extends Omit<HTMLProps<HTMLDivElement>, 'size'> {
   children: ReactNode;
   size?: 'xs' | 'sm' | 'base' | 'lg' | 'xl';
@@ -30,7 +27,7 @@ interface Props extends Omit<HTMLProps<HTMLDivElement>, 'size'> {
   variant?: 'text' | 'link';
 }
 
-const Text = <T extends React.ElementType = 'div', U = HTMLDivElement>({
+const Text = <T extends React.ElementType = 'div'>({
   className,
   component = 'div',
   children,
