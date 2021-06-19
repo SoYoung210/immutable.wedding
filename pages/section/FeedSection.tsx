@@ -17,7 +17,7 @@ const FeedSection = () => {
             <Carousel indicator={false}>
               {feed.imageContents.map((imageSource, index) => {
                 return (
-                  <Image.Root>
+                  <Image.Root key={index}>
                     <Image key={index} width={스크린_너비} height={스크린_너비}>
                       <Image.Source src={imageSource} alt="feed_사진" />
                     </Image>
