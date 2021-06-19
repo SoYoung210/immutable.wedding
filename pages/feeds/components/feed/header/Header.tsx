@@ -1,7 +1,7 @@
 import Image from '@components/image';
 import Text from '@components/text';
 import { Flex } from '@components/util/layout/Flex';
-import { useAccount } from './useAccount';
+import { useAccount } from '../useAccount';
 
 export function Header() {
   const { data: account } = useAccount();

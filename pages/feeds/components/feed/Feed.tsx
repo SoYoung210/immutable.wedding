@@ -2,7 +2,7 @@ import Image from '@components/image';
 import Text from '@components/text';
 import Carousel from '@components/carousel';
 import React, { Fragment } from 'react';
-import { Header } from './Header';
+import { Header } from './header/Header';
 import { useAccount } from './useAccount';
 import { useFeeds } from './useFeeds';
 
