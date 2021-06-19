@@ -1,16 +1,20 @@
-import React, { Fragment } from 'react';
-import feedData from '@assets/feed.json';
-import { Flex } from '@components/util/layout/Flex';
-import Text from '@components/text';
 import Image from '@components/image';
-import { 스크린_너비 } from 'constants/styles';
-import { 계정_이름, 계정_프로필_사진 } from 'constants/config';
+import Text from '@components/text';
 import Carousel from '@components/carousel';
+import React, { Fragment } from 'react';
+import { Header } from './header/Header';
+import { useAccount } from './useAccount';
+import { useFeeds } from './useFeeds';
 
-const FeedSection = () => {
+const 스크린_너비 = 520;
+
+export function Feed() {
+  const { data: account } = useAccount();
+  const { data: feeds } = useFeeds();
+
   return (
     <div className="pt-10">
-      {feedData.data.map(feed => {
+      {feeds.data.map(feed => {
         return (
           <Fragment key={feed.id}>
             <Header />
@@ -27,7 +31,7 @@ const FeedSection = () => {
             </Carousel>
 
             <Text component="span" weight="bold" size="sm">
-              {계정_이름}
+              {account.name}
             </Text>
             <Text
               component="p"
@@ -45,19 +49,4 @@ const FeedSection = () => {
       })}
     </div>
   );
-};
-
-const Header = () => (
-  <Flex.CenterVertical className="py-9 px-8">
-    <Image.Root className="flex">
-      <Image.RoundShape width={30} height={30}>
-        <Image.Source src={계정_프로필_사진} alt="재엽소영사진" />
-      </Image.RoundShape>
-    </Image.Root>
-    <Text weight="bold" className="ml-6">
-      {계정_이름}
-    </Text>
-  </Flex.CenterVertical>
-);
-
-export default FeedSection;
+}

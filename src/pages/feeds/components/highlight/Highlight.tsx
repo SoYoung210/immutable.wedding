@@ -1,21 +1,22 @@
-import React from 'react';
-import storiesData from '@assets/stories.json';
-import { Flex } from '@components/util/layout/Flex';
-import { theme } from 'tailwind.config';
 import Gradient from '@components/gradient';
 import Image from '@components/image';
+import { Flex } from '@components/util/layout/Flex';
+import { theme } from 'tailwind.config';
+import { useHighlights } from './useHighlights';
 
-const StorySection = () => {
+export function Highlight() {
+  const { data: highlights } = useHighlights();
+
   return (
     <Flex
       elementType="ol"
       className="flex space-x-24 py-14 px-8 border-solid border-b border-gray-300"
     >
-      {storiesData.data.map(story => {
+      {highlights.data.map(highlight => {
         return (
           <Flex.CenterVertical
             elementType="li"
-            key={story.id}
+            key={highlight.id}
             direction="column"
           >
             <Image.Root className="relative">
@@ -36,17 +37,15 @@ const StorySection = () => {
                 }
               >
                 <Image.Source
-                  src={story.profileImage}
+                  src={highlight.profileImage}
                   alt="스토리_프로필_이미지"
                 />
               </Image.RoundShape>
             </Image.Root>
-            <span>{story.name}</span>
+            <span>{highlight.name}</span>
           </Flex.CenterVertical>
         );
       })}
     </Flex>
   );
-};
-
-export default StorySection;
+}
