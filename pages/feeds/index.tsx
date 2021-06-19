@@ -1,5 +1,5 @@
-import { Feed } from './components/feed/Feed';
-import { Highlight } from './components/highlight/Highlight';
+import { Feed } from '@pages/feeds/components/feed/Feed';
+import { Highlight } from '@pages/feeds/components/highlight/Highlight';
 
 export default function Home() {
   return (

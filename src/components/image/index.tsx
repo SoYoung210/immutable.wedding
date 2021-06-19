@@ -6,7 +6,7 @@ import React, {
   ReactNode,
 } from 'react';
 import NextImage, { ImageProps } from 'next/image';
-import { WithRequiredKeys } from 'utils/types';
+import { WithRequiredKeys } from '@utils/types';
 
 interface Props
   extends WithRequiredKeys<
