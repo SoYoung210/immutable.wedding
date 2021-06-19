@@ -5,6 +5,8 @@ import React, { Fragment } from 'react';
 import { Header } from './header/Header';
 import { useAccount } from './useAccount';
 import { useFeeds } from './useFeeds';
+import { Dot } from '@components/carousel/Dot';
+import arrayOf from '@utils/array/arrayOf';
 
 const 스크린_너비 = 520;
 
@@ -18,7 +20,18 @@ export function Feed() {
         return (
           <Fragment key={feed.id}>
             <Header />
-            <Carousel indicator={false}>
+            <Carousel
+              dot={({ size, currentIndex }) => (
+                <Dot.Root>
+                  {arrayOf(size).map(index => (
+                    <Dot
+                      key={index}
+                      color={index === currentIndex ? 'blue-400' : 'gray-200'}
+                    />
+                  ))}
+                </Dot.Root>
+              )}
+            >
               {feed.imageContents.map((imageSource, index) => {
                 return (
                   <Image.Root key={index}>
