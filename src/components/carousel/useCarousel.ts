@@ -7,19 +7,19 @@ export interface Options extends TOptionsEvents {
 }
 
 export function useCarousel(options?: Options) {
-  const [currentIndex, setCurrentIndex] = useState(options?.defaultIndex ?? 0);
+  const [index, setIndex] = useState(options?.defaultIndex ?? 0);
   const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
     ...options,
     slideChanged: s => {
       options?.slideChanged?.(s);
-      setCurrentIndex(s.details().relativeSlide);
+      setIndex(s.details().relativeSlide);
     },
   });
   const size = slider?.details().size ?? 0;
 
   return {
-    currentIndex,
-    setCurrentIndex,
+    index,
+    setIndex,
     sliderRef,
     slider,
     size,

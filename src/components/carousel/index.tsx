@@ -14,8 +14,8 @@ import cx from 'classnames';
 import { useCarousel, Options as CarouselOptions } from './useCarousel';
 
 interface SliderRef {
-  getSliderInstance: () => KeenSlider;
-  setCurrentIndex: (index: number) => void;
+  slider: () => KeenSlider;
+  moveTo: (index: number) => void;
 }
 interface DotProps {
   currentIndex: number;
@@ -32,22 +32,21 @@ const Carousel = forwardRef(function Carousel(
   { children, dot, className, defaultIndex, onChange, ...props }: Props,
   ref: Ref<SliderRef>
 ) {
-  const { slider, sliderRef, size, currentIndex, setCurrentIndex } =
-    useCarousel({
-      defaultIndex,
-      slideChanged: onChange,
-      ...props,
-    });
+  const { slider, sliderRef, size, index, setIndex } = useCarousel({
+    defaultIndex,
+    slideChanged: onChange,
+    ...props,
+  });
 
   useImperativeHandle(
     ref,
     () => {
       return {
-        getSliderInstance() {
+        slider() {
           return slider;
         },
-        setCurrentIndex(index: number) {
-          setCurrentIndex(index);
+        moveTo(index: number) {
+          setIndex(index);
         },
       };
     },
@@ -66,7 +65,7 @@ const Carousel = forwardRef(function Carousel(
           });
         })}
       </div>
-      {dot?.({ currentIndex, size })}
+      {dot?.({ currentIndex: index, size })}
     </>
   );
 });
