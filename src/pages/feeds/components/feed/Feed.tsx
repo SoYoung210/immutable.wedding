@@ -10,7 +10,7 @@ import arrayOf from '@utils/array/arrayOf';
 import { css } from 'stitches.config';
 import { Box } from '@components/box/Box';
 
-const 스크린_너비 = 520;
+const 이미지_크기 = 1024;
 
 const descriptionStyle = css({
   px: '$12',
@@ -46,7 +46,7 @@ export function Feed() {
               {feed.imageContents.map((imageSource, index) => {
                 return (
                   <Image.Root key={index}>
-                    <Image key={index} width={스크린_너비} height={스크린_너비}>
+                    <Image key={index} width={이미지_크기} height={이미지_크기}>
                       <Image.Source src={imageSource} alt="feed_사진" />
                     </Image>
                   </Image.Root>
