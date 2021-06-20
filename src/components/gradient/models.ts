@@ -1,3 +1,5 @@
+import { HexColorKey } from 'stitches.config';
+
 export interface GradientProps {
-  colors: string[];
+  colorKeys: HexColorKey[];
 }

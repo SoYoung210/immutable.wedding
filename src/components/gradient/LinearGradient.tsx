@@ -1,16 +1,17 @@
 import React from 'react';
+import { rawColors } from 'stitches.config';
 import { GradientProps } from './models';
 
 export const GRADIENT_ID = 'LINEAR_GRADIENT';
-const LinearGradient = ({ colors }: Pick<GradientProps, 'colors'>) => {
+const LinearGradient = ({ colorKeys }: Pick<GradientProps, 'colorKeys'>) => {
   return (
     <defs>
       <linearGradient id={GRADIENT_ID} x1="0" y1="1" x2="1" y2="0">
-        {colors.map((color, index) => (
+        {colorKeys.map((colorKey, index) => (
           <stop
-            key={`${color}-${index}`}
+            key={`${colorKey}-${index}`}
             offset={`${index}`}
-            stopColor={color}
+            stopColor={rawColors[colorKey]}
           />
         ))}
       </linearGradient>
