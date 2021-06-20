@@ -429,6 +429,10 @@ const stitches = createCss({
       left: value,
     }),
 
+    br: config => (value: keyof typeof config['theme']['radii']) => ({
+      borderRadius: value,
+    }),
+
     bg: config => (value: keyof typeof config['theme']['colors']) => ({
       backgroundColor: value,
     }),
