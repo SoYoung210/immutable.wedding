@@ -2,22 +2,23 @@ import Gradient from '@components/gradient';
 import Image from '@components/image';
 import { Flex } from '@components/util/layout/Flex';
 import { css } from 'stitches.config';
-import { theme } from 'tailwind.config';
 import { useHighlights } from './useHighlights';
 
-const layout = css({
-  display: 'flex',
-  spaceX: 24,
-  py: 14,
-  px: 8,
-  borderBottom: '1px solid $gray300',
-});
-
+const highlightImageLayout = css({ position: 'relative' });
 export function Highlight() {
   const { data: highlights } = useHighlights();
 
   return (
-    <Flex elementType="ol" className={layout()}>
+    <Flex
+      elementType="ol"
+      css={{
+        display: 'flex',
+        spaceX: '$24',
+        py: '$14',
+        px: '$8',
+        borderBottom: '1px solid $gray300',
+      }}
+    >
       {highlights.data.map(highlight => {
         return (
           <Flex.CenterVertical
@@ -25,7 +26,7 @@ export function Highlight() {
             key={highlight.id}
             direction="column"
           >
-            <Image.Root className={css({ position: 'relative' })()}>
+            <Image.Root className={highlightImageLayout()}>
               <Image.RoundShape
                 width={60}
                 height={60}

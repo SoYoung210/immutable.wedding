@@ -36,7 +36,7 @@ export function Feed() {
               {feed.imageContents.map((imageSource, index) => {
                 return (
                   <Image.Root key={index}>
-                    <Image key={index} width={520} height={스크린_너비}>
+                    <Image key={index} width={스크린_너비} height={스크린_너비}>
                       <Image.Source src={imageSource} alt="feed_사진" />
                     </Image>
                   </Image.Root>
