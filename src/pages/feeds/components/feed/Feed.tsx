@@ -8,6 +8,7 @@ import { useFeeds } from './useFeeds';
 import { Dot } from '@components/carousel/Dot';
 import arrayOf from '@utils/array/arrayOf';
 import { css } from 'stitches.config';
+import { Box } from '@components/box/Box';
 
 const 스크린_너비 = 520;
 
@@ -35,6 +36,11 @@ export function Feed() {
                     />
                   ))}
                 </Dot.Root>
+              )}
+              pageInfo={({ size, currentIndex }) => (
+                <Box>
+                  {currentIndex} / {size}
+                </Box>
               )}
             >
               {feed.imageContents.map((imageSource, index) => {
