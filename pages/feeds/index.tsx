@@ -8,6 +8,7 @@ const Main = styled('main', {
   maxWidth: 520,
   minWidth: 320,
   mx: 'auto',
+  backgroundColor: '$white',
 });
 
 export default function Home() {

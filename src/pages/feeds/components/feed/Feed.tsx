@@ -11,6 +11,10 @@ import { css } from 'stitches.config';
 
 const 스크린_너비 = 520;
 
+const descriptionStyle = css({
+  px: '$12',
+});
+
 export function Feed() {
   const { data: account } = useAccount();
   const { data: feeds } = useFeeds();
@@ -23,7 +27,7 @@ export function Feed() {
             <Header />
             <Carousel
               dot={({ size, currentIndex }) => (
-                <Dot.Root>
+                <Dot.Root css={{ mt: '$17', mb: '$8' }}>
                   {arrayOf(size).map(index => (
                     <Dot
                       key={index}
@@ -44,20 +48,22 @@ export function Feed() {
               })}
             </Carousel>
 
-            <Text elementType="span" weight="bold" size="sm">
-              {account.name}
-            </Text>
-            <Text
-              elementType="p"
-              css={{ display: 'inline', ml: '$8' }}
-              weight="light"
-              size="sm"
-            >
-              {feed.description}
-            </Text>
-            <Text weight="extralight" size="sm" css={{ color: '$gray300' }}>
-              {feed.createdAt}
-            </Text>
+            <div className={descriptionStyle()}>
+              <Text elementType="span" weight="bold" size="sm">
+                {account.name}
+              </Text>
+              <Text
+                elementType="p"
+                css={{ display: 'inline', ml: '$8' }}
+                weight="light"
+                size="sm"
+              >
+                {feed.description}
+              </Text>
+              <Text weight="extralight" size="sm" css={{ color: '$gray300' }}>
+                {feed.createdAt}
+              </Text>
+            </div>
           </Fragment>
         );
       })}
