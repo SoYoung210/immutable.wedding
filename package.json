@@ -20,9 +20,6 @@
     "start": "next start"
   },
   "dependencies": {
-    "@emotion/css": "^11.1.3",
-    "@emotion/react": "^11.4.0",
-    "@emotion/styled": "^11.3.0",
     "@stitches/react": "^0.2.2",
     "classnames": "^2.3.1",
     "keen-slider": "^5.5.1",
@@ -32,22 +29,16 @@
   },
   "devDependencies": {
     "@babel/core": "^7.14.3",
-    "@emotion/babel-preset-css-prop": "^11.2.0",
     "@types/classnames": "^2.3.1",
     "@types/react": "17.0.9",
     "@typescript-eslint/eslint-plugin": "^4.26.0",
     "@typescript-eslint/parser": "^4.26.0",
-    "cssnano": "^5.0.6",
     "eslint": "^7.28.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.24.0",
-    "postcss": "^8.3.2",
-    "postcss-preset-env": "^6.7.0",
     "prettier": "^2.3.1",
-    "tailwindcss": "^2.1.4",
-    "twin.macro": "^2.4.2",
     "typescript": "4.3.2"
   }
 }
