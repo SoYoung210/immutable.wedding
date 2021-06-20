@@ -14,7 +14,7 @@ import cx from 'classnames';
 import { useCarousel, Options as CarouselOptions } from './useCarousel';
 import { styled } from 'stitches.config';
 
-interface SliderRef {
+export interface SliderRef {
   slider: () => KeenSlider;
   moveTo: (index: number) => void;
 }
@@ -40,7 +40,7 @@ const Carousel = forwardRef(function Carousel(
     pageInfo,
     ...props
   }: Props,
-  ref: Ref<SliderRef>
+  ref: Ref<SliderRef | null>
 ) {
   const { slider, sliderRef, size, index, setIndex } = useCarousel({
     defaultIndex,
