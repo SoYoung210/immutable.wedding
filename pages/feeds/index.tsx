@@ -1,13 +1,21 @@
 import { Feed } from '@pages/feeds/components/feed/Feed';
 import { Highlight } from '@pages/feeds/components/highlight/Highlight';
 import { Header } from '@pages/feeds/components/header/Header';
+import { styled } from 'stitches.config';
+
+const Main = styled('main', {
+  position: 'relative',
+  maxWidth: 520,
+  minWidth: 320,
+  mx: 'auto',
+});
 
 export default function Home() {
   return (
-    <main className="relative max-w-520 min-w-320 mx-auto">
+    <Main>
       <Header />
       <Highlight />
       <Feed />
-    </main>
+    </Main>
   );
 }

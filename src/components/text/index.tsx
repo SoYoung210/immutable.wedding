@@ -1,11 +1,12 @@
-import { ComponentPassThrough } from '@utils/types';
+import { CSSProps } from '@utils/styles';
 import React, { HTMLProps, ReactNode } from 'react';
-import cx from 'classnames';
-import { Color } from '@utils/styles';
+import { styled } from 'stitches.config';
 
-interface Props extends Omit<HTMLProps<HTMLDivElement>, 'size'> {
-  children: ReactNode;
+interface Props
+  extends Omit<HTMLProps<HTMLDivElement>, 'children' | 'size'>,
+    CSSProps {
   size?: 'xs' | 'sm' | 'base' | 'lg' | 'xl';
+  children: Exclude<ReactNode, null | undefined>;
   weight?:
     | 'thin'
     | 'extralight'
@@ -16,69 +17,115 @@ interface Props extends Omit<HTMLProps<HTMLDivElement>, 'size'> {
     | 'bold'
     | 'extrabold';
 
-  color?: Color;
-  /* text-transform css property */
-  transform?: 'capitalize' | 'uppercase' | 'lowercase';
-
   /* text-align css property */
   align?: 'left' | 'center' | 'right' | 'justify';
 
   /** Link or text variant */
   variant?: 'text' | 'link';
+
+  elementType?: keyof JSX.IntrinsicElements;
 }
 
-const Text = <T extends React.ElementType = 'div'>({
-  className,
-  component = 'div',
-  children,
-  size = 'base',
+const Text = ({
+  elementType = 'div',
   weight = 'normal',
-  transform,
-  style,
-  color,
   align = 'left',
   variant = 'text',
-  elementRef,
-  ...others
-}: ComponentPassThrough<T, Props>) => {
-  return React.createElement(
-    component,
-    {
-      // fontSize, text transform, text align, custom className
-      className: cx(
-        `text-${size}`,
-        transform,
-        `text-${align}`,
-        `text-${color}`,
-        `font-${weight}`,
-        className
-      ),
-      ref: elementRef,
-      style: {
-        '&:hover': {
-          ...style?.['&:hover'],
-          textDecoration: variant === 'link' ? 'underline' : 'none',
+  size = 'base',
+  ...props
+}: Props) => {
+  const SText = styled(elementType, {
+    variants: {
+      size: {
+        xs: {
+          fontSize: '$xs',
         },
-        ...style,
+        sm: {
+          fontSize: '$sm',
+        },
+        base: {
+          fontSize: '$base',
+        },
+        lg: {
+          fontSize: '$lg',
+        },
+        xl: {
+          fontSize: '$xl',
+        },
       },
-      ...others,
+      weight: {
+        thin: {
+          fontWeight: '$thin',
+        },
+        extralight: {
+          fontWeight: '$extralight',
+        },
+        light: {
+          fontWeight: '$light',
+        },
+        normal: {
+          fontWeight: '$normal',
+        },
+        medium: {
+          fontWeight: '$medium',
+        },
+        semibold: {
+          fontWeight: '$semibold',
+        },
+        bold: {
+          fontWeight: '$bold',
+        },
+        extrabold: {
+          fontWeight: '$extrabold',
+        },
+        black: {
+          fontWeight: '$black',
+        },
+      },
+      align: {
+        center: {
+          textAlign: 'center',
+        },
+        left: {
+          textAlign: 'left',
+        },
+        right: {
+          textAlign: 'right',
+        },
+        justify: {
+          textAlign: 'justify',
+        },
+      },
+      variant: {
+        text: {
+          textDecoration: 'none',
+        },
+        link: {
+          textDecoration: 'underline',
+        },
+      },
     },
-    children
+  });
+
+  return (
+    <SText
+      size={size}
+      weight={weight}
+      align={align}
+      variant={variant}
+      {...(props as any)}
+    />
   );
 };
 
-export function Anchor<
-  T extends React.ElementType = 'a',
-  U = HTMLAnchorElement
->({
-  component = 'a',
+export function Anchor({
+  elementType = 'a',
+  variant = 'link',
   children,
   ...others
-}: ComponentPassThrough<T, Props> & {
-  elementRef?: React.ForwardedRef<U>;
-}) {
+}: Props) {
   return (
-    <Text component={component} variant="link" {...others}>
+    <Text elementType={elementType} variant={variant} {...others}>
       {children}
     </Text>
   );

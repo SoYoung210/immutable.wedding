@@ -7,6 +7,7 @@ import { useAccount } from './useAccount';
 import { useFeeds } from './useFeeds';
 import { Dot } from '@components/carousel/Dot';
 import arrayOf from '@utils/array/arrayOf';
+import { css } from 'stitches.config';
 
 const 스크린_너비 = 520;
 
@@ -15,7 +16,7 @@ export function Feed() {
   const { data: feeds } = useFeeds();
 
   return (
-    <div className="pt-10">
+    <div className={css({ pt: 10 })()}>
       {feeds.data.map(feed => {
         return (
           <Fragment key={feed.id}>
@@ -26,7 +27,7 @@ export function Feed() {
                   {arrayOf(size).map(index => (
                     <Dot
                       key={index}
-                      color={index === currentIndex ? 'blue-400' : 'gray-200'}
+                      color={index === currentIndex ? '$blue400' : '$gray200'}
                     />
                   ))}
                 </Dot.Root>
@@ -35,7 +36,7 @@ export function Feed() {
               {feed.imageContents.map((imageSource, index) => {
                 return (
                   <Image.Root key={index}>
-                    <Image key={index} width={스크린_너비} height={스크린_너비}>
+                    <Image key={index} width={520} height={스크린_너비}>
                       <Image.Source src={imageSource} alt="feed_사진" />
                     </Image>
                   </Image.Root>
@@ -43,18 +44,18 @@ export function Feed() {
               })}
             </Carousel>
 
-            <Text component="span" weight="bold" size="sm">
+            <Text elementType="span" weight="bold" size="sm">
               {account.name}
             </Text>
             <Text
-              component="p"
-              className="inline ml-8"
+              elementType="p"
+              css={{ display: 'inline', ml: '$8' }}
               weight="light"
               size="sm"
             >
               {feed.description}
             </Text>
-            <Text weight="extralight" size="sm" color="gray-300">
+            <Text weight="extralight" size="sm" css={{ color: '$gray300' }}>
               {feed.createdAt}
             </Text>
           </Fragment>

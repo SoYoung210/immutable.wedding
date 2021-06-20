@@ -1,5 +1,5 @@
-import { theme } from 'tailwind.config';
+import { CSSType } from 'stitches.config';
 
-type ColorKey = keyof typeof theme.colors;
-type ColorWeight = keyof typeof theme.colors.amber;
-export type Color = `${ColorKey}-${ColorWeight}`;
+export interface CSSProps {
+  css?: CSSType;
+}
