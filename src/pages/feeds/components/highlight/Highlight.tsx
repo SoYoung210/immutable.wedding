@@ -1,7 +1,7 @@
 import Gradient from '@components/gradient';
 import Image from '@components/image';
 import { Flex } from '@components/util/layout/Flex';
-import { css } from 'stitches.config';
+import { css, styled } from 'stitches.config';
 import { useHighlights } from './useHighlights';
 
 const highlightImageLayout = css({ position: 'relative' });
@@ -15,7 +15,7 @@ export function Highlight() {
         display: 'flex',
         spaceX: '$24',
         py: '$14',
-        px: '$8',
+        pl: '$18',
         borderBottom: '1px solid $gray300',
       }}
     >
@@ -52,10 +52,14 @@ export function Highlight() {
                 />
               </Image.RoundShape>
             </Image.Root>
-            <span>{highlight.name}</span>
+            <HighlightName css={{ mt: '$6' }}>{highlight.name}</HighlightName>
           </Flex.CenterVertical>
         );
       })}
     </Flex>
   );
 }
+
+const HighlightName = styled('span', {
+  fontSize: '$xs',
+});

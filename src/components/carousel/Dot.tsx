@@ -1,4 +1,4 @@
-import { CSSProps } from '@utils/styles';
+import { CSSProps, mergeCss } from '@utils/styles';
 import React, { HTMLAttributes, ReactElement } from 'react';
 import { styled, Color } from 'stitches.config';
 
@@ -31,8 +31,10 @@ const RootElement = styled('div', {
   display: 'flex',
   justifyContent: 'center',
 });
-function Root({ gap = 7, children }: RootProps) {
-  return <RootElement css={{ spaceX: gap }}>{children}</RootElement>;
+function Root({ gap = 7, css, children }: RootProps) {
+  return (
+    <RootElement css={mergeCss({ spaceX: gap }, css)}>{children}</RootElement>
+  );
 }
 
 Dot.Root = Root;
