@@ -23,6 +23,7 @@
     "@emotion/css": "^11.1.3",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
+    "@stitches/react": "^0.2.2",
     "classnames": "^2.3.1",
     "keen-slider": "^5.5.1",
     "next": "10.2.3",
