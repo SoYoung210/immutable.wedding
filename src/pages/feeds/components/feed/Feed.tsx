@@ -77,7 +77,7 @@ export function Feed() {
               >
                 {feed.description}
               </Text>
-              <Text weight="extralight" size="sm" css={{ color: '$gray300' }}>
+              <Text weight="extralight" size="sm" css={{ color: '$gray400' }}>
                 {feed.createdAt}
               </Text>
             </div>
