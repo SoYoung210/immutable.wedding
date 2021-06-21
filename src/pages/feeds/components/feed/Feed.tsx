@@ -38,8 +38,18 @@ export function Feed() {
                 </Dot.Root>
               )}
               pageInfo={({ size, currentIndex }) => (
-                <Box>
-                  {currentIndex} / {size}
+                <Box
+                  css={{
+                    position: 'absolute',
+                    insetX: 0,
+                    px: '$8',
+                    py: '$10',
+                    bg: '$black',
+                    color: '$white',
+                    br: '$round',
+                  }}
+                >
+                  {currentIndex + 1} / {size}
                 </Box>
               )}
             >

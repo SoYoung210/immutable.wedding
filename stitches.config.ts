@@ -430,11 +430,11 @@ const stitches = createCss({
       left: value,
     }),
 
-    br: config => (value: keyof typeof config['theme']['radii']) => ({
+    br: config => (value: `$${keyof typeof config['theme']['radii']}`) => ({
       borderRadius: value,
     }),
 
-    bg: config => (value: keyof typeof config['theme']['colors']) => ({
+    bg: config => (value: `$${keyof typeof config['theme']['colors']}`) => ({
       backgroundColor: value,
     }),
 
@@ -442,6 +442,14 @@ const stitches = createCss({
       '& > :not([hidden]) ~ :not([hidden])': {
         marginLeft: value,
       },
+    }),
+    insetX: () => (value: string | number) => ({
+      top: value,
+      right: value,
+    }),
+    insetY: () => (value: string | number) => ({
+      top: value,
+      bottom: value,
     }),
   },
 });

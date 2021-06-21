@@ -81,6 +81,8 @@ const Carousel = forwardRef(function Carousel(
   );
 });
 
-const Wrapper = styled('div', {});
+const Wrapper = styled('div', {
+  position: 'relative',
+});
 
 export default Carousel;
