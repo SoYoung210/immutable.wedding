@@ -7,21 +7,18 @@ import { useAccount } from './useAccount';
 import { useFeeds } from './useFeeds';
 import { Dot } from '@components/carousel/Dot';
 import arrayOf from '@utils/array/arrayOf';
-import { css } from 'stitches.config';
+import { styled } from 'stitches.config';
 import { Box } from '@components/box/Box';
+import { Flex } from '@components/util/layout/Flex';
 
 const 이미지_크기 = 1024;
-
-const descriptionStyle = css({
-  px: '$12',
-});
 
 export function Feed() {
   const { data: account } = useAccount();
   const { data: feeds } = useFeeds();
 
   return (
-    <div className={css({ pt: 10 })()}>
+    <Wrapper>
       {feeds.data.map(feed => {
         return (
           <Fragment key={feed.id}>
@@ -65,7 +62,26 @@ export function Feed() {
               })}
             </Carousel>
 
-            <div className={descriptionStyle()}>
+            <DescriptionWrapper>
+              <Flex css={{ gap: '$14' }}>
+                <Image.Root>
+                  <Image width={24} height={24}>
+                    <Image.Source
+                      src="/assets/icon/heart.png"
+                      alt="좋아요_아이콘"
+                    />
+                  </Image>
+                </Image.Root>
+                <Image.Root>
+                  <Image width={24} height={24}>
+                    <Image.Source
+                      src="/assets/icon/comment.png"
+                      alt="코멘트_아이콘"
+                    />
+                  </Image>
+                </Image.Root>
+              </Flex>
+
               <Text elementType="span" weight="bold" size="sm">
                 {account.name}
               </Text>
@@ -77,13 +93,26 @@ export function Feed() {
               >
                 {feed.description}
               </Text>
-              <Text weight="extralight" size="sm" css={{ color: '$gray400' }}>
+              <Text
+                weight="extralight"
+                size="sm"
+                css={{ color: '$gray400', mt: '$4' }}
+              >
                 {feed.createdAt}
               </Text>
-            </div>
+            </DescriptionWrapper>
           </Fragment>
         );
       })}
-    </div>
+    </Wrapper>
   );
 }
+
+const Wrapper = styled('div', {
+  pt: '$10',
+});
+
+const DescriptionWrapper = styled('div', {
+  px: '$12',
+  mt: '-24px',
+});
