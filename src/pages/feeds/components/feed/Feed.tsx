@@ -41,12 +41,13 @@ export function Feed() {
                 <Box
                   css={{
                     position: 'absolute',
-                    insetX: 0,
-                    px: '$8',
-                    py: '$10',
-                    bg: '$black',
+                    top: 14,
+                    right: 15,
+                    px: '$11',
+                    py: '$7',
+                    backgroundColor: 'rgba(0,0,0,.75)',
                     color: '$white',
-                    br: '$round',
+                    br: '$50',
                   }}
                 >
                   {currentIndex + 1} / {size}
