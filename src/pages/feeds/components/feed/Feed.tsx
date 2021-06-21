@@ -64,7 +64,7 @@ export function Feed() {
 
             <DescriptionWrapper>
               <Flex css={{ gap: '$14' }}>
-                <Image.Root>
+                <Image.Root as="button">
                   <Image width={24} height={24}>
                     <Image.Source
                       src="/assets/icon/heart.png"
@@ -72,7 +72,7 @@ export function Feed() {
                     />
                   </Image>
                 </Image.Root>
-                <Image.Root>
+                <Image.Root as="button">
                   <Image width={24} height={24}>
                     <Image.Source
                       src="/assets/icon/comment.png"

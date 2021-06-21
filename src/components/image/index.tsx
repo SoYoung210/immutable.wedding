@@ -43,12 +43,7 @@ const Image = ({ width, height, variants, children, ...props }: Props) => {
   );
 };
 
-Image.Root = ({
-  children,
-  ...props
-}: Omit<PropsWithChildren<HTMLAttributes<HTMLDivElement>>, 'as'>) => {
-  return <div {...props}>{children}</div>;
-};
+Image.Root = styled('div', {});
 Image.Source = ({ src, alt }: { src: string; alt: string }) => {
   return <img src={src} alt={alt} />;
 };
