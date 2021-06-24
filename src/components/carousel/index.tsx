@@ -12,25 +12,35 @@ import KeenSlider from 'keen-slider/react';
 import cx from 'classnames';
 
 import { useCarousel, Options as CarouselOptions } from './useCarousel';
+import { styled } from 'stitches.config';
 
-interface SliderRef {
+export interface SliderRef {
   slider: () => KeenSlider;
   moveTo: (index: number) => void;
 }
-interface DotProps {
+interface PageProps {
   currentIndex: number;
   size: number;
 }
 interface Props
   extends Pick<HTMLAttributes<HTMLDivElement>, 'className'>,
     Omit<CarouselOptions, 'slideChanged'> {
-  dot?: (props: DotProps) => ReactElement;
+  dot?: (props: PageProps) => ReactElement;
+  pageInfo?: (props: PageProps) => ReactElement;
   children: ReactElement[] | ReactElement;
   onChange?: (instance: KeenSlider) => void;
 }
 const Carousel = forwardRef(function Carousel(
-  { children, dot, className, defaultIndex, onChange, ...props }: Props,
-  ref: Ref<SliderRef>
+  {
+    children,
+    dot,
+    className,
+    defaultIndex,
+    onChange,
+    pageInfo,
+    ...props
+  }: Props,
+  ref: Ref<SliderRef | null>
 ) {
   const { slider, sliderRef, size, index, setIndex } = useCarousel({
     defaultIndex,
@@ -54,7 +64,7 @@ const Carousel = forwardRef(function Carousel(
   );
 
   return (
-    <>
+    <Wrapper>
       <div ref={sliderRef} className={cx('keen-slider', className)}>
         {Children.toArray(children).map(child => {
           const carouselItem = child as ReactElement;
@@ -65,9 +75,14 @@ const Carousel = forwardRef(function Carousel(
           });
         })}
       </div>
+      {pageInfo?.({ currentIndex: index, size })}
       {dot?.({ currentIndex: index, size })}
-    </>
+    </Wrapper>
   );
+});
+
+const Wrapper = styled('div', {
+  position: 'relative',
 });
 
 export default Carousel;

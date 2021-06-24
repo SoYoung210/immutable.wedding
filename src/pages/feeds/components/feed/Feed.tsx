@@ -1,54 +1,57 @@
 import Image from '@components/image';
 import Text from '@components/text';
-import Carousel from '@components/carousel';
 import React, { Fragment } from 'react';
 import { Header } from './header/Header';
 import { useAccount } from './useAccount';
 import { useFeeds } from './useFeeds';
-import { Dot } from '@components/carousel/Dot';
-import arrayOf from '@utils/array/arrayOf';
-import { css } from 'stitches.config';
+import { styled } from 'stitches.config';
+import { Flex } from '@components/util/layout/Flex';
+import { FeedCarouselWrapper } from './FeedCarouselWrapper';
 
-const 스크린_너비 = 520;
-
-const descriptionStyle = css({
-  px: '$12',
-});
+const 이미지_크기 = 1024;
 
 export function Feed() {
   const { data: account } = useAccount();
   const { data: feeds } = useFeeds();
 
   return (
-    <div className={css({ pt: 10 })()}>
+    <Wrapper>
       {feeds.data.map(feed => {
         return (
           <Fragment key={feed.id}>
             <Header />
-            <Carousel
-              dot={({ size, currentIndex }) => (
-                <Dot.Root css={{ mt: '$17', mb: '$8' }}>
-                  {arrayOf(size).map(index => (
-                    <Dot
-                      key={index}
-                      color={index === currentIndex ? '$blue400' : '$gray200'}
-                    />
-                  ))}
-                </Dot.Root>
-              )}
-            >
+            <FeedCarouselWrapper>
               {feed.imageContents.map((imageSource, index) => {
                 return (
                   <Image.Root key={index}>
-                    <Image key={index} width={스크린_너비} height={스크린_너비}>
+                    <Image key={index} width={이미지_크기} height={이미지_크기}>
                       <Image.Source src={imageSource} alt="feed_사진" />
                     </Image>
                   </Image.Root>
                 );
               })}
-            </Carousel>
+            </FeedCarouselWrapper>
 
-            <div className={descriptionStyle()}>
+            <DescriptionWrapper>
+              <Flex css={{ gap: '$14' }}>
+                <Image.Root as="button">
+                  <Image width={24} height={24}>
+                    <Image.Source
+                      src="/assets/icon/heart.png"
+                      alt="좋아요_아이콘"
+                    />
+                  </Image>
+                </Image.Root>
+                <Image.Root as="button">
+                  <Image width={24} height={24}>
+                    <Image.Source
+                      src="/assets/icon/comment.png"
+                      alt="코멘트_아이콘"
+                    />
+                  </Image>
+                </Image.Root>
+              </Flex>
+
               <Text elementType="span" weight="bold" size="sm">
                 {account.name}
               </Text>
@@ -60,13 +63,26 @@ export function Feed() {
               >
                 {feed.description}
               </Text>
-              <Text weight="extralight" size="sm" css={{ color: '$gray300' }}>
+              <Text
+                weight="extralight"
+                size="sm"
+                css={{ color: '$gray400', mt: '$4' }}
+              >
                 {feed.createdAt}
               </Text>
-            </div>
+            </DescriptionWrapper>
           </Fragment>
         );
       })}
-    </div>
+    </Wrapper>
   );
 }
+
+const Wrapper = styled('div', {
+  pt: '$10',
+});
+
+const DescriptionWrapper = styled('div', {
+  px: '$12',
+  mt: '-24px',
+});
