@@ -1,15 +1,12 @@
 import Image from '@components/image';
 import Text from '@components/text';
-import Carousel from '@components/carousel';
 import React, { Fragment } from 'react';
 import { Header } from './header/Header';
 import { useAccount } from './useAccount';
 import { useFeeds } from './useFeeds';
-import { Dot } from '@components/carousel/Dot';
-import arrayOf from '@utils/array/arrayOf';
 import { styled } from 'stitches.config';
-import { Box } from '@components/box/Box';
 import { Flex } from '@components/util/layout/Flex';
+import { FeedCarouselWrapper } from './FeedCarouselWrapper';
 
 const 이미지_크기 = 1024;
 
@@ -23,34 +20,7 @@ export function Feed() {
         return (
           <Fragment key={feed.id}>
             <Header />
-            <Carousel
-              dot={({ size, currentIndex }) => (
-                <Dot.Root css={{ mt: '$17', mb: '$8' }}>
-                  {arrayOf(size).map(index => (
-                    <Dot
-                      key={index}
-                      color={index === currentIndex ? '$blue400' : '$gray200'}
-                    />
-                  ))}
-                </Dot.Root>
-              )}
-              pageInfo={({ size, currentIndex }) => (
-                <Box
-                  css={{
-                    position: 'absolute',
-                    top: 14,
-                    right: 15,
-                    px: '$11',
-                    py: '$7',
-                    backgroundColor: 'rgba(0,0,0,.75)',
-                    color: '$white',
-                    br: '$50',
-                  }}
-                >
-                  {currentIndex + 1} / {size}
-                </Box>
-              )}
-            >
+            <FeedCarouselWrapper>
               {feed.imageContents.map((imageSource, index) => {
                 return (
                   <Image.Root key={index}>
@@ -60,7 +30,7 @@ export function Feed() {
                   </Image.Root>
                 );
               })}
-            </Carousel>
+            </FeedCarouselWrapper>
 
             <DescriptionWrapper>
               <Flex css={{ gap: '$14' }}>
