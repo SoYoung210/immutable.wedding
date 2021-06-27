@@ -2,6 +2,7 @@ import { NextSeo } from 'next-seo';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import React from 'react';
+import { NotificationProvider } from '@components/notification/NotificationContext';
 import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -11,7 +12,9 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Component {...pageProps} />
+      <NotificationProvider>
+        <Component {...pageProps} />
+      </NotificationProvider>
     </>
   );
 }

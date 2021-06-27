@@ -38,11 +38,11 @@ const Image = ({ width, height, variants, children, ...props }: Props) => {
 };
 
 Image.Root = styled('div', {});
-Image.Source = ({ src, alt }: { src: string; alt: string }) => {
+Image.Source = memo(({ src, alt }: { src: string; alt: string }) => {
   return <img src={src} alt={alt} />;
-};
-Image.RoundShape = ({ css, ...props }: Props) => (
+});
+Image.RoundShape = memo(({ css, ...props }: Props) => (
   <Image {...props} css={mergeCss({ borderRadius: '$round' }, css)} />
-);
+));
 
 export default Image;

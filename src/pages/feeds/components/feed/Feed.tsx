@@ -6,18 +6,29 @@ import { Description } from '@pages/feeds/components/feed/Description';
 import { FeedActionCTA } from '@pages/feeds/components/feed/FeedActionCTA';
 import { CommentIcon } from '@pages/feeds/components/feed/icon/CommentIcon';
 import { LikeIcon } from '@pages/feeds/components/feed/icon/LikeIcon';
-import React from 'react';
+import React, { useCallback } from 'react';
 import { css, styled } from 'stitches.config';
 import { FeedCarouselWrapper } from './FeedCarouselWrapper';
 import { Header } from './header/Header';
 import { useAccount } from './useAccount';
 import { useFeeds, 액션를_포함하는_피드인가 } from './useFeeds';
+import { useNotifications } from '@components/notification/NotificationContext';
+import { ToastWrapper } from './ToastWrapper';
 
 const 이미지_크기 = 1024;
 
 export function Feed() {
+  const { showNotification } = useNotifications();
   const { data: account } = useAccount();
   const { data: feeds } = useFeeds();
+
+  const openToast = useCallback(() => {
+    showNotification({
+      element: (
+        <ToastWrapper>📝 전하고 싶은 말은 식장에서 해주세요!</ToastWrapper>
+      ),
+    });
+  }, [showNotification]);
 
   return (
     <>
