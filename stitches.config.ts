@@ -337,6 +337,10 @@ const stitches = createCss({
     },
     transitions: {},
   },
+  media: {
+    mobile: '(min-width: 375px)',
+    desktop: '(min-width: 520px)',
+  },
   utils: {
     size: () => (value: number) => ({
       width: value,

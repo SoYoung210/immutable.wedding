@@ -11,7 +11,7 @@ interface LinkFeedContent {
   action: FeedAction;
 }
 
-type FeedContent = SimpleFeedContent | LinkFeedContent;
+export type FeedContent = SimpleFeedContent | LinkFeedContent;
 
 interface Feed {
   id: number;
