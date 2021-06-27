@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useRef } from 'react';
+import React, { ReactNode, useCallback, useEffect, useRef } from 'react';
 import { styled } from 'stitches.config';
 import { NotificationProps } from './NotificationContext';
 
@@ -33,31 +33,31 @@ export function NotificationContainer({
   const autoCloseTimeout = getAutoClose(autoClose, notification);
   const hideTimeout = useRef<number>();
 
-  const handleHide = () => {
+  const handleHide = useCallback(() => {
     onHide(notification.id ?? '');
     window.clearTimeout(hideTimeout.current);
-  };
+  }, [notification.id, onHide]);
 
   const cancelDelayedHide = () => {
     clearTimeout(hideTimeout.current);
   };
 
-  const handleDelayedHide = () => {
+  const handleDelayedHide = useCallback(() => {
     if (typeof autoCloseTimeout === 'number') {
       hideTimeout.current = window.setTimeout(handleHide, autoCloseTimeout);
     }
-  };
+  }, [autoCloseTimeout, handleHide]);
 
   useEffect(() => {
     if (typeof notification.onOpen === 'function') {
       notification.onOpen(notification);
     }
-  }, []);
+  }, [notification]);
 
   useEffect(() => {
     handleDelayedHide();
     return cancelDelayedHide;
-  }, [autoClose, notification.autoClose]);
+  }, [autoClose, handleDelayedHide, notification.autoClose]);
 
   return <Wrapper>{children}</Wrapper>;
 }
