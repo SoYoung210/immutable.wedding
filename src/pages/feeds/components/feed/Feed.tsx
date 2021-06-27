@@ -16,16 +16,16 @@ export function Feed() {
 
   return (
     <>
-      {feeds.data.map(feed => {
+      {feeds.map(({ id, contents, description, createdAt }) => {
         return (
-          <Wrapper key={feed.id}>
+          <Wrapper key={id}>
             <Header />
             <FeedCarouselWrapper>
-              {feed.imageContents.map((imageSource, index) => {
+              {contents.map(({ imageSrc }, index) => {
                 return (
                   <Image.Root key={index}>
                     <Image key={index} width={이미지_크기} height={이미지_크기}>
-                      <Image.Source src={imageSource} alt="feed_사진" />
+                      <Image.Source src={imageSrc} alt="feed_사진" />
                     </Image>
                   </Image.Root>
                 );
@@ -61,14 +61,14 @@ export function Feed() {
                 weight="light"
                 size="sm"
               >
-                {feed.description}
+                {description}
               </Text>
               <Text
                 weight="extralight"
                 size="sm"
                 css={{ color: '$gray400', mt: '$4' }}
               >
-                {feed.createdAt}
+                {createdAt}
               </Text>
             </DescriptionWrapper>
           </Wrapper>
