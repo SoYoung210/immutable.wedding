@@ -11,7 +11,9 @@ export function LikeIcon({ onClick, ...props }: Props) {
   const openToast = useCallback(() => {
     showNotification({
       element: (
-        <ToastWrapper>📝 전하고 싶은 말은 식장에서 해주세요!</ToastWrapper>
+        <ToastWrapper>
+          💖 저희도 고마워요, 눌러주신 마음은 따로 저장하진 않을게요
+        </ToastWrapper>
       ),
       autoClose: 2500,
     });
