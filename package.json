@@ -25,7 +25,8 @@
     "keen-slider": "^5.5.1",
     "next": "10.2.3",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-query": "^3.17.3"
   },
   "devDependencies": {
     "@babel/core": "^7.14.3",
