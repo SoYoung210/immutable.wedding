@@ -1,6 +1,5 @@
-import { GlobalsNumber } from '@stitches/react/types/css-types';
 import { CSSProps } from '@utils/styles';
-import React, { CSSProperties } from 'react';
+import React from 'react';
 import { styled } from 'stitches.config';
 
 const alignOptions = {
@@ -54,9 +53,6 @@ interface FlexOptions {
   align?: keyof typeof alignOptions;
   justify?: keyof typeof justifyOptions;
   direction?: keyof typeof directionOptions;
-  flexGrow?: GlobalsNumber;
-  flexBasis?: CSSProperties['flexBasis'];
-  flexShrink?: CSSProperties['flexShrink'];
 }
 
 export function flex(flexOptions: FlexOptions) {
