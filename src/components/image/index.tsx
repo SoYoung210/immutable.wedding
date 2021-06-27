@@ -1,14 +1,8 @@
-import React, {
-  Children,
-  HTMLAttributes,
-  PropsWithChildren,
-  ReactElement,
-  ReactNode,
-} from 'react';
-import NextImage, { ImageProps } from 'next/image';
-import { WithRequiredKeys } from '@utils/types';
-import { styled } from 'stitches.config';
 import { CSSProps, mergeCss } from '@utils/styles';
+import { WithRequiredKeys } from '@utils/types';
+import NextImage, { ImageProps } from 'next/image';
+import React, { Children, ReactElement, ReactNode } from 'react';
+import { styled } from 'stitches.config';
 
 interface Props
   extends WithRequiredKeys<
