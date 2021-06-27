@@ -29,7 +29,6 @@ const Image = ({ width, height, variants, children, ...props }: Props) => {
         alt={imageSource.props.alt}
         width={width}
         height={height}
-        placeholder="blur"
         priority={true}
         {...props}
       />
