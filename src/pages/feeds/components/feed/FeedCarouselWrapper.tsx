@@ -26,11 +26,13 @@ export function FeedCarouselWrapper({ children }: Props) {
             position: 'absolute',
             top: 14,
             right: 15,
-            px: '$11',
-            py: '$7',
-            backgroundColor: 'rgba(0,0,0,.75)',
+            px: '$12',
+            py: '$8',
+            backgroundColor: '$gray700',
             color: '$white',
             br: '$50',
+            opacity: 0.8,
+            fontSize: 13,
           }}
         >
           {currentIndex + 1} / {size}

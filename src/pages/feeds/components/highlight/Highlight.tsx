@@ -13,12 +13,11 @@ export function Highlight() {
     <Flex
       elementType="ol"
       css={{
-        spaceX: '$24',
-        py: '$20',
-        pl: '$20',
+        spaceX: '$16',
+        p: '$20',
         mb: '$20',
-        borderBottom: '1px solid $gray300',
         overflowX: 'scroll',
+        borderBottom: '1px solid $gray100',
       }}
     >
       {highlights.data.map(highlight => {
