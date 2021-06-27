@@ -37,25 +37,6 @@
       ],
       "description": "2021년 10월 23일 토요일 오전 11시 30분 서울특별시 강남구 청담동 학동로 519, 빌라드지디 청담",
       "createdAt": "2018-11-27"
-    },
-    {
-      "id": 2,
-      "contents": [
-        {
-          "imageSrc": "https://images.unsplash.com/photo-1464564531096-f0163633a18a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
-        },
-        {
-          "imageSrc": "https://images.unsplash.com/photo-1544457070-4cd773b4d71e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
-        },
-        {
-          "imageSrc": "https://images.unsplash.com/photo-1593512828202-a5b036b628a9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
-        },
-        {
-          "imageSrc": "https://images.unsplash.com/photo-1464564531096-f0163633a18a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
-        }
-      ],
-      "description": "Officia est excepteur duis occaecat. Incididunt aute cupidatat laboris elit ullamco. Aute ut exercitation ad mollit do cupidatat ullamco amet deserunt dolore est et laboris. Ad velit aute tempor sit dolore cupidatat veniam sint laboris officia enim non eu.",
-      "createdAt": "2018-11-27"
     }
   ]
 }
