@@ -6,6 +6,7 @@ import { Description } from '@pages/feeds/components/feed/Description';
 import { FeedActionCTA } from '@pages/feeds/components/feed/FeedActionCTA';
 import { CommentIcon } from '@pages/feeds/components/feed/icon/CommentIcon';
 import { LikeIcon } from '@pages/feeds/components/feed/icon/LikeIcon';
+import { Tags } from '@pages/feeds/components/feed/Tags';
 import React, { useCallback } from 'react';
 import { css, styled } from 'stitches.config';
 import { FeedCarouselWrapper } from './FeedCarouselWrapper';
@@ -40,7 +41,7 @@ export function Feed() {
 
   return (
     <>
-      {feeds.map(({ id, contents, description, createdAt }) => {
+      {feeds.map(({ id, contents, description, tags }) => {
         return (
           <Wrapper key={id}>
             <Header />
@@ -54,7 +55,7 @@ export function Feed() {
                 <Author>{account.name}</Author>
                 <Description>{description}</Description>
               </div>
-              <CreateAt>{createdAt}</CreateAt>
+              {tags != null ? <Tags values={tags} /> : null}
             </DescriptionWrapper>
           </Wrapper>
         );

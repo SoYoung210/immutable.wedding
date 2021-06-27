@@ -7,7 +7,12 @@ interface Props {
 
 export function Description({ children }: Props) {
   return (
-    <Text elementType="p" css={{ display: 'inline' }} weight="light" size="sm">
+    <Text
+      elementType="p"
+      css={{ display: 'inline' }}
+      weight="light"
+      size="base"
+    >
       {children}
     </Text>
   );

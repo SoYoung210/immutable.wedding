@@ -17,7 +17,8 @@ interface Feed {
   id: number;
   contents: FeedContent[];
   description: string;
-  createdAt: string;
+  createdAt?: string;
+  tags: string[];
 }
 
 export function useFeeds() {

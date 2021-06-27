@@ -30,6 +30,7 @@ const Image = ({ width, height, variants, children, ...props }: Props) => {
         width={width}
         height={height}
         placeholder="blur"
+        priority={true}
         {...props}
       />
       {variants}
