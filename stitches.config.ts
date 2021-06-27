@@ -270,6 +270,7 @@ const stitches = createCss({
       base: '13px',
       lg: '16px',
       xl: '18px',
+      xxl: '20px',
     },
     fonts: {
       untitled: 'Untitled Sans, apple-system, sans-serif',
@@ -316,6 +317,7 @@ const stitches = createCss({
       29: '29px',
       30: '30px',
       32: '32px',
+      48: '48px',
       320: '320px',
       520: '520px',
     },
