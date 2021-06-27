@@ -1,5 +1,33 @@
-import feeds from '@assets/feeds.json';
+import feedsJson from '@assets/feeds.json';
+import { FeedAction } from '@pages/feeds/components/feed/useFeedAction';
+
+interface SimpleFeedContent {
+  imageSrc: string;
+  action: never;
+}
+
+interface LinkFeedContent {
+  imageSrc: string;
+  action: FeedAction;
+}
+
+type FeedContent = SimpleFeedContent | LinkFeedContent;
+
+interface Feed {
+  id: number;
+  contents: FeedContent[];
+  description: string;
+  createdAt: string;
+}
 
 export function useFeeds() {
-  return { data: feeds };
+  const data = feedsJson.data as unknown as Feed[];
+
+  return { data };
+}
+
+export function 액션를_포함하는_피드인가(
+  feed: FeedContent
+): feed is LinkFeedContent {
+  return feed.action != null;
 }
