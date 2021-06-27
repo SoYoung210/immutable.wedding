@@ -1,12 +1,12 @@
 import Image from '@components/image';
 import Text from '@components/text';
-import React, { Fragment } from 'react';
+import { Flex } from '@components/util/layout/Flex';
+import React from 'react';
+import { styled } from 'stitches.config';
+import { FeedCarouselWrapper } from './FeedCarouselWrapper';
 import { Header } from './header/Header';
 import { useAccount } from './useAccount';
 import { useFeeds } from './useFeeds';
-import { styled } from 'stitches.config';
-import { Flex } from '@components/util/layout/Flex';
-import { FeedCarouselWrapper } from './FeedCarouselWrapper';
 
 const 이미지_크기 = 1024;
 
@@ -15,10 +15,10 @@ export function Feed() {
   const { data: feeds } = useFeeds();
 
   return (
-    <Wrapper>
+    <>
       {feeds.data.map(feed => {
         return (
-          <Fragment key={feed.id}>
+          <Wrapper key={feed.id}>
             <Header />
             <FeedCarouselWrapper>
               {feed.imageContents.map((imageSource, index) => {
@@ -33,7 +33,7 @@ export function Feed() {
             </FeedCarouselWrapper>
 
             <DescriptionWrapper>
-              <Flex css={{ gap: '$14' }}>
+              <Flex css={{ gap: '$16' }}>
                 <Image.Root as="button">
                   <Image width={24} height={24}>
                     <Image.Source
@@ -71,15 +71,15 @@ export function Feed() {
                 {feed.createdAt}
               </Text>
             </DescriptionWrapper>
-          </Fragment>
+          </Wrapper>
         );
       })}
-    </Wrapper>
+    </>
   );
 }
 
-const Wrapper = styled('div', {
-  pt: '$10',
+const Wrapper = styled('section', {
+  pb: '$32',
 });
 
 const DescriptionWrapper = styled('div', {

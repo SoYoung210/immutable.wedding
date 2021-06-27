@@ -9,7 +9,7 @@ export function Header() {
   const { data: account } = useAccount();
 
   return (
-    <Flex.CenterVertical css={{ py: '$9', px: '$8' }}>
+    <Flex.CenterVertical css={{ px: '$12', py: '$8' }}>
       <Image.Root className={avatarLayout()}>
         <Image.RoundShape width={30} height={30}>
           <Image.Source src={account.profileSrc} alt={account.profileAlt} />

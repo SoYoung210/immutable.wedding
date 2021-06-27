@@ -5,6 +5,7 @@ import { css, styled } from 'stitches.config';
 import { useHighlights } from './useHighlights';
 
 const highlightImageLayout = css({ position: 'relative' });
+
 export function Highlight() {
   const { data: highlights } = useHighlights();
 
@@ -12,11 +13,11 @@ export function Highlight() {
     <Flex
       elementType="ol"
       css={{
-        display: 'flex',
-        spaceX: '$24',
-        py: '$14',
-        pl: '$18',
-        borderBottom: '1px solid $gray300',
+        spaceX: '$16',
+        p: '$20',
+        mb: '$20',
+        overflowX: 'scroll',
+        borderBottom: '1px solid $gray100',
       }}
     >
       {highlights.data.map(highlight => {
@@ -25,6 +26,7 @@ export function Highlight() {
             elementType="li"
             key={highlight.id}
             direction="column"
+            css={{ flexGrow: 0, flexShrink: 0, flexBasis: 'auto' }}
           >
             <Image.Root className={highlightImageLayout()}>
               <Image.RoundShape
