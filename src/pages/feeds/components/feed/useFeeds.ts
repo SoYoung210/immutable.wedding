@@ -1,4 +1,4 @@
-import feedsJson from '@assets/feeds.json';
+import feedsJson from 'public/assets/data/feeds.json';
 import { FeedAction } from '@pages/feeds/components/feed/useFeedAction';
 
 interface SimpleFeedContent {
