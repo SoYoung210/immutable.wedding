@@ -2,16 +2,7 @@ import { NextSeo } from 'next-seo';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import React from 'react';
-import { QueryClient, QueryClientProvider } from 'react-query';
 import '../styles/globals.css';
-
-const client = new QueryClient({
-  defaultOptions: {
-    queries: {
-      suspense: true,
-    },
-  },
-});
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -20,9 +11,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <QueryClientProvider client={client}>
-        <Component {...pageProps} />
-      </QueryClientProvider>
+      <Component {...pageProps} />
     </>
   );
 }
