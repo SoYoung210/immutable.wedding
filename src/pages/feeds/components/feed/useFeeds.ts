@@ -1,15 +1,14 @@
 import feedsJson from '@assets/feeds.json';
+import { FeedAction } from '@pages/feeds/components/feed/useFeedAction';
 
 interface SimpleFeedContent {
   imageSrc: string;
-  link: never;
+  action: never;
 }
+
 interface LinkFeedContent {
   imageSrc: string;
-  link: {
-    text: string;
-    color: string;
-  };
+  action: FeedAction;
 }
 
 type FeedContent = SimpleFeedContent | LinkFeedContent;
@@ -27,8 +26,8 @@ export function useFeeds() {
   return { data };
 }
 
-export function 링크를_포함하는_피드인가(
+export function 액션를_포함하는_피드인가(
   feed: FeedContent
 ): feed is LinkFeedContent {
-  return feed.link != null;
+  return feed.action != null;
 }
