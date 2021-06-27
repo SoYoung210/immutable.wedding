@@ -1,8 +1,12 @@
 import Image from '@components/image';
-import Text from '@components/text';
 import { Flex } from '@components/util/layout/Flex';
+import { Author } from '@pages/feeds/components/feed/Author';
+import { CreateAt } from '@pages/feeds/components/feed/CreateAt';
+import { Description } from '@pages/feeds/components/feed/Description';
+import { CommentIcon } from '@pages/feeds/components/feed/icon/CommentIcon';
+import { LikeIcon } from '@pages/feeds/components/feed/icon/LikeIcon';
 import React from 'react';
-import { styled } from 'stitches.config';
+import { css, styled } from 'stitches.config';
 import { FeedCarouselWrapper } from './FeedCarouselWrapper';
 import { Header } from './header/Header';
 import { useAccount } from './useAccount';
@@ -34,42 +38,14 @@ export function Feed() {
 
             <DescriptionWrapper>
               <Flex css={{ gap: '$16' }}>
-                <Image.Root as="button">
-                  <Image width={24} height={24}>
-                    <Image.Source
-                      src="/assets/icon/heart.png"
-                      alt="좋아요_아이콘"
-                    />
-                  </Image>
-                </Image.Root>
-                <Image.Root as="button">
-                  <Image width={24} height={24}>
-                    <Image.Source
-                      src="/assets/icon/comment.png"
-                      alt="코멘트_아이콘"
-                    />
-                  </Image>
-                </Image.Root>
+                <LikeIcon />
+                <CommentIcon />
               </Flex>
-
-              <Text elementType="span" weight="bold" size="sm">
-                {account.name}
-              </Text>
-              <Text
-                elementType="p"
-                css={{ display: 'inline', ml: '$8' }}
-                weight="light"
-                size="sm"
-              >
-                {description}
-              </Text>
-              <Text
-                weight="extralight"
-                size="sm"
-                css={{ color: '$gray400', mt: '$4' }}
-              >
-                {createdAt}
-              </Text>
+              <div className={css({ spaceX: '$8' })()}>
+                <Author>{account.name}</Author>
+                <Description>{description}</Description>
+              </div>
+              <CreateAt>{createdAt}</CreateAt>
             </DescriptionWrapper>
           </Wrapper>
         );
