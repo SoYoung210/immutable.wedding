@@ -10,6 +10,7 @@ import { Tags } from '@pages/feeds/components/feed/Tags';
 import React, { useCallback } from 'react';
 import { css, styled } from 'stitches.config';
 import { FeedCarouselWrapper } from './FeedCarouselWrapper';
+import { Footer } from './footer/Footer';
 import { Header } from './header/Header';
 import { useAccount } from './useAccount';
 import { FeedContent, useFeeds, 액션를_포함하는_피드인가 } from './useFeeds';
@@ -60,6 +61,7 @@ export function Feed() {
           </Wrapper>
         );
       })}
+      <Footer />
     </>
   );
 }
