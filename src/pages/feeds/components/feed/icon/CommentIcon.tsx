@@ -23,11 +23,17 @@ export function CommentIcon({ onClick, ...props }: Props) {
     [onClick, openToast]
   );
 
-  return (
-    <Image.Root as="button" onClick={handleClickLikeButton} {...props}>
+  const icon = useMemo(() => {
+    return (
       <Image width={24} height={24}>
         <Image.Source src="/assets/icon/comment.png" alt="코멘트_아이콘" />
       </Image>
+    );
+  }, []);
+
+  return (
+    <Image.Root as="button" onClick={handleClickLikeButton} {...props}>
+      {icon}
     </Image.Root>
   );
 }
