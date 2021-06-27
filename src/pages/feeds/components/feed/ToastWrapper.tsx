@@ -12,6 +12,16 @@ const SDiv = styled(motion.div, {
   position: 'fixed',
   left: '50%',
   transform: 'translateX(-50%)',
+  variants: {
+    width: {
+      320: {
+        width: 320,
+      },
+      480: {
+        width: 480,
+      },
+    },
+  },
 });
 
 export function ToastWrapper({ children, css, ...props }: Props) {
@@ -20,6 +30,10 @@ export function ToastWrapper({ children, css, ...props }: Props) {
       initial={{ opacity: 0, bottom: -50 }}
       animate={{ opacity: 1, bottom: 50 }}
       exit={{ opacity: 0, bottom: -50 }}
+      width={{
+        '@mobile': 320,
+        '@desktop': 480,
+      }}
     >
       <Box
         css={mergeCss(
@@ -28,7 +42,6 @@ export function ToastWrapper({ children, css, ...props }: Props) {
             backgroundColor: 'rgba(65, 65, 65, 0.97);',
             br: '$4',
             color: '$white',
-            width: '$520',
           },
           css
         )}
