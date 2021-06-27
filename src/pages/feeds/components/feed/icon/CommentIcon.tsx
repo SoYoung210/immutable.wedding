@@ -26,7 +26,7 @@ export function CommentIcon({ onClick, ...props }: Props) {
   return (
     <Image.Root as="button" onClick={handleClickLikeButton} {...props}>
       <Image width={24} height={24}>
-        <Image.Source src="/assets/icon/comment.png" alt="코멘트_아이콘" />
+        <Image.Source src="/assets/icon/comment.jpg" alt="코멘트_아이콘" />
       </Image>
     </Image.Root>
   );
