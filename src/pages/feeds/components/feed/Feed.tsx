@@ -11,24 +11,32 @@ import { css, styled } from 'stitches.config';
 import { FeedCarouselWrapper } from './FeedCarouselWrapper';
 import { Header } from './header/Header';
 import { useAccount } from './useAccount';
-import { useFeeds, 액션를_포함하는_피드인가 } from './useFeeds';
-import { useNotifications } from '@components/notification/NotificationContext';
-import { ToastWrapper } from './ToastWrapper';
+import { FeedContent, useFeeds, 액션를_포함하는_피드인가 } from './useFeeds';
 
 const 이미지_크기 = 1024;
 
 export function Feed() {
-  const { showNotification } = useNotifications();
   const { data: account } = useAccount();
   const { data: feeds } = useFeeds();
 
-  const openToast = useCallback(() => {
-    showNotification({
-      element: (
-        <ToastWrapper>📝 전하고 싶은 말은 식장에서 해주세요!</ToastWrapper>
-      ),
-    });
-  }, [showNotification]);
+  const renderContent = useCallback((contents: FeedContent[]) => {
+    return (
+      <FeedCarouselWrapper>
+        {contents.map((feedContents, index) => {
+          return (
+            <Image.Root key={index}>
+              <Image key={index} width={이미지_크기} height={이미지_크기}>
+                <Image.Source src={feedContents.imageSrc} alt="feed_사진" />
+              </Image>
+              {액션를_포함하는_피드인가(feedContents) ? (
+                <FeedActionCTA action={feedContents.action} />
+              ) : null}
+            </Image.Root>
+          );
+        })}
+      </FeedCarouselWrapper>
+    );
+  }, []);
 
   return (
     <>
@@ -36,24 +44,7 @@ export function Feed() {
         return (
           <Wrapper key={id}>
             <Header />
-            <FeedCarouselWrapper>
-              {contents.map((feedContents, index) => {
-                return (
-                  <Image.Root key={index}>
-                    <Image key={index} width={이미지_크기} height={이미지_크기}>
-                      <Image.Source
-                        src={feedContents.imageSrc}
-                        alt="feed_사진"
-                      />
-                    </Image>
-                    {액션를_포함하는_피드인가(feedContents) ? (
-                      <FeedActionCTA action={feedContents.action} />
-                    ) : null}
-                  </Image.Root>
-                );
-              })}
-            </FeedCarouselWrapper>
-
+            {renderContent(contents)}
             <DescriptionWrapper>
               <Flex css={{ spaceX: '$16' }}>
                 <LikeIcon />
