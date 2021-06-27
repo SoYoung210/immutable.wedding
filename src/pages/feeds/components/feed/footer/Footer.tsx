@@ -10,7 +10,7 @@ export function Footer() {
   return (
     <Flex.Center
       direction="column"
-      css={{ height: 300, pt: 40, pb: 28, boxSizing: 'border-box' }}
+      css={{ height: 300, pt: '$40', pb: '$28', boxSizing: 'border-box' }}
     >
       <Image.Root>
         <Image width={체크박스_크기} height={체크박스_크기}>
