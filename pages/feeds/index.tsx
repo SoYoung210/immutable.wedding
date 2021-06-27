@@ -7,7 +7,7 @@ const Main = styled('main', {
   position: 'relative',
   maxWidth: 520,
   minWidth: 320,
-  height: '100vh',
+  minHeight: '100vh',
   mx: 'auto',
   backgroundColor: '$white',
 });
