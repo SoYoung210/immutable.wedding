@@ -11,7 +11,12 @@ export function Tags({ values }: Props) {
     <Flex css={{ columnGap: '$6', mt: '$4' }} wrap="wrap">
       {values.map(value => {
         return (
-          <Text weight="medium" size="base" css={{ color: '$blue500' }}>
+          <Text
+            key={value}
+            weight="medium"
+            size="base"
+            css={{ color: '$blue500' }}
+          >
             #{value}
           </Text>
         );
