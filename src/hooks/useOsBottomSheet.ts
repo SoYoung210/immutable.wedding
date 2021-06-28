@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 
-type ErrorType = 'UNSUPPORTED' | 'UNKNOWN' | 'PERMISSION_DENIED';
+type ErrorType = 'UNSUPPORTED' | 'UNKNOWN';
 
 interface Params {
   onError?: (errorType: ErrorType) => void;
@@ -16,7 +16,11 @@ export function useOsBottomSheet({ onError, onSuccess, value }: Params) {
           .share(value)
           .then(onSuccess)
           .catch(error => {
-            console.log('error', error);
+            // 사용자가 취소한 것이므로 따로 처리하지 않는다.
+            if (error.name === 'AbortError') {
+              return;
+            }
+
             onError?.('UNKNOWN');
           });
       } else {
