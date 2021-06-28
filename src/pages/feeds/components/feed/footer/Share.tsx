@@ -15,10 +15,14 @@ export function Share() {
   const openBottomSheet = useOsBottomSheet({
     value: {
       title: '소영과 재엽의 wedding.log',
-      text: '소영과 재엽의 wedding.log',
+      text: '소영과 재엽의 웨딩로그에 놀러오세요!',
       url: !isServer() ? window.location.href : '',
     },
-    onError: () => {
+    onError: errorType => {
+      if (errorType === 'ABORTED') {
+        return;
+      }
+
       copyToClipboard(!isServer() ? window.location.href : '');
       showNotification({
         element: (
