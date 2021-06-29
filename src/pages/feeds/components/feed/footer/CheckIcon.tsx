@@ -15,7 +15,11 @@ const 체크박스_애니메이션 = {
   ease: [0.5, 0, 0.4, 1],
 };
 
-export function CheckIcon() {
+interface Props {
+  isStartAnimation: boolean;
+}
+
+export function CheckIcon({ isStartAnimation }: Props) {
   return (
     <motion.svg
       width="80"
@@ -36,7 +40,7 @@ export function CheckIcon() {
           strokeDashoffset: 원_길이,
         }}
         animate={{
-          strokeDashoffset: 0,
+          strokeDashoffset: isStartAnimation ? 0 : 원_길이,
         }}
         transition={원_애니메이션}
         style={{
@@ -55,7 +59,7 @@ export function CheckIcon() {
           strokeDashoffset: 체크박스_길이,
         }}
         animate={{
-          strokeDashoffset: 0,
+          strokeDashoffset: isStartAnimation ? 0 : 원_길이,
         }}
         transition={체크박스_애니메이션}
       />
