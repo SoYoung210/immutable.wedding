@@ -61,6 +61,9 @@ export function CheckIcon({ isStartAnimation }: Props) {
         animate={{
           strokeDashoffset: isStartAnimation ? 0 : 원_길이,
         }}
+        style={{
+          visibility: isStartAnimation ? 'visible' : 'hidden',
+        }}
         transition={체크박스_애니메이션}
       />
       <defs>
