@@ -1,5 +1,5 @@
 import { Flex } from '@components/util/layout/Flex';
-import React, { Fragment } from 'react';
+import React from 'react';
 import Text from '@components/text';
 import { useInView } from 'react-intersection-observer';
 import { Share } from './Share';
@@ -7,6 +7,7 @@ import { CheckIcon } from './CheckIcon';
 
 export function Footer() {
   const { ref, inView } = useInView({
+    threshold: 0.8,
     triggerOnce: true,
   });
 
