@@ -8,16 +8,16 @@ interface Params {
   onSuccess?: () => void;
 }
 
-export function useOsBottomSheet({ onError, onSuccess, value }: Params) {
-  const open = useCallback(() => {
+export function useOsShareBottomSheet({ onError, onSuccess, value }: Params) {
+  const open = useCallback(async () => {
     if (window != null) {
       if ('share' in window.navigator) {
-        window.navigator
-          .share(value)
-          .then(onSuccess)
-          .catch(error => {
-            onError?.(error.name === 'AbortError' ? 'ABORTED' : 'UNKNOWN');
-          });
+        try {
+          await window.navigator.share(value);
+          onSuccess?.();
+        } catch (error) {
+          onError?.(error.name === 'AbortError' ? 'ABORTED' : 'UNKNOWN');
+        }
       } else {
         onError?.('UNSUPPORTED');
       }

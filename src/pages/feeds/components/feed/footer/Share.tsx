@@ -1,6 +1,6 @@
 import React from 'react';
 import Text from '@components/text';
-import { useOsBottomSheet } from '@hooks/useOsBottomSheet';
+import { useOsShareBottomSheet } from '@hooks/useOsShareBottomSheet';
 import { isServer } from '@utils/env/isServer';
 import { useNotifications } from '@components/notification/NotificationContext';
 import { copyToClipboard } from '@utils/copyToClipboard';
@@ -12,7 +12,7 @@ const 공유하기_아이콘_크기 = 16;
 export function Share() {
   const { showNotification } = useNotifications();
 
-  const openBottomSheet = useOsBottomSheet({
+  const openBottomSheet = useOsShareBottomSheet({
     value: {
       title: '소영과 재엽의 wedding.log',
       text: '소영과 재엽의 웨딩로그에 놀러오세요!',
