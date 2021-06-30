@@ -1,11 +1,11 @@
 import { CSSProps } from '@utils/styles';
 import React, { HTMLProps, ReactNode } from 'react';
-import { styled } from 'stitches.config';
+import { CSSType, styled } from 'stitches.config';
 
 interface Props
   extends Omit<HTMLProps<HTMLDivElement>, 'children' | 'size'>,
     CSSProps {
-  size?: 'xs' | 'sm' | 'base' | 'lg' | 'xl';
+  size?: CSSType['fontSizes'];
   children: Exclude<ReactNode, null | undefined>;
   weight?:
     | 'thin'
@@ -51,6 +51,9 @@ const Text = ({
         },
         xl: {
           fontSize: '$xl',
+        },
+        xxl: {
+          fontSize: '$xxl',
         },
       },
       weight: {
