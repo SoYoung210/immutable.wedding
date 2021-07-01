@@ -459,6 +459,27 @@ const stitches = createCss({
       top: value,
       bottom: value,
     }),
+    flex: _ => (value: 'center' | 'horizontalCenter' | 'verticalCenter') => {
+      if (value === 'center') {
+        return {
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        };
+      }
+
+      if (value === 'horizontalCenter') {
+        return {
+          display: 'flex',
+          justifyContent: 'center',
+        };
+      }
+
+      return {
+        display: 'flex',
+        alignItems: 'center',
+      };
+    },
   },
 });
 
