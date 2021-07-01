@@ -5,6 +5,7 @@ import { css, styled } from 'stitches.config';
 import { useHighlights } from './useHighlights';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { 스토리_애니메이션_레이아웃 } from '@constants/animationId';
 
 const highlightImageLayout = css({ position: 'relative' });
 
@@ -31,7 +32,7 @@ export function Highlight() {
       {highlights.data.map((highlight, index) => {
         return (
           <Link href={`/stories/${index}`} key={highlight.id}>
-            <StyledMotionLi layoutId={`story-fade-in-${index}`}>
+            <StyledMotionLi layoutId={스토리_애니메이션_레이아웃(index)}>
               <Image.Root className={highlightImageLayout()}>
                 <Image.RoundShape
                   width={60}

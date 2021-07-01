@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import React from 'react';
 import Image from '@components/image';
 import { useRouter } from 'next/router';
+import { 스토리_애니메이션_레이아웃 } from '@constants/animationId';
 
 export default function Story() {
   const router = useRouter();
@@ -10,7 +11,7 @@ export default function Story() {
 
   return (
     <Flex.Center css={{ height: '100%' }}>
-      <motion.div layoutId={`story-fade-in-${id}`}>
+      <motion.div layoutId={스토리_애니메이션_레이아웃(Number(id))}>
         <Image.Root>
           <Image width={520} height={520}>
             <Image.Source
