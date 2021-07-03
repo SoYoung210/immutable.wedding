@@ -4,7 +4,7 @@ import { Flex } from '@components/util/layout/Flex';
 import { css, styled } from 'stitches.config';
 import { useHighlights } from './useHighlights';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { 스토리_애니메이션_레이아웃 } from '@constants/animationId';
 
 const highlightImageLayout = css({ position: 'relative' });
@@ -52,7 +52,13 @@ export function Highlight() {
             passHref={true}
             shallow={true}
           >
-            <StyledMotionLi layoutId={스토리_애니메이션_레이아웃(index)}>
+            <StyledMotionLi
+              layoutId={스토리_애니메이션_레이아웃(index)}
+              layout="position"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.32 }}
+            >
               <StyledAnchor>
                 <Image.Root className={highlightImageLayout()}>
                   <Image.RoundShape

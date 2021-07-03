@@ -13,9 +13,13 @@ export default function Story() {
     <motion.div
       layoutId={스토리_애니메이션_레이아웃(Number(id))}
       style={{ padding: 20 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.3 }}
+      layout="position"
     >
       <Image.Root>
-        <Image.RoundShape width={40} height={40}>
+        <Image.RoundShape width={60} height={60}>
           <Image.Source
             src="https://avatars.githubusercontent.com/u/17924127?v=4"
             alt="재여비"
