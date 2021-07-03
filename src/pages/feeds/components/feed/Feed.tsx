@@ -1,25 +1,31 @@
 import Image from '@components/image';
 import { Flex } from '@components/util/layout/Flex';
 import { Author } from '@pages/feeds/components/feed/Author';
-import { CreateAt } from '@pages/feeds/components/feed/CreateAt';
 import { Description } from '@pages/feeds/components/feed/Description';
 import { FeedActionCTA } from '@pages/feeds/components/feed/FeedActionCTA';
 import { CommentIcon } from '@pages/feeds/components/feed/icon/CommentIcon';
 import { LikeIcon } from '@pages/feeds/components/feed/icon/LikeIcon';
 import { Tags } from '@pages/feeds/components/feed/Tags';
+import {
+  FeedContent,
+  FeedType,
+  액션를_포함하는_피드인가,
+} from '@pages/feeds/models/Feed';
 import React, { useCallback } from 'react';
 import { css, styled } from 'stitches.config';
 import { FeedCarouselWrapper } from './FeedCarouselWrapper';
 import { Footer } from './footer/Footer';
 import { Header } from './header/Header';
 import { useAccount } from './useAccount';
-import { FeedContent, useFeeds, 액션를_포함하는_피드인가 } from './useFeeds';
 
 const 이미지_크기 = 1024;
 
-export function Feed() {
+interface Props {
+  feeds: FeedType[];
+}
+
+export function Feed({ feeds }: Props) {
   const { data: account } = useAccount();
-  const { data: feeds } = useFeeds();
 
   const renderContent = useCallback((contents: FeedContent[]) => {
     return (

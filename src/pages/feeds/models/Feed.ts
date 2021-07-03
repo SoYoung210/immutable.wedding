@@ -1,3 +1,12 @@
+interface SimpleFeedContent {
+  imageSrc: string;
+  action: never;
+}
+
+interface LinkFeedContent {
+  imageSrc: string;
+  action: FeedAction;
+}
 interface Action {
   text: string;
   color: string;
@@ -21,4 +30,20 @@ export function 링크_액션인가(action: FeedAction): action is LinkAction {
 
 export function 팝업_액션인가(action: FeedAction): action is PopupAction {
   return (action as any).message != null;
+}
+
+export type FeedContent = SimpleFeedContent | LinkFeedContent;
+
+export interface FeedType {
+  id: number;
+  contents: FeedContent[];
+  description: string;
+  createdAt?: string;
+  tags: string[];
+}
+
+export function 액션를_포함하는_피드인가(
+  feed: FeedContent
+): feed is LinkFeedContent {
+  return feed.action != null;
 }
