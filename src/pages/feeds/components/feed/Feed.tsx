@@ -6,11 +6,7 @@ import { FeedActionCTA } from '@pages/feeds/components/feed/FeedActionCTA';
 import { CommentIcon } from '@pages/feeds/components/feed/icon/CommentIcon';
 import { LikeIcon } from '@pages/feeds/components/feed/icon/LikeIcon';
 import { Tags } from '@pages/feeds/components/feed/Tags';
-import {
-  FeedContent,
-  FeedType,
-  액션를_포함하는_피드인가,
-} from '@pages/feeds/models/Feed';
+import { FeedEntity, 액션를_포함하는_피드인가 } from '@pages/feeds/models/Feed';
 import React, { useCallback } from 'react';
 import { css, styled } from 'stitches.config';
 import { FeedCarouselWrapper } from './FeedCarouselWrapper';
@@ -18,26 +14,24 @@ import { Footer } from './footer/Footer';
 import { Header } from './header/Header';
 import { useAccount } from './useAccount';
 
-const 이미지_크기 = 1024;
-
 interface Props {
-  feeds: FeedType[];
+  feeds: FeedEntity[];
 }
 
 export function Feed({ feeds }: Props) {
   const { data: account } = useAccount();
 
-  const renderContent = useCallback((contents: FeedContent[]) => {
+  const renderContent = useCallback((contents: FeedEntity['contents']) => {
     return (
       <FeedCarouselWrapper>
-        {contents.map((feedContents, index) => {
+        {contents.map((content, index) => {
           return (
             <Image.Root key={index}>
-              <Image key={index} width={이미지_크기} height={이미지_크기}>
-                <Image.Source src={feedContents.imageSrc} alt="feed_사진" />
+              <Image key={index} {...content.image} placeholder="blur">
+                <Image.Source src={content.image.src} alt="feed_사진" />
               </Image>
-              {액션를_포함하는_피드인가(feedContents) ? (
-                <FeedActionCTA action={feedContents.action} />
+              {액션를_포함하는_피드인가(content) ? (
+                <FeedActionCTA action={content.action} />
               ) : null}
             </Image.Root>
           );

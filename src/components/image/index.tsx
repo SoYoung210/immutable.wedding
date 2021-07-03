@@ -5,10 +5,7 @@ import React, { Children, ReactElement, ReactNode } from 'react';
 import { styled } from 'stitches.config';
 
 interface Props
-  extends WithRequiredKeys<
-      Omit<ImageProps, 'placeholder' | 'src' | 'alt'>,
-      'width' | 'height'
-    >,
+  extends WithRequiredKeys<Omit<ImageProps, 'src' | 'alt'>, 'width' | 'height'>,
     CSSProps {
   variants?: ReactNode;
   children: ReactElement<
@@ -29,7 +26,6 @@ const Image = ({ width, height, variants, children, ...props }: Props) => {
         alt={imageSource.props.alt}
         width={width}
         height={height}
-        priority={true}
         {...props}
       />
       {variants}
