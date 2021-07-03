@@ -1,6 +1,7 @@
 import { Feed } from '@pages/feeds/components/feed/Feed';
 import { Header } from '@pages/feeds/components/header/Header';
 import { Highlight } from '@pages/feeds/components/highlight/Highlight';
+import { FeedEntity } from '@pages/feeds/models/Feed';
 import { InferGetStaticPropsType } from 'next';
 import { getPlaiceholder } from 'plaiceholder';
 import { styled } from 'stitches.config';
@@ -45,7 +46,7 @@ export const getStaticProps = async () => {
       return {
         ...feed,
         contents,
-      };
+      } as FeedEntity;
     })
   );
 
