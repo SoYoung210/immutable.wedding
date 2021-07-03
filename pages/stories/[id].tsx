@@ -10,17 +10,18 @@ export default function Story() {
   const { id } = router.query;
 
   return (
-    <Flex.Center css={{ height: '100%' }}>
-      <motion.div layoutId={스토리_애니메이션_레이아웃(Number(id))}>
-        <Image.Root>
-          <Image width={520} height={520}>
-            <Image.Source
-              src="https://avatars.githubusercontent.com/u/17924127?v=4"
-              alt="재여비"
-            />
-          </Image>
-        </Image.Root>
-      </motion.div>
-    </Flex.Center>
+    <motion.div
+      layoutId={스토리_애니메이션_레이아웃(Number(id))}
+      style={{ padding: 20 }}
+    >
+      <Image.Root>
+        <Image.RoundShape width={40} height={40}>
+          <Image.Source
+            src="https://avatars.githubusercontent.com/u/17924127?v=4"
+            alt="재여비"
+          />
+        </Image.RoundShape>
+      </Image.Root>
+    </motion.div>
   );
 }
