@@ -27,7 +27,12 @@ export function Feed({ feeds }: Props) {
         {contents.map((content, index) => {
           return (
             <Image.Root key={index}>
-              <Image key={index} {...content.image} placeholder="blur">
+              <Image
+                key={index}
+                {...content.image}
+                placeholder="blur"
+                className={css({ transition: 'all 0.2s' })()}
+              >
                 <Image.Source src={content.image.src} alt="feed_사진" />
               </Image>
               {액션를_포함하는_피드인가(content) ? (
