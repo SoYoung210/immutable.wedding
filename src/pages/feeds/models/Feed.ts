@@ -1,12 +1,29 @@
+interface FeedImage {
+  blurDataURL: string;
+  src: string;
+  height: number;
+  width: number;
+  type?: string;
+}
+
+/**
+ * contents
+ */
 interface SimpleFeedContent {
-  imageSrc: string;
+  image: FeedImage;
   action: never;
 }
 
 interface LinkFeedContent {
-  imageSrc: string;
+  image: FeedImage;
   action: FeedAction;
 }
+
+export type FeedContent = SimpleFeedContent | LinkFeedContent;
+
+/**
+ * actions
+ */
 interface Action {
   text: string;
   color: string;
@@ -32,9 +49,7 @@ export function 팝업_액션인가(action: FeedAction): action is PopupAction {
   return (action as any).message != null;
 }
 
-export type FeedContent = SimpleFeedContent | LinkFeedContent;
-
-export interface FeedType {
+export interface FeedEntity {
   id: number;
   contents: FeedContent[];
   description: string;

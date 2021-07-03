@@ -1,7 +1,7 @@
 import { Feed } from '@pages/feeds/components/feed/Feed';
 import { Header } from '@pages/feeds/components/header/Header';
 import { Highlight } from '@pages/feeds/components/highlight/Highlight';
-import { FeedType } from '@pages/feeds/models/Feed';
+import { RawFeedData } from '@pages/feeds/models/Feed';
 import { InferGetStaticPropsType } from 'next';
 import { getPlaiceholder } from 'plaiceholder';
 import { styled } from 'stitches.config';
@@ -17,7 +17,7 @@ const Main = styled('main', {
 
 export const getStaticProps = async () => {
   const feedJson = (await import('public/assets/data/feeds.json')).default;
-  const feedDataset = feedJson.data as FeedType[];
+  const feedDataset = feedJson.data as RawFeedData[];
 
   const feeds = await Promise.all(
     feedDataset.map(async feed => {
@@ -25,7 +25,7 @@ export const getStaticProps = async () => {
         feed.contents.map(async content => {
           const { base64, img } = await getPlaiceholder(content.imageSrc);
 
-          return { ...content, ...img, blurDataURL: base64 };
+          return { ...content, image: { ...img, blurDataURL: base64 } };
         })
       );
 
