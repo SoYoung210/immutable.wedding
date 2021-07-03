@@ -1,7 +1,6 @@
 import { Feed } from '@pages/feeds/components/feed/Feed';
 import { Header } from '@pages/feeds/components/header/Header';
 import { Highlight } from '@pages/feeds/components/highlight/Highlight';
-import { RawFeedData } from '@pages/feeds/models/Feed';
 import { InferGetStaticPropsType } from 'next';
 import { getPlaiceholder } from 'plaiceholder';
 import { styled } from 'stitches.config';
@@ -14,6 +13,20 @@ const Main = styled('main', {
   mx: 'auto',
   backgroundColor: '$white',
 });
+
+interface RawFeedData {
+  id: number;
+  contents: Array<{
+    imageSrc: string;
+    action: {
+      text?: string;
+      color?: string;
+    };
+  }>;
+  description: string;
+  createdAt?: string;
+  tags: string[];
+}
 
 export const getStaticProps = async () => {
   const feedJson = (await import('public/assets/data/feeds.json')).default;
