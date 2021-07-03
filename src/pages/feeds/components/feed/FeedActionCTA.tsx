@@ -1,17 +1,23 @@
+import { useNotifications } from '@components/notification/NotificationContext';
 import { ArrowRightIcon } from '@pages/feeds/components/feed/icon/ArrowRightIcon';
 import {
   FeedAction,
   링크_액션인가,
   팝업_액션인가,
 } from '@pages/feeds/models/Feed';
+import { copyToClipboard } from '@utils/copyToClipboard';
+import { CSSProps } from '@utils/styles';
 import React, { AllHTMLAttributes, HTMLAttributes, ReactNode } from 'react';
-import { css } from 'stitches.config';
+import { styled } from 'stitches.config';
+import { ToastWrapper } from './ToastWrapper';
 
 interface Props {
   action: FeedAction;
 }
 
 export function FeedActionCTA({ action }: Props) {
+  const { showNotification } = useNotifications();
+
   if (링크_액션인가(action)) {
     return (
       <FeedCTA
@@ -29,10 +35,17 @@ export function FeedActionCTA({ action }: Props) {
   if (팝업_액션인가(action)) {
     return (
       <FeedCTA
+        as="button"
         backgroundColor={action.color}
+        css={{
+          width: '100%',
+        }}
+        type="button"
         onClick={() => {
-          // TODO: change to toast
-          alert(action.message);
+          copyToClipboard('계좌번호지롱');
+          showNotification({
+            element: <ToastWrapper>✅ {action.message}</ToastWrapper>,
+          });
         }}
       >
         {action.text}
@@ -49,19 +62,20 @@ type FeedCTAProps<ElementType extends keyof JSX.IntrinsicElements = 'div'> =
       as?: ElementType;
       backgroundColor: string;
       children: ReactNode;
-    };
+    } & CSSProps;
 
 function FeedCTA<ElementType extends keyof JSX.IntrinsicElements>({
   as,
   backgroundColor,
   children,
+  css,
   ...props
 }: FeedCTAProps<ElementType>) {
-  const Component = (as ?? 'div') as any;
+  const Component = styled(as ?? 'div', {}) as any;
 
   return (
     <Component
-      className={css({
+      css={{
         backgroundColor,
         display: 'flex',
         padding: '10px 18px',
@@ -71,7 +85,8 @@ function FeedCTA<ElementType extends keyof JSX.IntrinsicElements>({
         color: '$white',
         fontSize: 14,
         fontWeight: 'medium',
-      })()}
+        ...css,
+      }}
       {...props}
     >
       {children}
