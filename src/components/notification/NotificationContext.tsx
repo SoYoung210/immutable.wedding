@@ -54,7 +54,7 @@ export function NotificationProvider({
     cleanQueue,
   } = useNotificationsState({ limit });
   const items = notifications.map(notification => {
-    const { autoClose = 4000, element } = notification;
+    const { autoClose = 2500, element } = notification;
     return (
       <NotificationContainer
         key={notification.id}
