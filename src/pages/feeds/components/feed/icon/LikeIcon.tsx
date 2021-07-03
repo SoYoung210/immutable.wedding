@@ -15,7 +15,6 @@ export function LikeIcon({ onClick, ...props }: Props) {
           💖 저희도 고마워요, 눌러주신 마음은 따로 저장하진 않을게요
         </ToastWrapper>
       ),
-      autoClose: 2500,
     });
   }, [showNotification]);
 

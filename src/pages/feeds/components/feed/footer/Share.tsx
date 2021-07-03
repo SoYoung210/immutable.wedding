@@ -28,7 +28,6 @@ export function Share() {
         element: (
           <ToastWrapper>✅ 이제 링크를 붙여넣기 할 수 있어요</ToastWrapper>
         ),
-        autoClose: 2500,
       });
     },
   });
