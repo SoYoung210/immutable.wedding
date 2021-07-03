@@ -3,7 +3,7 @@ import {
   FeedAction,
   링크_액션인가,
   팝업_액션인가,
-} from '@pages/feeds/components/feed/useFeedAction';
+} from '@pages/feeds/models/Feed';
 import React, { AllHTMLAttributes, HTMLAttributes, ReactNode } from 'react';
 import { css } from 'stitches.config';
 
