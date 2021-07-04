@@ -36,7 +36,8 @@ export function Share() {
     <Flex.Center
       onClick={openBottomSheet}
       css={{
-        mt: '$4',
+        marginTop: '-2px',
+        p: '$6',
         spaceX: '$8',
       }}
     >
