@@ -5,9 +5,10 @@ import React from 'react';
 import { AnimateSharedLayout } from 'framer-motion';
 import { NotificationProvider } from '@components/notification/NotificationContext';
 import { styled } from 'stitches.config';
-
+import smoothscroll from 'smoothscroll-polyfill';
 import '../styles/globals.css';
 
+smoothscroll.polyfill();
 const Main = styled('main', {
   position: 'relative',
   maxWidth: 520,
