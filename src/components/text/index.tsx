@@ -105,6 +105,9 @@ const Text = ({
         },
         link: {
           textDecoration: 'underline',
+          '&:hover': {
+            textDecorationColor: '$warmGray500',
+          },
         },
       },
     },

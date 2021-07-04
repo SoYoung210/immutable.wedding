@@ -63,7 +63,6 @@ export function Footer() {
         >
           <Text.Anchor
             weight="extralight"
-            size="sm"
             as="button"
             type="button"
             css={{ color: '$trueGray500' }}
@@ -71,7 +70,7 @@ export function Footer() {
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
           >
-            맨 위로
+            처음부터 다시보기
           </Text.Anchor>
         </motion.div>
       </Flex.Center>
