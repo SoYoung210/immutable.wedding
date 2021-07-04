@@ -65,7 +65,7 @@ export function Footer() {
             weight="extralight"
             as="button"
             type="button"
-            css={{ color: '$trueGray500' }}
+            css={{ color: '$trueGray500', p: '$20' }}
             onClick={() => {
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
