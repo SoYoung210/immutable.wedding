@@ -4,8 +4,9 @@ import { Flex } from '@components/util/layout/Flex';
 import { css, styled } from 'stitches.config';
 import { useHighlights } from './useHighlights';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
 import { 스토리_애니메이션_레이아웃 } from '@constants/animationId';
+import { useEffect } from 'react';
 
 const highlightImageLayout = css({ position: 'relative' });
 
@@ -29,6 +30,18 @@ const StyledDiv = styled('div', {
 });
 export function Highlight() {
   const { data: highlights } = useHighlights();
+  const highlightItemControl = useAnimation();
+
+  useEffect(() => {
+    highlightItemControl.start((delay = 0) => {
+      return {
+        y: 0,
+        x: 0,
+        opacity: 1,
+        transition: { duration: 0.35, delay },
+      };
+    });
+  }, [highlightItemControl]);
 
   return (
     <Flex
@@ -55,9 +68,9 @@ export function Highlight() {
             <StyledMotionLi
               layoutId={스토리_애니메이션_레이아웃(index)}
               layout="position"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.32 }}
+              initial={{ opacity: 0, y: index + 5, x: index + 15 }}
+              animate={highlightItemControl}
+              custom={index / 18.2}
             >
               <StyledAnchor>
                 <Image.Root className={highlightImageLayout()}>
