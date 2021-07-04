@@ -1,6 +1,7 @@
+import { EmptyHeart } from '@components/icon/Heart';
 import Image from '@components/image';
 import { useNotifications } from '@components/notification/NotificationContext';
-import React, { HTMLAttributes, MouseEvent, useCallback, useMemo } from 'react';
+import React, { HTMLAttributes, MouseEvent, useCallback } from 'react';
 import { ToastWrapper } from '../ToastWrapper';
 
 type Props = HTMLAttributes<HTMLButtonElement>;
@@ -20,23 +21,23 @@ export function LikeIcon({ onClick, ...props }: Props) {
 
   const handleClickLikeButton = useCallback(
     (e: MouseEvent<HTMLButtonElement>) => {
+      console.log('???');
       onClick?.(e);
       openToast();
     },
     [onClick, openToast]
   );
 
-  const icon = useMemo(() => {
-    return (
-      <Image width={24} height={24}>
-        <Image.Source src="/assets/icon/heart.jpg" alt="좋아요 아이콘" />
-      </Image>
-    );
-  }, []);
-
   return (
-    <Image.Root as="button" onClick={handleClickLikeButton} {...props}>
-      {icon}
+    <Image.Root
+      as="button"
+      onClick={handleClickLikeButton}
+      css={{
+        zIndex: '$1',
+      }}
+      {...props}
+    >
+      <EmptyHeart />
     </Image.Root>
   );
 }
