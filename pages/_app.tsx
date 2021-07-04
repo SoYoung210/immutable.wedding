@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           rel="icon"
           type="image/png"
           sizes="32x32"
-          href="/assets/favicon/icon_32x32.png"
+          href="/assets/favicon/icon_36x36.png"
         />
         <link
           rel="icon"
@@ -34,7 +34,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           href="/assets/favicon/icon_144x144.png"
         />
 
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#0135DB" />
       </Head>
       <NotificationProvider>
         <Component {...pageProps} />
