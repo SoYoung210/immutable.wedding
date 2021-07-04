@@ -1,13 +1,25 @@
-import { EmptyHeart } from '@components/icon/Heart';
+import { EmptyHeart, FillHeart } from '@components/icon/Heart';
 import Image from '@components/image';
 import { useNotifications } from '@components/notification/NotificationContext';
-import React, { HTMLAttributes, MouseEvent, useCallback } from 'react';
+import useBooleanState from '@hooks/useBooleanState';
+import { motion } from 'framer-motion';
+import React, {
+  HTMLAttributes,
+  MouseEvent,
+  useCallback,
+  useEffect,
+} from 'react';
+import { styled } from 'stitches.config';
 import { ToastWrapper } from '../ToastWrapper';
+import iconStyles from './likeIcon.module.scss';
 
 type Props = HTMLAttributes<HTMLButtonElement>;
 
+const StyledMotionDiv = styled(motion.div, {});
+
 export function LikeIcon({ onClick, ...props }: Props) {
   const { showNotification } = useNotifications();
+  const [like, , , toggleLike] = useBooleanState();
 
   const openToast = useCallback(() => {
     showNotification({
@@ -19,13 +31,18 @@ export function LikeIcon({ onClick, ...props }: Props) {
     });
   }, [showNotification]);
 
+  useEffect(() => {
+    if (like) {
+      openToast();
+    }
+  }, [like, openToast]);
+
   const handleClickLikeButton = useCallback(
     (e: MouseEvent<HTMLButtonElement>) => {
-      console.log('???');
       onClick?.(e);
-      openToast();
+      toggleLike();
     },
-    [onClick, openToast]
+    [onClick, toggleLike]
   );
 
   return (
@@ -37,7 +54,13 @@ export function LikeIcon({ onClick, ...props }: Props) {
       }}
       {...props}
     >
-      <EmptyHeart />
+      {like ? (
+        <StyledMotionDiv className={iconStyles.likeButton}>
+          <FillHeart />
+        </StyledMotionDiv>
+      ) : (
+        <EmptyHeart />
+      )}
     </Image.Root>
   );
 }
