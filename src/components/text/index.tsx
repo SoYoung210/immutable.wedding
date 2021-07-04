@@ -128,7 +128,22 @@ export function Anchor({
   ...others
 }: Props) {
   return (
-    <Text elementType={elementType} variant={variant} {...others}>
+    <Text
+      elementType={elementType}
+      variant={variant}
+      {...others}
+      css={{
+        display: 'inline-block',
+        '&:hover': {
+          opacity: 0.7,
+        },
+        '&:active': {
+          opacity: 1,
+          transition: 'transform 0s, opacity: 0s',
+          transform: 'scale(0.95)',
+        },
+      }}
+    >
       {children}
     </Text>
   );
