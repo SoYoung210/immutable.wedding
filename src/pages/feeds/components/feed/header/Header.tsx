@@ -1,3 +1,4 @@
+import cx from 'classnames';
 import Image from '@components/image';
 import Text from '@components/text';
 import { Flex } from '@components/util/layout/Flex';
@@ -10,8 +11,17 @@ export function Header() {
 
   return (
     <Flex.CenterVertical css={{ px: '$12', py: '$8' }}>
-      <Image.Root className={avatarLayout()}>
-        <Image.RoundShape width={30} height={30}>
+      <Image.Root
+        className={cx(
+          avatarLayout(),
+          css({
+            borderRadius: '50%',
+            border: '1px solid $gray200',
+            backgroundColor: '$gray100',
+          })()
+        )}
+      >
+        <Image.RoundShape width={32} height={32}>
           <Image.Source src={account.profileSrc} alt={account.profileAlt} />
         </Image.RoundShape>
       </Image.Root>
