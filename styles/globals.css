@@ -95,6 +95,7 @@ video {
   letter-spacing: normal;
   vertical-align: baseline;
   text-decoration: none;
+  scroll-behavior: smooth;
   -webkit-animation-fill-mode: forwards;
   -webkit-touch-callout: none;
   -webkit-tap-highlight-color: transparent;
