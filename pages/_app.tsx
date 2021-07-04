@@ -27,7 +27,31 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <NextSeo title="wedding.log" description="소영과 재엽의 웨딩로그" />
       <Head>
-        <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/assets/favicon/icon_36x36.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="48x48"
+          href="/assets/favicon/icon_48x48.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="96x96"
+          href="/assets/favicon/icon_96x96.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="144x144"
+          href="/assets/favicon/icon_144x144.png"
+        />
+
+        <meta name="theme-color" content="#0135DB" />
       </Head>
       <NotificationProvider>
         <AnimateSharedLayout type="crossfade">
