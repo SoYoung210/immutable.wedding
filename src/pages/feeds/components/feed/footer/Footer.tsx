@@ -64,8 +64,12 @@ export function Footer() {
           <Text.Anchor
             weight="extralight"
             size="sm"
+            as="button"
+            type="button"
             css={{ color: '$trueGray500' }}
-            href="#"
+            onClick={() => {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
           >
             맨 위로
           </Text.Anchor>
