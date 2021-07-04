@@ -96,7 +96,8 @@ video {
   vertical-align: baseline;
   text-decoration: none;
   scroll-behavior: smooth;
-  -webkit-animation-fill-mode: forwards;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   -webkit-touch-callout: none;
   -webkit-tap-highlight-color: transparent;
 }
