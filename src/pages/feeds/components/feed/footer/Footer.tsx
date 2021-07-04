@@ -37,7 +37,6 @@ export function Footer() {
           initial={{ opacity: 0, y: 3 }}
           animate={textAnimationControl}
           custom={1}
-          transition={{ duration: 0.3 }}
         >
           <Text
             weight="extralight"
@@ -51,7 +50,6 @@ export function Footer() {
           initial={{ opacity: 0, y: 3 }}
           animate={textAnimationControl}
           custom={1.2}
-          transition={{ duration: 0.3 }}
         >
           <Share />
         </motion.div>
