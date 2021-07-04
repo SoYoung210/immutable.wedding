@@ -1,17 +1,13 @@
 import { NextSeo } from 'next-seo';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { AnimateSharedLayout } from 'framer-motion';
 import { NotificationProvider } from '@components/notification/NotificationContext';
 import { styled } from 'stitches.config';
+
 import smoothscroll from 'smoothscroll-polyfill';
 import '../styles/globals.css';
-import { isServer } from '@utils/env/isServer';
-
-if (!isServer()) {
-  smoothscroll.polyfill();
-}
 
 const Main = styled('main', {
   position: 'relative',
@@ -23,6 +19,10 @@ const Main = styled('main', {
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    smoothscroll.polyfill();
+  }, []);
+
   return (
     <>
       <NextSeo title="wedding.log" description="소영과 재엽의 웨딩로그" />
