@@ -28,6 +28,12 @@ function MyApp({ Component, pageProps }: AppProps) {
           sizes="96x96"
           href="/assets/favicon/icon_96x96.png"
         />
+        <link
+          rel="apple-touch-icon"
+          sizes="144x144"
+          href="/assets/favicon/icon_144x144.png"
+        />
+
         <meta name="theme-color" content="#ffffff" />
       </Head>
       <NotificationProvider>
