@@ -25,7 +25,7 @@ export function EmptyHeart({ ariaText = '좋아요' }: Props) {
 export function FillHeart({ ariaText = '좋아요취소' }: Props) {
   return (
     <svg
-      aria-label="좋아요 취소"
+      aria-label={ariaText}
       fill="#ed4956"
       height="24"
       viewBox="0 0 48 48"
