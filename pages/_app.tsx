@@ -7,8 +7,12 @@ import { NotificationProvider } from '@components/notification/NotificationConte
 import { styled } from 'stitches.config';
 import smoothscroll from 'smoothscroll-polyfill';
 import '../styles/globals.css';
+import { isServer } from '@utils/env/isServer';
 
-smoothscroll.polyfill();
+if (!isServer()) {
+  smoothscroll.polyfill();
+}
+
 const Main = styled('main', {
   position: 'relative',
   maxWidth: 520,
