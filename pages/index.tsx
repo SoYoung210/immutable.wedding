@@ -4,17 +4,6 @@ import { Highlight } from '@pages/feeds/components/highlight/Highlight';
 import { FeedEntity } from '@pages/feeds/models/Feed';
 import { InferGetStaticPropsType } from 'next';
 import { getPlaiceholder } from 'plaiceholder';
-import { styled } from 'stitches.config';
-
-const Main = styled('main', {
-  position: 'relative',
-  maxWidth: 520,
-  minWidth: 320,
-  minHeight: '100vh',
-  mx: 'auto',
-  backgroundColor: '$white',
-});
-
 interface RawFeedData {
   id: number;
   contents: Array<{
@@ -57,10 +46,10 @@ type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 export default function FeedsPage({ feeds }: Props) {
   return (
-    <Main>
+    <>
       <Header />
       <Highlight />
       <Feed feeds={feeds} />
-    </Main>
+    </>
   );
 }

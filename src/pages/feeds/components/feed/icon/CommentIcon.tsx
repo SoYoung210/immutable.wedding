@@ -11,7 +11,6 @@ export function CommentIcon({ onClick, ...props }: Props) {
   const openToast = useCallback(() => {
     showNotification({
       element: <ToastWrapper>🤫 댓글은 개발을 못했어요 ㅠ.ㅠ</ToastWrapper>,
-      autoClose: 2500,
     });
   }, [showNotification]);
 

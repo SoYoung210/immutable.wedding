@@ -28,7 +28,6 @@ export function Share() {
         element: (
           <ToastWrapper>✅ 이제 링크를 붙여넣기 할 수 있어요</ToastWrapper>
         ),
-        autoClose: 2500,
       });
     },
   });
@@ -37,7 +36,8 @@ export function Share() {
     <Flex.Center
       onClick={openBottomSheet}
       css={{
-        mt: '$4',
+        marginTop: '-2px',
+        p: '$6',
         spaceX: '$8',
       }}
     >

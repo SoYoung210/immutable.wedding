@@ -7,6 +7,7 @@ import { CommentIcon } from '@pages/feeds/components/feed/icon/CommentIcon';
 import { LikeIcon } from '@pages/feeds/components/feed/icon/LikeIcon';
 import { Tags } from '@pages/feeds/components/feed/Tags';
 import { FeedEntity, 액션를_포함하는_피드인가 } from '@pages/feeds/models/Feed';
+import { motion } from 'framer-motion';
 import React, { useCallback } from 'react';
 import { css, styled } from 'stitches.config';
 import { FeedCarouselWrapper } from './FeedCarouselWrapper';
@@ -46,7 +47,11 @@ export function Feed({ feeds }: Props) {
   }, []);
 
   return (
-    <>
+    <motion.div
+      initial={{ y: 10, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.35 }}
+    >
       {feeds.map(({ id, contents, description, tags }) => {
         return (
           <Wrapper key={id}>
@@ -67,7 +72,7 @@ export function Feed({ feeds }: Props) {
         );
       })}
       <Footer />
-    </>
+    </motion.div>
   );
 }
 

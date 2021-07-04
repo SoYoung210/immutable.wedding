@@ -1,4 +1,4 @@
-import { CSSProps } from '@utils/styles';
+import { CSSProps, mergeCss } from '@utils/styles';
 import React, { HTMLProps, ReactNode } from 'react';
 import { CSSType, styled } from 'stitches.config';
 
@@ -105,6 +105,9 @@ const Text = ({
         },
         link: {
           textDecoration: 'underline',
+          '&:hover': {
+            textDecorationColor: '$warmGray400',
+          },
         },
       },
     },
@@ -125,10 +128,29 @@ export function Anchor({
   elementType = 'a',
   variant = 'link',
   children,
+  css,
   ...others
 }: Props) {
   return (
-    <Text elementType={elementType} variant={variant} {...others}>
+    <Text
+      elementType={elementType}
+      variant={variant}
+      {...others}
+      css={mergeCss(
+        {
+          display: 'inline-block',
+          '&:hover': {
+            opacity: 0.7,
+          },
+          '&:active': {
+            opacity: 1,
+            transition: 'transform 0s, opacity: 0s',
+            transform: 'scale(0.95)',
+          },
+        },
+        css
+      )}
+    >
       {children}
     </Text>
   );
