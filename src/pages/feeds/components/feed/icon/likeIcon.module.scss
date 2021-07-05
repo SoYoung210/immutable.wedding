@@ -20,13 +20,12 @@ $baby-blue: #f8faff;
   }
 
   &:before{
-    display: block;
-    animation: topBubbles ease-in-out 0.75s forwards;
+    display: none;
     top: -75%;
     background-image:
       radial-gradient(circle, $button-bg 20%, transparent 20%),
     radial-gradient(circle,  transparent 20%, $button-bg 20%, transparent 30%),
-    radial-gradient(circle, $button-bg 20%, transparent 20%), 
+    radial-gradient(circle, $button-bg 20%, transparent 20%),
     radial-gradient(circle, $button-bg 20%, transparent 20%),
     radial-gradient(circle,  transparent 10%, $button-bg 15%, transparent 20%),
     radial-gradient(circle, $button-bg 20%, transparent 20%),
@@ -37,6 +36,7 @@ $baby-blue: #f8faff;
   }
 
   &:after{
+    display: none;
     bottom: -75%;
     background-image:
     radial-gradient(circle, $button-bg 20%, transparent 20%),
@@ -46,10 +46,7 @@ $baby-blue: #f8faff;
     radial-gradient(circle, $button-bg 20%, transparent 20%),
     radial-gradient(circle, $button-bg 20%, transparent 20%),
     radial-gradient(circle, $button-bg 20%, transparent 20%);
-  background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 10% 10%, 20% 20%;
-
-    display: block;
-    animation: bottomBubbles ease-in-out 0.75s forwards;
+    background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 10% 10%, 20% 20%;
   }
 
   &.animate{

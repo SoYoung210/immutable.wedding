@@ -12,14 +12,14 @@ import React, {
 import { styled } from 'stitches.config';
 import { ToastWrapper } from '../ToastWrapper';
 import iconStyles from './likeIcon.module.scss';
-
+import cx from 'classnames';
 type Props = HTMLAttributes<HTMLButtonElement>;
 
 const StyledMotionDiv = styled(motion.div, {});
 
 export function LikeIcon({ onClick, ...props }: Props) {
   const { showNotification } = useNotifications();
-  const [like, , , toggleLike] = useBooleanState();
+  const [like, , setLikeToFalse, toggleLike] = useBooleanState();
 
   const openToast = useCallback(() => {
     showNotification({
@@ -32,10 +32,16 @@ export function LikeIcon({ onClick, ...props }: Props) {
   }, [showNotification]);
 
   useEffect(() => {
+    let timeoutId: any;
     if (like) {
+      timeoutId = setTimeout(setLikeToFalse, 1550);
       openToast();
     }
-  }, [like, openToast]);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [like, openToast, setLikeToFalse]);
 
   const handleClickLikeButton = useCallback(
     (e: MouseEvent<HTMLButtonElement>) => {
@@ -54,18 +60,16 @@ export function LikeIcon({ onClick, ...props }: Props) {
       }}
       {...props}
     >
-      {like ? (
-        <StyledMotionDiv
-          className={iconStyles.likeButton}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.1 }}
-        >
-          <FillHeart />
-        </StyledMotionDiv>
-      ) : (
-        <EmptyHeart />
-      )}
+      <StyledMotionDiv
+        className={cx(
+          {
+            [iconStyles.animate]: like,
+          },
+          iconStyles.likeButton
+        )}
+      >
+        {like ? <FillHeart /> : <EmptyHeart />}
+      </StyledMotionDiv>
     </Image.Root>
   );
 }
