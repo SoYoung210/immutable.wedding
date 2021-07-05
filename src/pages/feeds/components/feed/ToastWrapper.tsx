@@ -42,6 +42,7 @@ export function ToastWrapper({ children, css, ...props }: Props) {
             backgroundColor: 'rgba(65, 65, 65, 0.97);',
             br: '$4',
             color: '$white',
+            fontWeight: '$medium',
           },
           css
         )}
