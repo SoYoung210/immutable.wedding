@@ -11,9 +11,9 @@ $baby-blue: #f8faff;
     position: absolute;
     content: '';
     display: block;
-    width: 140%;
-    height: 100%;
-    left: -20%;
+    width: 180%;
+    height: 115%;
+    left: -30%;
     z-index: -1000;
     transition: all ease-in-out 0.5s;
     background-repeat: no-repeat;
@@ -23,30 +23,30 @@ $baby-blue: #f8faff;
     display: none;
     top: -75%;
     background-image:
-      radial-gradient(circle, $button-bg 20%, transparent 20%),
+      radial-gradient(circle, $button-bg 23%, transparent 23%),
     radial-gradient(circle,  transparent 20%, $button-bg 20%, transparent 30%),
-    radial-gradient(circle, $button-bg 20%, transparent 20%),
-    radial-gradient(circle, $button-bg 20%, transparent 20%),
+    radial-gradient(circle, $button-bg 23%, transparent 23%),
+    radial-gradient(circle, $button-bg 23%, transparent 23%),
     radial-gradient(circle,  transparent 10%, $button-bg 15%, transparent 20%),
-    radial-gradient(circle, $button-bg 20%, transparent 20%),
-    radial-gradient(circle, $button-bg 20%, transparent 20%),
-    radial-gradient(circle, $button-bg 20%, transparent 20%),
-    radial-gradient(circle, $button-bg 20%, transparent 20%);
-    background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%, 10% 10%, 18% 18%;
+    radial-gradient(circle, $button-bg 23%, transparent 23%),
+    radial-gradient(circle, $button-bg 23%, transparent 23%),
+    radial-gradient(circle, $button-bg 23%, transparent 23%),
+    radial-gradient(circle, $button-bg 23%, transparent 23%);
+    background-size: 15% 15%, 25% 25%, 20% 20%, 25% 25%, 23% 23%, 15% 15%, 20% 20%, 15% 15%, 23% 23%;
   }
 
   &:after{
     display: none;
     bottom: -75%;
     background-image:
-    radial-gradient(circle, $button-bg 20%, transparent 20%),
-    radial-gradient(circle, $button-bg 20%, transparent 20%),
+    radial-gradient(circle, $button-bg 23%, transparent 23%),
+    radial-gradient(circle, $button-bg 23%, transparent 23%),
     radial-gradient(circle,  transparent 10%, $button-bg 15%, transparent 20%),
-    radial-gradient(circle, $button-bg 20%, transparent 20%),
-    radial-gradient(circle, $button-bg 20%, transparent 20%),
-    radial-gradient(circle, $button-bg 20%, transparent 20%),
-    radial-gradient(circle, $button-bg 20%, transparent 20%);
-    background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 10% 10%, 20% 20%;
+    radial-gradient(circle, $button-bg 23%, transparent 23%),
+    radial-gradient(circle, $button-bg 23%, transparent 23%),
+    radial-gradient(circle, $button-bg 23%, transparent 23%),
+    radial-gradient(circle, $button-bg 23%, transparent 23%);
+    background-size: 15% 15%, 25% 25%, 20% 20%, 25% 25%, 23% 23%, 15% 15%, 20% 20%, 15% 15%, 23% 23%;
   }
 
   &.animate{
