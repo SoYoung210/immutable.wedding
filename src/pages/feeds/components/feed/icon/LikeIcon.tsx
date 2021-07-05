@@ -57,6 +57,8 @@ export function LikeIcon({ onClick, ...props }: Props) {
       onClick={handleClickLikeButton}
       css={{
         zIndex: '$1',
+        p: '$8',
+        margin: '-8px',
       }}
       {...props}
     >
