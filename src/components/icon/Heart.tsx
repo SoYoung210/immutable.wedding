@@ -1,3 +1,5 @@
+import { rawColors, 아이콘_컬러 } from 'stitches.config';
+
 interface Props {
   ariaText?: string;
 }
@@ -6,7 +8,7 @@ export function EmptyHeart({ ariaText = '좋아요' }: Props) {
   return (
     <svg
       aria-label={ariaText}
-      fill="#262626"
+      fill={아이콘_컬러}
       height="24"
       viewBox="0 0 48 48"
       width="24"
@@ -20,7 +22,7 @@ export function FillHeart({ ariaText = '좋아요취소' }: Props) {
   return (
     <svg
       aria-label={ariaText}
-      fill="#ed4956"
+      fill={rawColors.rose450}
       height="24"
       viewBox="0 0 48 48"
       width="24"

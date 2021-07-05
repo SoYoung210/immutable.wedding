@@ -14,6 +14,7 @@ const stitches = createCss({
       rose200: '#fecdd3',
       rose300: '#fda4af',
       rose400: '#fb7185',
+      rose450: '#ed4956',
       rose500: '#f43f5e',
       rose600: '#e11d48',
       rose700: '#be123c',
@@ -491,3 +492,4 @@ export const { styled, css, theme, getCssString, global, keyframes, config } =
 
 export type HexColorKey = keyof typeof theme.colors;
 export const rawColors = theme.colors;
+export const 아이콘_컬러 = rawColors.trueGray600;

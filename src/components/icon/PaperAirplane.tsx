@@ -1,10 +1,11 @@
 import React from 'react';
+import { 아이콘_컬러 } from 'stitches.config';
 
 export default function PaperAirplane() {
   return (
     <svg
       aria-label="공유"
-      fill="#262626"
+      fill={아이콘_컬러}
       height="24"
       viewBox="0 0 48 48"
       width="24"
