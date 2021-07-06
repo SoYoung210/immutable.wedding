@@ -82,6 +82,7 @@ export function Highlight() {
                       <StyledDiv>
                         <Gradient.Circle
                           size={72}
+                          rotateAnimation={true}
                           strokeWidth={2.3}
                           colorKeys={['deepBlue500', 'lightGreen900']}
                         />
