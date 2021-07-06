@@ -28,6 +28,7 @@ const StyledDiv = styled('div', {
   top: -6,
   left: -6,
 });
+
 export function Highlight() {
   const { data: highlights } = useHighlights();
   const highlightItemControl = useAnimation();
@@ -38,7 +39,7 @@ export function Highlight() {
         y: 0,
         x: 0,
         opacity: 1,
-        transition: { duration: 0.35, delay },
+        transition: { duration: 0.45, delay },
       };
     });
   }, [highlightItemControl]);
