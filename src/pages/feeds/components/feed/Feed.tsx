@@ -50,7 +50,7 @@ export function Feed({ feeds }: Props) {
     <motion.div
       initial={{ y: 10, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.35 }}
+      transition={{ duration: 0.4 }}
     >
       {feeds.map(({ id, contents, description, tags }) => {
         return (

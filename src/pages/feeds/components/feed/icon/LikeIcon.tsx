@@ -1,12 +1,26 @@
+import { EmptyHeart, FillHeart } from '@components/icon/Heart';
 import Image from '@components/image';
 import { useNotifications } from '@components/notification/NotificationContext';
-import React, { HTMLAttributes, MouseEvent, useCallback, useMemo } from 'react';
+import useBooleanState from '@hooks/useBooleanState';
+import { motion, useAnimation } from 'framer-motion';
+import React, {
+  HTMLAttributes,
+  MouseEvent,
+  useCallback,
+  useEffect,
+} from 'react';
+import { styled } from 'stitches.config';
 import { ToastWrapper } from '../ToastWrapper';
-
+import iconStyles from './likeIcon.module.scss';
+import cx from 'classnames';
 type Props = HTMLAttributes<HTMLButtonElement>;
+
+const StyledMotionDiv = styled(motion.div, {});
 
 export function LikeIcon({ onClick, ...props }: Props) {
   const { showNotification } = useNotifications();
+  const [like, , setLikeToFalse, toggleLike] = useBooleanState();
+  const likeAnimationControl = useAnimation();
 
   const openToast = useCallback(() => {
     showNotification({
@@ -18,25 +32,53 @@ export function LikeIcon({ onClick, ...props }: Props) {
     });
   }, [showNotification]);
 
+  useEffect(() => {
+    let timeoutId: any;
+    if (like) {
+      timeoutId = setTimeout(setLikeToFalse, 1550);
+      openToast();
+    }
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [like, openToast, setLikeToFalse]);
+
   const handleClickLikeButton = useCallback(
     (e: MouseEvent<HTMLButtonElement>) => {
       onClick?.(e);
-      openToast();
+      toggleLike();
+      likeAnimationControl.stop();
+      likeAnimationControl.start({
+        opacity: [0, 0.9, 0.9, 0.9, 1],
+        scale: [0, 1.2, 0.95, 1],
+      });
     },
-    [onClick, openToast]
+    [likeAnimationControl, onClick, toggleLike]
   );
 
-  const icon = useMemo(() => {
-    return (
-      <Image width={24} height={24}>
-        <Image.Source src="/assets/icon/heart.jpg" alt="좋아요 아이콘" />
-      </Image>
-    );
-  }, []);
-
   return (
-    <Image.Root as="button" onClick={handleClickLikeButton} {...props}>
-      {icon}
+    <Image.Root
+      as="button"
+      onClick={handleClickLikeButton}
+      css={{
+        zIndex: '$1',
+        p: '$8',
+        margin: '-8px',
+      }}
+      {...props}
+    >
+      <StyledMotionDiv
+        className={cx(
+          {
+            [iconStyles.animate]: like,
+          },
+          iconStyles.likeButton
+        )}
+        animate={likeAnimationControl}
+      >
+        {like ? <FillHeart /> : <EmptyHeart />}
+      </StyledMotionDiv>
     </Image.Root>
   );
 }
