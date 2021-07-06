@@ -2,7 +2,7 @@ import { EmptyHeart, FillHeart } from '@components/icon/Heart';
 import Image from '@components/image';
 import { useNotifications } from '@components/notification/NotificationContext';
 import useBooleanState from '@hooks/useBooleanState';
-import { motion } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
 import React, {
   HTMLAttributes,
   MouseEvent,
@@ -20,6 +20,7 @@ const StyledMotionDiv = styled(motion.div, {});
 export function LikeIcon({ onClick, ...props }: Props) {
   const { showNotification } = useNotifications();
   const [like, , setLikeToFalse, toggleLike] = useBooleanState();
+  const likeAnimationControl = useAnimation();
 
   const openToast = useCallback(() => {
     showNotification({
@@ -47,8 +48,13 @@ export function LikeIcon({ onClick, ...props }: Props) {
     (e: MouseEvent<HTMLButtonElement>) => {
       onClick?.(e);
       toggleLike();
+      likeAnimationControl.stop();
+      likeAnimationControl.start({
+        opacity: [0, 0.9, 0.9, 0.9, 1],
+        scale: [0, 1.2, 0.95, 1],
+      });
     },
-    [onClick, toggleLike]
+    [likeAnimationControl, onClick, toggleLike]
   );
 
   return (
@@ -69,6 +75,7 @@ export function LikeIcon({ onClick, ...props }: Props) {
           },
           iconStyles.likeButton
         )}
+        animate={likeAnimationControl}
       >
         {like ? <FillHeart /> : <EmptyHeart />}
       </StyledMotionDiv>
