@@ -16,7 +16,10 @@ export function Header() {
         px: '$15',
       }}
     >
-      <Flex elementType="a" href="#">
+      <Flex
+        elementType="button"
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      >
         <Image width={123} height={40}>
           <Image.Source src="/assets/icon/logo.jpg" alt="웨딩로그_로고" />
         </Image>
