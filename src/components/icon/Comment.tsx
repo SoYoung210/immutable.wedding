@@ -6,7 +6,7 @@ export function Comment() {
     <svg
       aria-label="댓글 달기"
       fill={아이콘_컬러}
-      height="24"
+      height="22"
       viewBox="0 0 48 48"
       width="24"
     >
