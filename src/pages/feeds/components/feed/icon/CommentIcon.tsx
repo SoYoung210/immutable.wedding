@@ -4,10 +4,10 @@ import React, { HTMLAttributes, MouseEvent, useCallback } from 'react';
 import { ToastWrapper } from '../ToastWrapper';
 import { Comment } from '@components/icon/Comment';
 import { motion, useAnimation } from 'framer-motion';
+import shake from '@utils/animation/shake';
 
 type Props = HTMLAttributes<HTMLButtonElement>;
 
-const 한바퀴_회전_각도 = 360;
 export function CommentIcon({ onClick, ...props }: Props) {
   const { showNotification } = useNotifications();
   const commentAnimationControl = useAnimation();
@@ -20,17 +20,9 @@ export function CommentIcon({ onClick, ...props }: Props) {
 
   const animateSequence = useCallback(async () => {
     commentAnimationControl.stop();
-    // await commentAnimationControl.start({
-    //   rotate: [0, 한바퀴_회전_각도],
-    //   transition: {
-    //     duration: 0.6,
-    //   },
-    // });
     commentAnimationControl.start({
-      x: [0, -3, 3, -3, 3, -3, 3, -3, 3, -3, 0],
-      transition: {
-        duration: 1,
-      },
+      x: shake(3, 11),
+      transition: { duration: 1 },
     });
   }, [commentAnimationControl]);
 
