@@ -1,5 +1,5 @@
+import { ArrowRight as ArrowRightIcon } from '@components/icon/ArrowRight';
 import { useNotifications } from '@components/notification/NotificationContext';
-import { ArrowRightIcon } from '@pages/feeds/components/feed/icon/ArrowRightIcon';
 import {
   FeedAction,
   링크_액션인가,
