@@ -27,7 +27,7 @@ export function LikeIcon({ onClick, ...props }: Props) {
     showNotification({
       element: (
         <ToastWrapper>
-          💖 저희도 고마워요, 눌러주신 마음은 따로 저장하진 않을게요
+          💖 저희도 고마워요, 따로 저장은 하지 않을게요
         </ToastWrapper>
       ),
     });
