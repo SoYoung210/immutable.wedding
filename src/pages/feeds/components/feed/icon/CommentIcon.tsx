@@ -20,17 +20,16 @@ export function CommentIcon({ onClick, ...props }: Props) {
 
   const animateSequence = useCallback(async () => {
     commentAnimationControl.stop();
-    await commentAnimationControl.start({
-      rotate: [0, 한바퀴_회전_각도],
-      transition: {
-        duration: 0.6,
-      },
-    });
+    // await commentAnimationControl.start({
+    //   rotate: [0, 한바퀴_회전_각도],
+    //   transition: {
+    //     duration: 0.6,
+    //   },
+    // });
     commentAnimationControl.start({
-      scale: [1, 0.3, 1],
-      rotate: [0, 한바퀴_회전_각도 * 2],
+      x: [0, -3, 3, -3, 3, -3, 3, -3, 3, -3, 0],
       transition: {
-        duration: 1.3,
+        duration: 1,
       },
     });
   }, [commentAnimationControl]);
