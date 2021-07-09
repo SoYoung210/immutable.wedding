@@ -13,6 +13,7 @@ import { styled } from 'stitches.config';
 import { ToastWrapper } from '../ToastWrapper';
 import iconStyles from './likeIcon.module.scss';
 import cx from 'classnames';
+import fadingZoom from '@utils/animation/fadingZoom';
 type Props = HTMLAttributes<HTMLButtonElement>;
 
 const StyledMotionDiv = styled(motion.div, {});
@@ -26,7 +27,7 @@ export function LikeIcon({ onClick, ...props }: Props) {
     showNotification({
       element: (
         <ToastWrapper>
-          💖 저희도 고마워요, 눌러주신 마음은 따로 저장하진 않을게요
+          💖 저희도 고마워요, 따로 저장은 하지 않을게요
         </ToastWrapper>
       ),
     });
@@ -49,10 +50,7 @@ export function LikeIcon({ onClick, ...props }: Props) {
       onClick?.(e);
       toggleLike();
       likeAnimationControl.stop();
-      likeAnimationControl.start({
-        opacity: [0, 0.9, 0.9, 0.9, 1],
-        scale: [0, 1.2, 0.95, 1],
-      });
+      likeAnimationControl.start(fadingZoom());
     },
     [likeAnimationControl, onClick, toggleLike]
   );
