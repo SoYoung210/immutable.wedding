@@ -9,7 +9,6 @@ const DEFAULT_ANIMATION = {
 };
 
 export default function fadingZoom(params?: Params) {
-  // const { opacityVariants, scaleVariants } = params ?? DEFAULT_ANIMATION;
   const opacityVariants =
     params?.opacityVariants ?? DEFAULT_ANIMATION.opacityVariants;
   const scaleVariants =
