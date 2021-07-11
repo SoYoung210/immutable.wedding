@@ -58,13 +58,13 @@ export function HighlightSection({ highlights }: Props) {
         borderBottom: '1px solid $gray100',
       }}
     >
-      {highlights.map((highlight, index) => {
+      {highlights.map(({ id, ...highlight }, index) => {
         return (
           <Link
-            key={highlight.id}
+            key={id}
             href={{
               pathname: `/highlights/[id]`,
-              query: { id: index },
+              query: { id },
             }}
             passHref={true}
             shallow={true}
@@ -101,7 +101,7 @@ export function HighlightSection({ highlights }: Props) {
                     />
                   </Image.RoundShape>
                 </Image.Root>
-                <HighlightName css={{ mt: '$6' }}>
+                <HighlightName css={{ mt: '$6', maxWidth: 60 }}>
                   {highlight.name}
                 </HighlightName>
               </StyledAnchor>
