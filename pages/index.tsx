@@ -1,7 +1,8 @@
 import { FeedEntity } from '@models/Feed';
+import { Highlight } from '@models/Highlight';
 import { Feed } from '@pages/feeds/components/feed/Feed';
 import { Header } from '@pages/feeds/components/header/Header';
-import { Highlight } from '@pages/feeds/components/highlight/Highlight';
+import { HighlightSection } from '@pages/feeds/components/highlight/HighlightSection';
 import { InferGetStaticPropsType } from 'next';
 import { getPlaiceholder } from 'plaiceholder';
 interface RawFeedData {
@@ -18,11 +19,25 @@ interface RawFeedData {
   tags: string[];
 }
 
-export const getStaticProps = async () => {
-  const feedJson = (await import('public/assets/data/feeds.json')).default;
-  const feedDataset = feedJson.data as RawFeedData[];
+interface RawHighlightData {
+  id: number;
+  name: string;
+  profileImage: string;
+  contents: {
+    id: number;
+    imageSrc: string;
+  }[];
+}
 
-  const feeds = await Promise.all(
+export async function getStaticProps() {
+  const [feedJson, highlightJson] = await Promise.all([
+    (await import('public/assets/data/feeds.json')).default,
+    (await import('public/assets/data/highlights.json')).default,
+  ]);
+  const feedDataset = feedJson.data as RawFeedData[];
+  const highlightDatdaset = highlightJson.data as RawHighlightData[];
+
+  const feedsPromises = Promise.all(
     feedDataset.map(async feed => {
       const contents = await Promise.all(
         feed.contents.map(async content => {
@@ -39,16 +54,42 @@ export const getStaticProps = async () => {
     })
   );
 
-  return { props: { feeds } };
-};
+  const highlightPromises = Promise.all(
+    highlightDatdaset.map(async highlight => {
+      const { base64, img } = await getPlaiceholder(highlight.profileImage, {
+        size: 24,
+      });
+      const contents = await Promise.all(
+        highlight.contents.map(async content => {
+          const { base64, img } = await getPlaiceholder(content.imageSrc);
+
+          return { ...content, image: { ...img, blurDataURL: base64 } };
+        })
+      );
+
+      return {
+        ...highlight,
+        profileImage: { ...img, blurDataURL: base64 },
+        contents,
+      } as Highlight;
+    })
+  );
+
+  const [feeds, highlights] = await Promise.all([
+    feedsPromises,
+    highlightPromises,
+  ]);
+
+  return { props: { feeds, highlights } };
+}
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
-export default function FeedsPage({ feeds }: Props) {
+export default function FeedsPage({ feeds, highlights }: Props) {
   return (
     <>
       <Header />
-      <Highlight />
+      <HighlightSection highlights={highlights} />
       <Feed feeds={feeds} />
     </>
   );
