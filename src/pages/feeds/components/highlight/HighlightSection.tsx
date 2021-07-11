@@ -1,12 +1,12 @@
 import Gradient from '@components/gradient';
 import Image from '@components/image';
 import { Flex } from '@components/util/layout/Flex';
-import { css, styled } from 'stitches.config';
-import { useHighlights } from './useHighlights';
-import Link from 'next/link';
-import { motion, useAnimation } from 'framer-motion';
 import { 스토리_애니메이션_레이아웃 } from '@constants/animationId';
+import { Highlight } from '@models/Highlight';
+import { motion, useAnimation } from 'framer-motion';
+import Link from 'next/link';
 import { useEffect } from 'react';
+import { css, styled } from 'stitches.config';
 
 const highlightImageLayout = css({ position: 'relative' });
 
@@ -29,8 +29,11 @@ const StyledDiv = styled('div', {
   left: -6,
 });
 
-export function Highlight() {
-  const { data: highlights } = useHighlights();
+interface Props {
+  highlights: Highlight[];
+}
+
+export function HighlightSection({ highlights }: Props) {
   const highlightItemControl = useAnimation();
 
   useEffect(() => {
@@ -55,7 +58,7 @@ export function Highlight() {
         borderBottom: '1px solid $gray100',
       }}
     >
-      {highlights.data.map((highlight, index) => {
+      {highlights.map((highlight, index) => {
         return (
           <Link
             key={highlight.id}
@@ -76,8 +79,11 @@ export function Highlight() {
               <StyledAnchor>
                 <Image.Root className={highlightImageLayout()}>
                   <Image.RoundShape
+                    {...highlight.profileImage}
                     width={60}
                     height={60}
+                    placeholder="blur"
+                    className={css({ transition: 'all 0.2s' })()}
                     variants={
                       <StyledDiv>
                         <Gradient.Circle
@@ -90,7 +96,7 @@ export function Highlight() {
                     }
                   >
                     <Image.Source
-                      src={highlight.profileImage}
+                      src={highlight.profileImage.src}
                       alt="스토리_프로필_이미지"
                     />
                   </Image.RoundShape>
