@@ -79,7 +79,7 @@ export function HighlightSection({ highlights }: Props) {
               <StyledAnchor>
                 <Image.Root className={highlightImageLayout()}>
                   <Image.RoundShape
-                    {...highlight.profileImage}
+                    {...highlight.thumbnailImage}
                     width={60}
                     height={60}
                     placeholder="blur"
@@ -96,8 +96,8 @@ export function HighlightSection({ highlights }: Props) {
                     }
                   >
                     <Image.Source
-                      src={highlight.profileImage.src}
-                      alt="스토리_프로필_이미지"
+                      src={highlight.thumbnailImage.src}
+                      alt="스토리_썸네일_이미지"
                     />
                   </Image.RoundShape>
                 </Image.Root>

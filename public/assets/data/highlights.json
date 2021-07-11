@@ -3,43 +3,43 @@
     {
       "id": 1,
       "name": "soso",
-      "profileImage": "/assets/favicon/icon_48x48.png",
+      "thumbnailImageSrc": "/assets/favicon/icon_48x48.png",
       "contents": []
     },
     {
       "id": 2,
       "name": "Jbee",
-      "profileImage": "/assets/favicon/icon_48x48.png",
+      "thumbnailImageSrc": "/assets/favicon/icon_48x48.png",
       "contents": []
     },
     {
       "id": 3,
       "name": "Jbee",
-      "profileImage": "/assets/favicon/icon_48x48.png",
+      "thumbnailImageSrc": "/assets/favicon/icon_48x48.png",
       "contents": []
     },
     {
       "id": 4,
       "name": "Jbee",
-      "profileImage": "/assets/favicon/icon_48x48.png",
+      "thumbnailImageSrc": "/assets/favicon/icon_48x48.png",
       "contents": []
     },
     {
       "id": 5,
       "name": "Jbee",
-      "profileImage": "/assets/favicon/icon_48x48.png",
+      "thumbnailImageSrc": "/assets/favicon/icon_48x48.png",
       "contents": []
     },
     {
       "id": 6,
       "name": "Jbee",
-      "profileImage": "/assets/favicon/icon_48x48.png",
+      "thumbnailImageSrc": "/assets/favicon/icon_48x48.png",
       "contents": []
     },
     {
       "id": 7,
       "name": "Jbee",
-      "profileImage": "/assets/favicon/icon_48x48.png",
+      "thumbnailImageSrc": "/assets/favicon/icon_48x48.png",
       "contents": []
     }
   ]

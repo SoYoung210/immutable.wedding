@@ -14,6 +14,6 @@ interface HighlightContent {
 export interface Highlight {
   id: number;
   name: string;
-  profileImage: Image;
+  thumbnailImage: Image;
   contents: HighlightContent[];
 }

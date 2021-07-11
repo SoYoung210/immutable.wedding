@@ -22,7 +22,7 @@ interface RawFeedData {
 interface RawHighlightData {
   id: number;
   name: string;
-  profileImage: string;
+  thumbnailImageSrc: string;
   contents: {
     id: number;
     imageSrc: string;
@@ -56,9 +56,12 @@ export async function getStaticProps() {
 
   const highlightPromises = Promise.all(
     highlightDatdaset.map(async highlight => {
-      const { base64, img } = await getPlaiceholder(highlight.profileImage, {
-        size: 24,
-      });
+      const { base64, img } = await getPlaiceholder(
+        highlight.thumbnailImageSrc,
+        {
+          size: 24,
+        }
+      );
       const contents = await Promise.all(
         highlight.contents.map(async content => {
           const { base64, img } = await getPlaiceholder(content.imageSrc);
@@ -69,7 +72,7 @@ export async function getStaticProps() {
 
       return {
         ...highlight,
-        profileImage: { ...img, blurDataURL: base64 },
+        thumbnailImage: { ...img, blurDataURL: base64 },
         contents,
       } as Highlight;
     })
