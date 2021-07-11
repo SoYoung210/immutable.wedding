@@ -6,7 +6,7 @@ import { FeedActionCTA } from '@pages/feeds/components/feed/FeedActionCTA';
 import { CommentIcon } from '@pages/feeds/components/feed/icon/CommentIcon';
 import { LikeIcon } from '@pages/feeds/components/feed/icon/LikeIcon';
 import { Tags } from '@pages/feeds/components/feed/Tags';
-import { FeedEntity, 액션를_포함하는_피드인가 } from '@pages/feeds/models/Feed';
+import { FeedEntity, 액션를_포함하는_피드인가 } from 'src/models/Feed';
 import { motion } from 'framer-motion';
 import React, { useCallback } from 'react';
 import { css, styled } from 'stitches.config';

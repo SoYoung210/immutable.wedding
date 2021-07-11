@@ -21,6 +21,7 @@
       "@hooks/*": ["src/hooks/*"],
       "@assets/*": ["assets/*"],
       "@utils/*": ["src/utils/*"],
+      "@models/*": ["src/models/*"],
       "@constants/*": ["src/constants/*"],
     }
   },
