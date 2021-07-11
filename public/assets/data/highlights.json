@@ -1,39 +1,46 @@
 {
   "data": [
     {
+      "id": 1,
       "name": "soso",
-      "profileImage": "https://avatars.githubusercontent.com/u/18658235?v=4",
-      "id": 1
+      "profileImage": "/assets/favicon/icon_48x48.png",
+      "contents": []
     },
     {
+      "id": 2,
       "name": "Jbee",
-      "profileImage": "https://avatars.githubusercontent.com/u/17924127?v=4",
-      "id": 2
+      "profileImage": "/assets/favicon/icon_48x48.png",
+      "contents": []
     },
     {
+      "id": 3,
       "name": "Jbee",
-      "profileImage": "https://avatars.githubusercontent.com/u/17924127?v=4",
-      "id": 3
+      "profileImage": "/assets/favicon/icon_48x48.png",
+      "contents": []
     },
     {
+      "id": 4,
       "name": "Jbee",
-      "profileImage": "https://avatars.githubusercontent.com/u/17924127?v=4",
-      "id": 4
+      "profileImage": "/assets/favicon/icon_48x48.png",
+      "contents": []
     },
     {
+      "id": 5,
       "name": "Jbee",
-      "profileImage": "https://avatars.githubusercontent.com/u/17924127?v=4",
-      "id": 5
+      "profileImage": "/assets/favicon/icon_48x48.png",
+      "contents": []
     },
     {
+      "id": 6,
       "name": "Jbee",
-      "profileImage": "https://avatars.githubusercontent.com/u/17924127?v=4",
-      "id": 6
+      "profileImage": "/assets/favicon/icon_48x48.png",
+      "contents": []
     },
     {
+      "id": 7,
       "name": "Jbee",
-      "profileImage": "https://avatars.githubusercontent.com/u/17924127?v=4",
-      "id": 7
+      "profileImage": "/assets/favicon/icon_48x48.png",
+      "contents": []
     }
   ]
 }
