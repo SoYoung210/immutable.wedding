@@ -1,19 +1,13 @@
-interface Image {
-  blurDataURL: string;
-  src: string;
-  height: number;
-  width: number;
-  type?: string;
-}
+import { NextImage } from '@models/common/NextImage';
 
 interface HighlightContent {
   id: number;
-  image: Image;
+  image: NextImage;
 }
 
 export interface Highlight {
   id: number;
   name: string;
-  thumbnailImage: Image;
+  thumbnailImage: NextImage;
   contents: HighlightContent[];
 }

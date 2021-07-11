@@ -1,21 +1,15 @@
-interface FeedImage {
-  blurDataURL: string;
-  src: string;
-  height: number;
-  width: number;
-  type?: string;
-}
+import { NextImage } from '@models/common/NextImage';
 
 /**
  * contents
  */
 interface SimpleFeedContent {
-  image: FeedImage;
+  image: NextImage;
   action: never;
 }
 
 interface LinkFeedContent {
-  image: FeedImage;
+  image: NextImage;
   action: FeedAction;
 }
 
