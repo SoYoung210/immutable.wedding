@@ -5,6 +5,7 @@ import { Header } from '@pages/feeds/components/header/Header';
 import { HighlightSection } from '@pages/feeds/components/highlight/HighlightSection';
 import { InferGetStaticPropsType } from 'next';
 import { getPlaiceholder } from 'plaiceholder';
+
 interface RawFeedData {
   id: number;
   contents: Array<{
