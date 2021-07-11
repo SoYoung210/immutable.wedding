@@ -60,7 +60,7 @@ export function Highlight() {
           <Link
             key={highlight.id}
             href={{
-              pathname: `/stories/[id]`,
+              pathname: `/highlights/[id]`,
               query: { id: index },
             }}
             passHref={true}
