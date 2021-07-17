@@ -6,7 +6,7 @@ import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 import { useRouter } from 'next/router';
 import { getPlaiceholder } from 'plaiceholder';
 import React from 'react';
-import { Header } from './Header';
+import { Header } from '@pages/highlights/components/Header';
 
 async function fetchHighlights() {
   const highlightJson = (await import('public/assets/data/highlights.json'))
