@@ -52,8 +52,8 @@ export function HighlightSection({ highlights }: Props) {
             shallow={true}
           >
             <StyledMotionLi
-              // initial={{ opacity: 0, y: index + 5, x: index + 15 }}
-              // animate={highlightItemControl}
+              initial={{ opacity: 0, y: index + 5, x: index + 15 }}
+              animate={highlightItemControl}
               custom={index / 18.2}
             >
               <StyledAnchor>
