@@ -1,11 +1,6 @@
 {
   "name": "immutable-wedding",
   "version": "0.1.0",
-  "babelMacros": {
-    "twin": {
-      "preset": "emotion"
-    }
-  },
   "browserslist": [
     "defaults",
     "> 5%",
