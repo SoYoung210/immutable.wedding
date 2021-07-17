@@ -1,23 +1,12 @@
 import Image from '@components/image';
 import { 스토리_애니메이션_레이아웃 } from '@constants/animationId';
-import { Highlight } from '@models/Highlight';
+import { Highlight, RawHighlightData } from '@models/Highlight';
 import { motion } from 'framer-motion';
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 import { useRouter } from 'next/router';
 import { getPlaiceholder } from 'plaiceholder';
 import React from 'react';
 import { Header } from './Header';
-
-interface RawHighlightData {
-  id: number;
-  name: string;
-  thumbnailImageSrc: string;
-  contents: {
-    id: number;
-    imageSrc: string;
-    theme: string;
-  }[];
-}
 
 async function fetchHighlights() {
   const highlightJson = (await import('public/assets/data/highlights.json'))
@@ -69,7 +58,6 @@ type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 export default function HighlightPage({ highlight }: Props) {
   const router = useRouter();
-
   const { id } = router.query;
 
   if (highlight == null) {

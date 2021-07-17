@@ -56,3 +56,17 @@ export function 액션를_포함하는_피드인가(
 ): feed is LinkFeedContent {
   return feed.action != null;
 }
+
+export interface RawFeedData {
+  id: number;
+  contents: Array<{
+    imageSrc: string;
+    action: {
+      text?: string;
+      color?: string;
+    };
+  }>;
+  description: string;
+  createdAt?: string;
+  tags: string[];
+}

@@ -11,3 +11,13 @@ export interface Highlight {
   thumbnailImage: NextImage;
   contents: HighlightContent[];
 }
+
+export interface RawHighlightData {
+  id: number;
+  name: string;
+  thumbnailImageSrc: string;
+  contents: {
+    id: number;
+    imageSrc: string;
+  }[];
+}
