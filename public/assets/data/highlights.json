@@ -1,39 +1,46 @@
 {
   "data": [
     {
+      "id": 1,
       "name": "soso",
-      "profileImage": "https://avatars.githubusercontent.com/u/18658235?v=4",
-      "id": 1
+      "thumbnailImageSrc": "/assets/favicon/icon_48x48.png",
+      "contents": []
     },
     {
-      "name": "Jbee",
-      "profileImage": "https://avatars.githubusercontent.com/u/17924127?v=4",
-      "id": 2
+      "id": 2,
+      "name": "길어지면_어떻게_되나요",
+      "thumbnailImageSrc": "/assets/favicon/icon_48x48.png",
+      "contents": []
     },
     {
+      "id": 3,
       "name": "Jbee",
-      "profileImage": "https://avatars.githubusercontent.com/u/17924127?v=4",
-      "id": 3
+      "thumbnailImageSrc": "/assets/favicon/icon_48x48.png",
+      "contents": []
     },
     {
+      "id": 4,
       "name": "Jbee",
-      "profileImage": "https://avatars.githubusercontent.com/u/17924127?v=4",
-      "id": 4
+      "thumbnailImageSrc": "/assets/favicon/icon_48x48.png",
+      "contents": []
     },
     {
+      "id": 5,
       "name": "Jbee",
-      "profileImage": "https://avatars.githubusercontent.com/u/17924127?v=4",
-      "id": 5
+      "thumbnailImageSrc": "/assets/favicon/icon_48x48.png",
+      "contents": []
     },
     {
+      "id": 6,
       "name": "Jbee",
-      "profileImage": "https://avatars.githubusercontent.com/u/17924127?v=4",
-      "id": 6
+      "thumbnailImageSrc": "/assets/favicon/icon_48x48.png",
+      "contents": []
     },
     {
+      "id": 7,
       "name": "Jbee",
-      "profileImage": "https://avatars.githubusercontent.com/u/17924127?v=4",
-      "id": 7
+      "thumbnailImageSrc": "/assets/favicon/icon_48x48.png",
+      "contents": []
     }
   ]
 }

@@ -1,21 +1,15 @@
-interface FeedImage {
-  blurDataURL: string;
-  src: string;
-  height: number;
-  width: number;
-  type?: string;
-}
+import { NextImage } from '@models/common/NextImage';
 
 /**
  * contents
  */
 interface SimpleFeedContent {
-  image: FeedImage;
+  image: NextImage;
   action: never;
 }
 
 interface LinkFeedContent {
-  image: FeedImage;
+  image: NextImage;
   action: FeedAction;
 }
 
@@ -61,4 +55,18 @@ export function 액션를_포함하는_피드인가(
   feed: FeedContent
 ): feed is LinkFeedContent {
   return feed.action != null;
+}
+
+export interface RawFeedData {
+  id: number;
+  contents: Array<{
+    imageSrc: string;
+    action: {
+      text?: string;
+      color?: string;
+    };
+  }>;
+  description: string;
+  createdAt?: string;
+  tags: string[];
 }

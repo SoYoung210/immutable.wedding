@@ -1,10 +1,6 @@
 import { ArrowRight as ArrowRightIcon } from '@components/icon/ArrowRight';
 import { useNotifications } from '@components/notification/NotificationContext';
-import {
-  FeedAction,
-  링크_액션인가,
-  팝업_액션인가,
-} from '@pages/feeds/models/Feed';
+import { FeedAction, 링크_액션인가, 팝업_액션인가 } from 'src/models/Feed';
 import { copyToClipboard } from '@utils/copyToClipboard';
 import { CSSProps } from '@utils/styles';
 import React, { AllHTMLAttributes, HTMLAttributes, ReactNode } from 'react';
