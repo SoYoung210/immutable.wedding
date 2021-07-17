@@ -7,27 +7,7 @@ import { motion, useAnimation } from 'framer-motion';
 import Link from 'next/link';
 import { useEffect } from 'react';
 import { css, styled } from 'stitches.config';
-
-const highlightImageLayout = css({ position: 'relative' });
-
-const StyledMotionLi = styled(motion.li, {
-  flex: 'center',
-  flexGrow: 0,
-  flexShrink: 0,
-});
-
-const StyledAnchor = styled('a', {
-  flex: 'center',
-  flexDirection: 'column',
-  flexGrow: 0,
-  flexShrink: 0,
-});
-
-const StyledDiv = styled('div', {
-  position: 'absolute',
-  top: -6,
-  left: -6,
-});
+import NextImage from 'next/image';
 
 interface Props {
   highlights: Highlight[];
@@ -59,6 +39,8 @@ export function HighlightSection({ highlights }: Props) {
       }}
     >
       {highlights.map(({ id, ...highlight }, index) => {
+        const 대표_컨텐츠_이미지 = highlight.contents[0].image;
+
         return (
           <Link
             key={id}
@@ -70,36 +52,28 @@ export function HighlightSection({ highlights }: Props) {
             shallow={true}
           >
             <StyledMotionLi
-              layoutId={스토리_애니메이션_레이아웃(index)}
-              layout="position"
               initial={{ opacity: 0, y: index + 5, x: index + 15 }}
               animate={highlightItemControl}
               custom={index / 18.2}
             >
               <StyledAnchor>
                 <Image.Root className={highlightImageLayout()}>
-                  <Image.RoundShape
-                    {...highlight.thumbnailImage}
-                    width={60}
-                    height={60}
-                    placeholder="blur"
-                    className={css({ transition: 'all 0.2s' })()}
-                    variants={
-                      <StyledDiv>
-                        <Gradient.Circle
-                          size={72}
-                          rotateAnimation={true}
-                          strokeWidth={2.3}
-                          colorKeys={['deepBlue500', 'lightGreen900']}
-                        />
-                      </StyledDiv>
-                    }
-                  >
-                    <Image.Source
-                      src={highlight.thumbnailImage.src}
-                      alt="스토리_썸네일_이미지"
+                  <motion.div layoutId={스토리_애니메이션_레이아웃(index)}>
+                    <SImage
+                      {...대표_컨텐츠_이미지}
+                      width={60}
+                      height={60}
+                      placeholder="blur"
                     />
-                  </Image.RoundShape>
+                  </motion.div>
+                  <StyledDiv>
+                    <Gradient.Circle
+                      size={72}
+                      rotateAnimation={true}
+                      strokeWidth={2.3}
+                      colorKeys={['deepBlue500', 'lightGreen900']}
+                    />
+                  </StyledDiv>
                 </Image.Root>
                 <HighlightName css={{ mt: '$6', maxWidth: 60 }}>
                   {highlight.name}
@@ -115,4 +89,30 @@ export function HighlightSection({ highlights }: Props) {
 
 const HighlightName = styled('span', {
   fontSize: '$xs',
+});
+
+const highlightImageLayout = css({ position: 'relative' });
+
+const StyledMotionLi = styled(motion.li, {
+  flex: 'center',
+  flexGrow: 0,
+  flexShrink: 0,
+});
+
+const StyledAnchor = styled('a', {
+  flex: 'center',
+  flexDirection: 'column',
+  flexGrow: 0,
+  flexShrink: 0,
+});
+
+const StyledDiv = styled('div', {
+  position: 'absolute',
+  top: -6,
+  left: -6,
+});
+
+const SImage = styled(NextImage, {
+  transition: 'all 0.2s',
+  borderRadius: '$round',
 });

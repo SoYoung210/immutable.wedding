@@ -4,43 +4,71 @@
       "id": 1,
       "name": "soso",
       "thumbnailImageSrc": "/assets/favicon/icon_48x48.png",
-      "contents": []
+      "contents": [{
+        "id": 1,
+        "imageSrc": "/assets/img/ready_2.jpg",
+        "theme": "dark"
+      }]
     },
     {
       "id": 2,
       "name": "길어지면_어떻게_되나요",
       "thumbnailImageSrc": "/assets/favicon/icon_48x48.png",
-      "contents": []
+      "contents": [{
+        "id": 1,
+        "imageSrc": "/assets/img/ready_2.jpg",
+        "theme": "dark"
+      }]
     },
     {
       "id": 3,
       "name": "Jbee",
       "thumbnailImageSrc": "/assets/favicon/icon_48x48.png",
-      "contents": []
+      "contents": [{
+        "id": 1,
+        "imageSrc": "/assets/img/ready_2.jpg",
+        "theme": "dark"
+      }]
     },
     {
       "id": 4,
       "name": "Jbee",
       "thumbnailImageSrc": "/assets/favicon/icon_48x48.png",
-      "contents": []
+      "contents": [{
+        "id": 1,
+        "imageSrc": "/assets/img/ready_2.jpg",
+        "theme": "dark"
+      }]
     },
     {
       "id": 5,
       "name": "Jbee",
       "thumbnailImageSrc": "/assets/favicon/icon_48x48.png",
-      "contents": []
+      "contents": [{
+        "id": 1,
+        "imageSrc": "/assets/img/ready_2.jpg",
+        "theme": "dark"
+      }]
     },
     {
       "id": 6,
       "name": "Jbee",
       "thumbnailImageSrc": "/assets/favicon/icon_48x48.png",
-      "contents": []
+      "contents": [{
+        "id": 1,
+        "imageSrc": "/assets/img/ready_2.jpg",
+        "theme": "dark"
+      }]
     },
     {
       "id": 7,
       "name": "Jbee",
       "thumbnailImageSrc": "/assets/favicon/icon_48x48.png",
-      "contents": []
+      "contents": [{
+        "id": 1,
+        "imageSrc": "/assets/img/ready_2.jpg",
+        "theme": "dark"
+      }]
     }
   ]
 }
