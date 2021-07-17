@@ -6,6 +6,7 @@ import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 import { useRouter } from 'next/router';
 import { getPlaiceholder } from 'plaiceholder';
 import React from 'react';
+import { Header } from './Header';
 
 interface RawHighlightData {
   id: number;
@@ -14,6 +15,7 @@ interface RawHighlightData {
   contents: {
     id: number;
     imageSrc: string;
+    theme: string;
   }[];
 }
 
@@ -67,26 +69,33 @@ type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 export default function HighlightPage({ highlight }: Props) {
   const router = useRouter();
+
   const { id } = router.query;
 
   if (highlight == null) {
     return <div>잘못된 접근입니다</div>;
   }
 
+  const 대표_컨텐츠_이미지 = highlight.contents[0].image;
+
   return (
-    <motion.div
-      layoutId={스토리_애니메이션_레이아웃(Number(id))}
-      style={{ padding: 20 }}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.3 }}
-      layout="position"
-    >
-      <Image.Root>
-        <Image.RoundShape {...highlight.thumbnailImage} width={60} height={60}>
-          <Image.Source src={highlight.thumbnailImage.src} alt="재여비" />
-        </Image.RoundShape>
-      </Image.Root>
-    </motion.div>
+    <>
+      <Header thumbnailImage={highlight.thumbnailImage} onClose={router.back}>
+        immutable.wedding(soso, jbee)
+      </Header>
+      <motion.div
+        layoutId={스토리_애니메이션_레이아웃(Number(id))}
+        style={{ marginRight: '6px' }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.3 }}
+      >
+        <Image.Root>
+          <Image {...대표_컨텐츠_이미지} width={520} height={520}>
+            <Image.Source src={대표_컨텐츠_이미지.src} alt="재여비" />
+          </Image>
+        </Image.Root>
+      </motion.div>
+    </>
   );
 }
