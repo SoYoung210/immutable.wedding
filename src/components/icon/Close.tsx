@@ -1,12 +1,14 @@
+import { 아이콘_컬러 } from 'stitches.config';
+
 export default function Close() {
   return (
     <svg
       aria-label="닫기"
-      fill="#ffffff"
-      height="24"
+      fill={아이콘_컬러}
+      height="16"
       role="img"
       viewBox="0 0 48 48"
-      width="24"
+      width="16"
     >
       <path
         clipRule="evenodd"
