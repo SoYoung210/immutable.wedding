@@ -3,12 +3,11 @@ import Image from '@components/image';
 import { Flex } from '@components/util/layout/Flex';
 import { 스토리_애니메이션_레이아웃 } from '@constants/animationId';
 import { Highlight } from '@models/Highlight';
-import { motion, useAnimation } from 'framer-motion';
+import { AnimatePresence, motion, useAnimation } from 'framer-motion';
 import Link from 'next/link';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { css, styled } from 'stitches.config';
 import NextImage from 'next/image';
-
 interface Props {
   highlights: Highlight[];
 }
@@ -39,8 +38,6 @@ export function HighlightSection({ highlights }: Props) {
       }}
     >
       {highlights.map(({ id, ...highlight }, index) => {
-        const 대표_컨텐츠_이미지 = highlight.contents[0].image;
-
         return (
           <Link
             key={id}
@@ -57,24 +54,26 @@ export function HighlightSection({ highlights }: Props) {
               custom={index / 18.2}
             >
               <StyledAnchor>
-                <Image.Root className={highlightImageLayout()}>
-                  <motion.div layoutId={스토리_애니메이션_레이아웃(index)}>
-                    <SImage
-                      {...대표_컨텐츠_이미지}
-                      width={60}
-                      height={60}
-                      placeholder="blur"
-                    />
-                  </motion.div>
-                  <StyledDiv>
-                    <Gradient.Circle
-                      size={72}
-                      rotateAnimation={true}
-                      strokeWidth={2.3}
-                      colorKeys={['deepBlue500', 'lightGreen900']}
-                    />
-                  </StyledDiv>
-                </Image.Root>
+                <AnimatePresence>
+                  <Image.Root className={highlightImageLayout()}>
+                    <motion.div layoutId={스토리_애니메이션_레이아웃(index)}>
+                      <SImage
+                        {...highlight.thumbnailImage}
+                        width={60}
+                        height={60}
+                        placeholder="blur"
+                      />
+                    </motion.div>
+                    <StyledDiv>
+                      <Gradient.Circle
+                        size={72}
+                        rotateAnimation={true}
+                        strokeWidth={2.3}
+                        colorKeys={['deepBlue500', 'lightGreen900']}
+                      />
+                    </StyledDiv>
+                  </Image.Root>
+                </AnimatePresence>
                 <HighlightName css={{ mt: '$6', maxWidth: 60 }}>
                   {highlight.name}
                 </HighlightName>

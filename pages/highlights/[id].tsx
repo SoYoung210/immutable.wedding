@@ -1,5 +1,4 @@
 import Image from '@components/image';
-import { 스토리_애니메이션_레이아웃 } from '@constants/animationId';
 import { Highlight, RawHighlightData } from '@models/Highlight';
 import { motion } from 'framer-motion';
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
@@ -58,7 +57,6 @@ type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 export default function HighlightPage({ highlight }: Props) {
   const router = useRouter();
-  const { id } = router.query;
 
   if (highlight == null) {
     return <div>잘못된 접근입니다</div>;
@@ -72,7 +70,6 @@ export default function HighlightPage({ highlight }: Props) {
         immutable.wedding(soso, jbee)
       </Header>
       <motion.div
-        layoutId={스토리_애니메이션_레이아웃(Number(id))}
         style={{ marginRight: '6px' }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
