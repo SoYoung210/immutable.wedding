@@ -1,0 +1,30 @@
+{
+  "groom": [
+    {
+      "holderName": "한용덕",
+      "bankName": "KB국민",
+      "accountNumber": "01063349281",
+      "logo": "/assets/svg/kb.svg"
+    },
+    {
+      "holderName": "한재엽",
+      "bankName": "토스뱅크",
+      "accountNumber": "01055549281",
+      "logo": "/assets/svg/tossbank.svg"
+    }
+  ],
+  "bridge": [
+    {
+      "holderName": "이호식",
+      "bankName": "IBK기업은행",
+      "accountNumber": "123412341234",
+      "logo": "/assets/svg/ibk.svg"
+    },
+    {
+      "holderName": "이소영",
+      "bankName": "카카오뱅크",
+      "accountNumber": "123412341234",
+      "logo": "/assets/svg/kakaobank.svg"
+    }
+  ]
+}
