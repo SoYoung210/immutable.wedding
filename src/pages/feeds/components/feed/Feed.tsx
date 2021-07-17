@@ -14,6 +14,7 @@ import { FeedCarouselWrapper } from './FeedCarouselWrapper';
 import { Footer } from './footer/Footer';
 import { Header } from './header/Header';
 import { useAccount } from './useAccount';
+import fadeEntrance from '@utils/animation/fadeEntrance';
 
 interface Props {
   feeds: FeedEntity[];
@@ -47,11 +48,7 @@ export function Feed({ feeds }: Props) {
   }, []);
 
   return (
-    <motion.div
-      initial={{ y: 10, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.4 }}
-    >
+    <motion.div {...fadeEntrance.y()} transition={{ duration: 0.4 }}>
       {feeds.map(({ id, contents, description, tags }) => {
         return (
           <Wrapper key={id}>

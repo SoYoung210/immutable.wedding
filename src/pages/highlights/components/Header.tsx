@@ -5,6 +5,7 @@ import Image from '@components/image';
 import CloseIcon from '@components/icon/Close';
 import { Flex } from '@components/util/layout/Flex';
 import { styled } from 'stitches.config';
+import fadeEntrance from '@utils/animation/fadeEntrance';
 
 interface Props {
   thumbnailImage: NextImage;
@@ -17,11 +18,7 @@ export function Header({
   children,
 }: PropsWithChildren<Props>) {
   return (
-    <motion.div
-      initial={{ y: 10, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.4 }}
-    >
+    <motion.div {...fadeEntrance.y()} transition={{ duration: 0.4 }}>
       <Flex.CenterVertical css={{ py: '$12', px: '$18' }}>
         <Image.Root css={{ mr: '$6' }}>
           <Image.RoundShape {...thumbnailImage} width={30} height={30}>
