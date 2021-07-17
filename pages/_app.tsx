@@ -1,12 +1,12 @@
+import { NotificationProvider } from '@components/notification/NotificationContext';
+import { PortalProvider } from '@providers/PortalProvider';
+import { AnimateSharedLayout } from 'framer-motion';
 import { NextSeo } from 'next-seo';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import React, { useEffect } from 'react';
-import { AnimateSharedLayout } from 'framer-motion';
-import { NotificationProvider } from '@components/notification/NotificationContext';
-import { styled } from 'stitches.config';
-
 import smoothscroll from 'smoothscroll-polyfill';
+import { styled } from 'stitches.config';
 import '../styles/globals.css';
 
 const Main = styled('main', {
@@ -54,11 +54,13 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="theme-color" content="#0135DB" />
       </Head>
       <NotificationProvider>
-        <AnimateSharedLayout type="crossfade">
-          <Main>
-            <Component {...pageProps} />
-          </Main>
-        </AnimateSharedLayout>
+        <PortalProvider>
+          <AnimateSharedLayout type="crossfade">
+            <Main>
+              <Component {...pageProps} />
+            </Main>
+          </AnimateSharedLayout>
+        </PortalProvider>
       </NotificationProvider>
     </>
   );

@@ -23,6 +23,7 @@
       "@utils/*": ["src/utils/*"],
       "@models/*": ["src/models/*"],
       "@constants/*": ["src/constants/*"],
+      "@providers/*": ["src/providers/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
