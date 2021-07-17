@@ -19,28 +19,46 @@ export type FeedContent = SimpleFeedContent | LinkFeedContent;
  * actions
  */
 interface Action {
+  type: string;
   text: string;
   color: string;
 }
 
 interface LinkAction extends Action {
+  type: 'link';
   href: string;
   message: never;
 }
 
 interface PopupAction extends Action {
+  type: 'popup';
   href: never;
   message: string;
 }
 
-export type FeedAction = LinkAction | PopupAction | Action;
+interface BottomSheetAction extends Action {
+  type: 'bottom-sheet_toss' | 'bottom-sheet_account';
+  href: never;
+  message: never;
+}
+
+export type FeedAction = LinkAction | PopupAction | BottomSheetAction | Action;
 
 export function 링크_액션인가(action: FeedAction): action is LinkAction {
-  return (action as any).href != null;
+  return action.type === 'link';
 }
 
 export function 팝업_액션인가(action: FeedAction): action is PopupAction {
-  return (action as any).message != null;
+  return action.type === 'popup';
+}
+
+export function 바텀싯_액션인가(
+  action: FeedAction
+): action is BottomSheetAction {
+  return (
+    action.type === 'bottom-sheet_toss' ||
+    action.type === 'bottom-sheet_account'
+  );
 }
 
 export interface FeedEntity {
@@ -62,6 +80,7 @@ export interface RawFeedData {
   contents: Array<{
     imageSrc: string;
     action: {
+      type: string;
       text?: string;
       color?: string;
     };

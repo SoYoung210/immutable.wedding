@@ -110,6 +110,7 @@
         {
           "imageSrc": "/assets/img/invitation-chat_ui_1.jpg",
           "action": {
+            "type": "normal",
             "text": "구글캘린더에 기록해두기",
             "color": "#9D6C3E"
           }
@@ -117,6 +118,7 @@
         {
           "imageSrc": "/assets/img/invitation-chat_ui_2.jpg",
           "action": {
+            "type": "link",
             "text": "빌라드지디 청담 위치 검색하기",
             "color": "#3B6045",
             "href": "https://m.map.naver.com/search2/site.naver?query=%EB%B9%8C%EB%9D%BC%EB%93%9C%EC%A7%80%EB%94%94%20%EC%B2%AD%EB%8B%B4&sm=hty&style=v5&code=1234779295#/map"
@@ -125,6 +127,7 @@
         {
           "imageSrc": "/assets/img/invitation-chat_ui_3.jpg",
           "action": {
+            "type": "bottom-sheet_toss",
             "text": "토스로 축의금 송금해주기",
             "color": "#3182F6",
             "href": "https://toss.me/송금으로결혼축하하기"
@@ -133,6 +136,7 @@
         {
           "imageSrc": "/assets/img/invitation-chat_ui_4.jpg",
           "action": {
+            "type": "button",
             "text": "계좌로 축의금 송금해주기",
             "color": "#6B31E7",
             "message": "계좌번호를 복사했어요"
