@@ -1,4 +1,4 @@
-import { BottomSheet } from '@components/bottom-sheet/BottonSheet';
+import { BottomSheet } from '@components/bottom-sheet';
 import useBooleanState from '@hooks/useBooleanState';
 import { FeedAction } from '@models/Feed';
 import { BottomSheetActionCTA } from '@pages/feeds/components/feed/action-cta/BottomSheetActionCTA';
@@ -14,7 +14,7 @@ export function TossTransferActionCTA({ action }: Props) {
   return (
     <>
       <BottomSheetActionCTA action={action} onClick={open} />
-      <BottomSheet
+      <BottomSheet.Root
         open={isOpen}
         onClose={close}
         title="소영, 재엽의 결혼을 축하해주세요 💖"
@@ -25,7 +25,7 @@ export function TossTransferActionCTA({ action }: Props) {
           <li>children</li>
           <li>children</li>
         </ul>
-      </BottomSheet>
+      </BottomSheet.Root>
     </>
   );
 }
