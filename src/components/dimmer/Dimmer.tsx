@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import React, { ComponentProps, MouseEvent, useCallback } from 'react';
 import { styled } from 'stitches.config';
 
-interface Props extends ComponentProps<typeof LayeredBackgroud> {
+interface Props extends ComponentProps<typeof LayeredBackground> {
   onDimmerClick?: () => void;
 }
 
@@ -17,13 +17,13 @@ export function Dimmer({ children, onDimmerClick, ...props }: Props) {
   );
 
   return (
-    <LayeredBackgroud onClick={handleDimmerClick} {...props}>
+    <LayeredBackground onClick={handleDimmerClick} {...props}>
       {children}
-    </LayeredBackgroud>
+    </LayeredBackground>
   );
 }
 
-const LayeredBackgroud = styled(motion.div, {
+const LayeredBackground = styled(motion.div, {
   content: ' ',
   position: 'fixed',
   top: 0,
