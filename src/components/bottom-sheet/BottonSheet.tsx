@@ -1,9 +1,10 @@
+import { Dimmer } from '@components/dimmer/Dimmer';
 import { Flex } from '@components/util/layout/Flex';
-import { fadeInOut } from '@motion/fadeInOut';
 import { PortalConsumer } from '@providers/PortalProvider';
 import { AnimatePresence, motion } from 'framer-motion';
-import React, { MouseEvent, ReactNode, useCallback } from 'react';
+import React, { ReactNode } from 'react';
 import { styled } from 'stitches.config';
+import { fadeInOut } from '@motion/fadeInOut';
 
 interface Props {
   open: boolean;
@@ -22,30 +23,11 @@ export function BottomSheet({
   children,
   rightAddon,
 }: Props) {
-  const handleDimmerClick = useCallback(
-    (event: MouseEvent<HTMLDivElement>) => {
-      if (event.target === event.currentTarget) {
-        onClose?.();
-      }
-    },
-    [onClose]
-  );
-
   return (
     <PortalConsumer>
       <AnimatePresence>
         {open ? (
-          <Dimmer
-            onClick={handleDimmerClick}
-            variants={fadeInOut.Variants}
-            initial={fadeInOut.HIDDEN}
-            animate={fadeInOut.VISIBLE}
-            exit={fadeInOut.HIDDEN}
-            transition={{
-              type: 'spring',
-              duration: 0.3,
-            }}
-          >
+          <Dimmer onDimmerClick={onClose} {...fadeInOut}>
             <BottomSheetWrapper
               initial={{ y: 120 }}
               animate={{ y: 0 }}
@@ -53,7 +35,7 @@ export function BottomSheet({
               transition={{
                 type: 'spring',
                 bounce: 0,
-                duration: 0.2,
+                duration: 0.3,
               }}
             >
               <Flex justify="between" css={{ width: '100%' }}>
@@ -72,17 +54,6 @@ export function BottomSheet({
   );
 }
 
-const Dimmer = styled(motion.div, {
-  content: ' ',
-  position: 'fixed',
-  top: 0,
-  right: 0,
-  bottom: 0,
-  left: 0,
-  zIndex: '$max',
-  backgroundColor: 'rgba(0, 0, 0, 0.7)',
-});
-
 const BottomSheetWrapper = styled(motion.div, {
   display: 'flex',
   flexDirection: 'column',
@@ -95,7 +66,7 @@ const BottomSheetWrapper = styled(motion.div, {
   maxWidth: '100%',
   minHeight: 184,
 
-  padding: '32px 28px',
+  padding: '28px 24px',
   boxSizing: 'border-box',
 
   borderRadius: '24px 24px 0px 0px',
