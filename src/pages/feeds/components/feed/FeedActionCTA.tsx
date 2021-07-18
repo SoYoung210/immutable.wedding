@@ -1,4 +1,5 @@
 import { useNotifications } from '@components/notification/NotificationContext';
+import { AccountTransferActionCTA } from '@pages/feeds/components/feed/action-cta/AccountTransferActionCTA';
 import { ActionCTA } from '@pages/feeds/components/feed/action-cta/ActionCTA';
 import { TossTransferActionCTA } from '@pages/feeds/components/feed/action-cta/TossTransferActionCTA';
 import { copyToClipboard } from '@utils/copyToClipboard';
@@ -55,7 +56,9 @@ export function FeedActionCTA({ action }: Props) {
     if (action.type === 'bottom-sheet_toss') {
       return <TossTransferActionCTA action={action} />;
     }
-    return <TossTransferActionCTA action={action} />;
+    if (action.type === 'bottom-sheet_account') {
+      return <AccountTransferActionCTA action={action} />;
+    }
   }
 
   return <ActionCTA backgroundColor={action.color}>{action.text}</ActionCTA>;

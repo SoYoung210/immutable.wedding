@@ -8,7 +8,7 @@ interface Props {
   action: FeedAction;
 }
 
-export function TossTransferActionCTA({ action }: Props) {
+export function AccountTransferActionCTA({ action }: Props) {
   const [isOpen, open, close] = useBooleanState();
 
   return (

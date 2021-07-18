@@ -32,7 +32,7 @@
         {
           "imageSrc": "/assets/img/invitation-chat_ui_4.jpg",
           "action": {
-            "type": "button",
+            "type": "bottom-sheet_account",
             "text": "계좌로 축의금 송금해주기",
             "color": "#6B31E7",
             "message": "계좌번호를 복사했어요"
