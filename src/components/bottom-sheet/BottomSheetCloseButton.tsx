@@ -1,14 +1,12 @@
 import CloseIcon from '@components/icon/Close';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
-import React from 'react';
+import React, { ButtonHTMLAttributes } from 'react';
 
-export const BottomSheetCloseButton = ({
-  onClick,
-}: {
-  onClick: () => void;
-}) => {
+type Props = ButtonHTMLAttributes<HTMLButtonElement>;
+
+export const BottomSheetCloseButton = (props: Props) => {
   return (
-    <button onClick={onClick}>
+    <button type="button" {...props}>
       <CloseIcon />
       <VisuallyHidden>닫기</VisuallyHidden>
     </button>
