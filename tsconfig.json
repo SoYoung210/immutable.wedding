@@ -24,6 +24,7 @@
       "@models/*": ["src/models/*"],
       "@constants/*": ["src/constants/*"],
       "@providers/*": ["src/providers/*"],
+      "@motion/*": ["src/motion/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
