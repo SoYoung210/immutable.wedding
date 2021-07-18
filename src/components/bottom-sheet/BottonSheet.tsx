@@ -25,6 +25,8 @@ interface Props {
   children?: ReactNode;
 }
 
+// TODO: body scroll lock
+// TODO: focus trap
 export const BottomSheet = forwardRef(
   (
     { open, onClose, title, description, children, rightAddon }: Props,
