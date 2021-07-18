@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import React, { ReactNode } from 'react';
 import { styled } from 'stitches.config';
 import { fadeInOut } from '@motion/fadeInOut';
+import { slideUpDown } from '@motion/slideUpDown';
 
 interface Props {
   open: boolean;
@@ -27,17 +28,8 @@ export function BottomSheet({
     <PortalConsumer>
       <AnimatePresence>
         {open ? (
-          <Dimmer onDimmerClick={onClose} {...fadeInOut}>
-            <BottomSheetWrapper
-              initial={{ y: 120 }}
-              animate={{ y: 0 }}
-              exit={{ y: 120 }}
-              transition={{
-                type: 'spring',
-                bounce: 0,
-                duration: 0.3,
-              }}
-            >
+          <Dimmer onDimmerClick={onClose} {...fadeInOut()}>
+            <BottomSheetWrapper {...slideUpDown()}>
               <Flex justify="between" css={{ width: '100%' }}>
                 <Flex direction="column">
                   <div>{title}</div>
