@@ -36,12 +36,7 @@ export function CommentIcon({ onClick, ...props }: Props) {
   );
 
   return (
-    <Image.Root
-      as="button"
-      css={{ zIndex: '$1' }}
-      onClick={handleClickLikeButton}
-      {...props}
-    >
+    <Image.Root as="button" onClick={handleClickLikeButton} {...props}>
       <motion.div animate={commentAnimationControl}>
         <Comment />
       </motion.div>

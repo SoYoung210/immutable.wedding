@@ -1,10 +1,15 @@
-import { ArrowRight as ArrowRightIcon } from '@components/icon/ArrowRight';
 import { useNotifications } from '@components/notification/NotificationContext';
-import { FeedAction, 링크_액션인가, 팝업_액션인가 } from 'src/models/Feed';
+import { AccountTransferActionCTA } from '@pages/feeds/components/feed/action-cta/AccountTransferActionCTA';
+import { ActionCTA } from '@pages/feeds/components/feed/action-cta/ActionCTA';
+import { TossTransferActionCTA } from '@pages/feeds/components/feed/action-cta/TossTransferActionCTA';
 import { copyToClipboard } from '@utils/copyToClipboard';
-import { CSSProps } from '@utils/styles';
-import React, { AllHTMLAttributes, HTMLAttributes, ReactNode } from 'react';
-import { styled } from 'stitches.config';
+import React from 'react';
+import {
+  FeedAction,
+  링크_액션인가,
+  바텀싯_액션인가,
+  팝업_액션인가,
+} from 'src/models/Feed';
 import { ToastWrapper } from './ToastWrapper';
 
 interface Props {
@@ -16,7 +21,7 @@ export function FeedActionCTA({ action }: Props) {
 
   if (링크_액션인가(action)) {
     return (
-      <FeedCTA
+      <ActionCTA
         as="a"
         backgroundColor={action.color}
         href={action.href}
@@ -24,18 +29,16 @@ export function FeedActionCTA({ action }: Props) {
         rel="noopener noreferrer"
       >
         {action.text}
-      </FeedCTA>
+      </ActionCTA>
     );
   }
 
   if (팝업_액션인가(action)) {
     return (
-      <FeedCTA
+      <ActionCTA
         as="button"
         backgroundColor={action.color}
-        css={{
-          width: '100%',
-        }}
+        css={{ width: '100%' }}
         type="button"
         onClick={() => {
           copyToClipboard('계좌번호지롱');
@@ -45,48 +48,18 @@ export function FeedActionCTA({ action }: Props) {
         }}
       >
         {action.text}
-      </FeedCTA>
+      </ActionCTA>
     );
   }
 
-  return <FeedCTA backgroundColor={action.color}>{action.text}</FeedCTA>;
-}
+  if (바텀싯_액션인가(action)) {
+    if (action.type === 'bottom-sheet_toss') {
+      return <TossTransferActionCTA action={action} />;
+    }
+    if (action.type === 'bottom-sheet_account') {
+      return <AccountTransferActionCTA action={action} />;
+    }
+  }
 
-type FeedCTAProps<ElementType extends keyof JSX.IntrinsicElements = 'div'> =
-  HTMLAttributes<AllHTMLAttributes<ElementType>> &
-    Omit<React.AllHTMLAttributes<ElementType>, 'as'> & {
-      as?: ElementType;
-      backgroundColor: string;
-      children: ReactNode;
-    } & CSSProps;
-
-function FeedCTA<ElementType extends keyof JSX.IntrinsicElements>({
-  as,
-  backgroundColor,
-  children,
-  css,
-  ...props
-}: FeedCTAProps<ElementType>) {
-  const Component = styled(as ?? 'div', {}) as any;
-
-  return (
-    <Component
-      css={{
-        backgroundColor,
-        display: 'flex',
-        padding: '10px 18px',
-
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        color: '$white',
-        fontSize: 14,
-        fontWeight: 'medium',
-        ...css,
-      }}
-      {...props}
-    >
-      {children}
-      <ArrowRightIcon />
-    </Component>
-  );
+  return <ActionCTA backgroundColor={action.color}>{action.text}</ActionCTA>;
 }
