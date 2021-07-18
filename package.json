@@ -15,6 +15,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@radix-ui/react-visually-hidden": "^0.0.14",
     "@stitches/react": "^0.2.2",
     "classnames": "^2.3.1",
     "framer-motion": "^4.1.17",
