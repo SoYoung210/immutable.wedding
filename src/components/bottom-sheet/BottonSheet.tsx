@@ -3,9 +3,9 @@ import { BottomSheetDescription } from '@components/bottom-sheet/BottomSheetDesc
 import { BottomSheetTitle } from '@components/bottom-sheet/BottomSheetTitle';
 import { Dimmer } from '@components/dimmer/Dimmer';
 import { Flex } from '@components/util/layout/Flex';
-import { fadeInOut } from '@motion/fadeInOut';
-import { slideUpDown } from '@motion/slideUpDown';
 import { PortalConsumer } from '@providers/PortalProvider';
+import { fadeInOut } from '@utils/animation/fadeInOut';
+import { slideUpDown } from '@utils/animation/slideUpDown';
 import { AnimatePresence, motion } from 'framer-motion';
 import React, {
   cloneElement,
