@@ -270,6 +270,7 @@ const stitches = createCss({
       xs: '11px',
       sm: '12px',
       base: '13px',
+      medium: '14px',
       lg: '16px',
       xl: '18px',
       xxl: '20px',
@@ -451,6 +452,11 @@ const stitches = createCss({
     spaceX: () => (value: string | number) => ({
       '& > :not([hidden]) ~ :not([hidden])': {
         marginLeft: value,
+      },
+    }),
+    spaceY: () => (value: string | number) => ({
+      '& > :not([hidden]) ~ :not([hidden])': {
+        marginTop: value,
       },
     }),
     insetX: () => (value: string | number) => ({
