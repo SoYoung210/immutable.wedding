@@ -1,15 +1,29 @@
 import { BottomSheet } from '@components/bottom-sheet';
 import { List } from '@components/list/List';
+import { useNotifications } from '@components/notification/NotificationContext';
 import useBooleanState from '@hooks/useBooleanState';
 import { FeedAction } from '@models/Feed';
 import { BottomSheetActionCTA } from '@pages/feeds/components/feed/action-cta/BottomSheetActionCTA';
-import React from 'react';
+import { useBankData } from '@pages/feeds/components/feed/action-cta/useBankData';
+import { ToastWrapper } from '@pages/feeds/components/feed/ToastWrapper';
+import { copyToClipboard } from '@utils/copyToClipboard';
+import React, { useCallback } from 'react';
+
+interface BankInfo {
+  holderName: string;
+  bankName: string;
+  accountNumber: string;
+  logo: string;
+}
 
 interface Props {
   action: FeedAction;
 }
 
 export function AccountTransferActionCTA({ action }: Props) {
+  const {
+    data: { groom, bridge },
+  } = useBankData();
   const [isOpen, open, close] = useBooleanState();
 
   return (
@@ -23,33 +37,46 @@ export function AccountTransferActionCTA({ action }: Props) {
       >
         <List css={{ my: '$16' }}>
           <List.Group title="신랑측">
-            <List.Item
-              leftAddon={
-                <List.Item.Image
-                  src="/assets/svg/tossbank.svg"
-                  alt="토스뱅크"
-                />
-              }
-              rightAddon={
-                <List.Item.Image src="/assets/svg/arrow-right.svg" alt="" />
-              }
-            >
-              재엽에게 송금하기
-              <List.Item.BottomText>KB국민 01063349281</List.Item.BottomText>
-            </List.Item>
-            <List.Item
-              leftAddon={
-                <List.Item.Image
-                  src="/assets/svg/kakaobank.svg"
-                  alt="카카오뱅크"
-                />
-              }
-            >
-              소영에게 송금하기
-            </List.Item>
+            {groom.map(BankAccountListItem)}
+          </List.Group>
+          <List.Group title="신부측">
+            {bridge.map(BankAccountListItem)}
           </List.Group>
         </List>
       </BottomSheet.Root>
     </>
+  );
+}
+
+function BankAccountListItem({
+  holderName,
+  bankName,
+  accountNumber,
+  logo,
+}: BankInfo) {
+  const { showNotification } = useNotifications();
+  const openToast = useCallback(() => {
+    copyToClipboard(accountNumber);
+    showNotification({
+      element: (
+        <ToastWrapper>
+          ✅ 계좌번호를 복사했어요.
+          <br /> {bankName} {accountNumber} (예금주:{holderName})
+        </ToastWrapper>
+      ),
+    });
+  }, [accountNumber, bankName, holderName, showNotification]);
+
+  return (
+    <List.Item
+      leftAddon={<List.Item.Image src={logo} alt={bankName} />}
+      rightAddon={<List.Item.ArrowIcon />}
+      onClick={openToast}
+    >
+      {holderName}
+      <List.Item.BottomText>
+        {bankName} {accountNumber}
+      </List.Item.BottomText>
+    </List.Item>
   );
 }

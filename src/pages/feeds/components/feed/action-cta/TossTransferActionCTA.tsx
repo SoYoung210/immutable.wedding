@@ -3,6 +3,7 @@ import { List } from '@components/list/List';
 import useBooleanState from '@hooks/useBooleanState';
 import { FeedAction } from '@models/Feed';
 import { BottomSheetActionCTA } from '@pages/feeds/components/feed/action-cta/BottomSheetActionCTA';
+import { useTransferData } from '@pages/feeds/components/feed/action-cta/useTransferData';
 import React from 'react';
 
 interface Props {
@@ -10,6 +11,9 @@ interface Props {
 }
 
 export function TossTransferActionCTA({ action }: Props) {
+  const {
+    data: { transfer },
+  } = useTransferData();
   const [isOpen, open, close] = useBooleanState();
 
   return (
@@ -22,34 +26,27 @@ export function TossTransferActionCTA({ action }: Props) {
         description="감사한 마음 잊지 않고 오랫동안 간직할게요."
       >
         <List css={{ my: '$16' }}>
-          <List.Item
-            leftAddon={
-              <List.Item.Image src="/assets/svg/tossbank.svg" alt="토스뱅크" />
-            }
-          >
-            재엽에게 송금하기
-          </List.Item>
-          <List.Item
-            leftAddon={
-              <List.Item.Image
-                src="/assets/svg/kakaobank.svg"
-                alt="카카오뱅크"
-              />
-            }
-          >
-            소영에게 송금하기
-          </List.Item>
+          {transfer.map(({ message, link, logo }) => {
+            return (
+              <List.Item
+                elementType="a"
+                leftAddon={<List.Item.Image src={logo} alt="토스로고" />}
+                href={link}
+              >
+                {message}
+              </List.Item>
+            );
+          })}
           <List.Divider />
           <List.Item
-            css={{ color: '$gray500 ' }}
+            css={{ color: '$gray500' }}
             leftAddon={
               <List.Item.Image src="/assets/svg/transfer-icon.svg" alt="송금" />
             }
-            rightAddon={
-              <List.Item.Image src="/assets/svg/arrow-right.svg" alt="" />
-            }
+            rightAddon={<List.Item.ArrowIcon />}
+            onClick={close}
           >
-            계좌번호로 송금하기
+            <List.Item.Text size="xl">계좌번호로 송금하기</List.Item.Text>
           </List.Item>
         </List>
       </BottomSheet.Root>
