@@ -16,6 +16,7 @@ export function ListItem({
   css,
   leftAddon,
   rightAddon,
+  elementType = 'li',
   ...props
 }: Props) {
   const contents = useMemo(() => {
@@ -47,7 +48,8 @@ export function ListItem({
 
   return (
     <Flex.CenterVertical
-      elementType="li"
+      elementType={elementType}
+      role={elementType === 'li' ? 'button' : ''}
       justify="between"
       css={mergeCss({ width: '100%' }, css)}
       {...props}
