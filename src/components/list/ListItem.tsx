@@ -1,15 +1,14 @@
 import { ListItemImage } from '@components/list/ListItemImage';
 import { ListItemText } from '@components/list/ListItemText';
 import { Flex } from '@components/util/layout/Flex';
-import { CSSProps, mergeCss } from '@utils/styles';
+import { mergeCss } from '@utils/styles';
 import React, { Children, ComponentProps, ReactNode, useMemo } from 'react';
 
-interface Props extends CSSProps {
+type Props = ComponentProps<typeof Flex['CenterVertical']> & {
   leftAddon?: ReactNode;
   rightAddon?: ReactNode;
-  children: ReactNode;
   spaceX?: number;
-}
+};
 
 export function ListItem({
   children,
@@ -17,6 +16,7 @@ export function ListItem({
   css,
   leftAddon,
   rightAddon,
+  ...props
 }: Props) {
   const contents = useMemo(() => {
     if (typeof children === 'string') {
@@ -50,6 +50,7 @@ export function ListItem({
       elementType="li"
       justify="between"
       css={mergeCss({ width: '100%' }, css)}
+      {...props}
     >
       <Flex.CenterVertical css={{ spaceX }}>
         {leftAddon}
@@ -62,6 +63,9 @@ export function ListItem({
 
 ListItem.Text = ListItemText;
 ListItem.Image = ListItemImage;
+ListItem.ArrowIcon = function ListItemArrowIcon() {
+  return <ListItemImage src="/assets/svg/arrow-right.svg" alt="" width={18} />;
+};
 ListItem.BottomText = function ListItemBottomText({
   weight = 'semibold',
   size = 'medium',
