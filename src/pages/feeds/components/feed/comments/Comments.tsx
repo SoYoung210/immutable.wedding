@@ -63,22 +63,28 @@ function Comment({
   }, []);
 
   return (
-    <Flex elementType="li" align="center" css={{ spaceX: '$8' }}>
-      <EmojiProfile id={uniqueId} />
-      <Text as="p" size="lg" css={{ flexGrow: 1, color: '$gray700' }}>
-        {contents}
-      </Text>
-      <Text
-        as="time"
-        dateTime={format(new Date(createAt), 'yyyy-MM-dd HH:mm:ss')}
-        size="sm"
-        css={{ color: '$gray500' }}
-      >
-        {formatDistanceToNow(new Date(createAt), {
-          locale: koLocale,
-          addSuffix: true,
-        })}
-      </Text>
+    <Flex elementType="li" css={{ spaceX: '$8' }}>
+      <EmojiProfile id={uniqueId} css={{ flexShrink: 0 }} />
+      <Flex css={{ spaceY: '$4' }} direction="column">
+        <Text
+          as="p"
+          size="lg"
+          css={{ flexGrow: 1, color: '$gray700', wordBreak: 'keep-all' }}
+        >
+          {contents}
+        </Text>
+        <Text
+          as="time"
+          dateTime={format(new Date(createAt), 'yyyy-MM-dd HH:mm:ss')}
+          size="sm"
+          css={{ flexShrink: 0, color: '$gray500' }}
+        >
+          {formatDistanceToNow(new Date(createAt), {
+            locale: koLocale,
+            addSuffix: true,
+          })}
+        </Text>
+      </Flex>
     </Flex>
   );
 }
