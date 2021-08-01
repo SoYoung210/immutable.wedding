@@ -7,6 +7,7 @@ import Head from 'next/head';
 import React, { useEffect } from 'react';
 import smoothscroll from 'smoothscroll-polyfill';
 import { styled } from 'stitches.config';
+import { SWRConfig } from 'swr';
 import '../styles/globals.css';
 
 const Main = styled('main', {
@@ -25,6 +26,11 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <>
+      <SWRConfig
+        value={{
+          suspense: true,
+        }}
+      ></SWRConfig>
       <NextSeo title="wedding.log" description="소영과 재엽의 웨딩로그" />
       <Head>
         <link
