@@ -28,7 +28,7 @@ export function CommentForm({ id, onSubmit }: Props) {
   const toastErrorMessage = useCallback(() => {
     showNotification({
       element: (
-        <ToastWrapper>🤫 메세지가 입력되지 않은 것 같아요!</ToastWrapper>
+        <ToastWrapper>😯 메세지가 입력되지 않은 것 같아요!</ToastWrapper>
       ),
     });
   }, [showNotification]);
