@@ -47,6 +47,7 @@ export function LikeIcon({ onClick, ...props }: Props) {
 
   const handleClickLikeButton = useCallback(
     (e: MouseEvent<HTMLButtonElement>) => {
+      e.preventDefault();
       onClick?.(e);
       toggleLike();
       likeAnimationControl.stop();
@@ -58,6 +59,7 @@ export function LikeIcon({ onClick, ...props }: Props) {
   return (
     <Image.Root
       as="button"
+      type="button"
       onClick={handleClickLikeButton}
       css={{
         p: '$8',
