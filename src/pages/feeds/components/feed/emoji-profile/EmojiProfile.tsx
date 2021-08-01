@@ -1,6 +1,7 @@
 import { Flex } from '@components/util/layout/Flex';
 import { getRandomNumberInRange } from '@utils/getRandomNumberInRange';
-import React from 'react';
+import { mergeCss } from '@utils/styles';
+import React, { ComponentProps } from 'react';
 import { styled } from 'stitches.config';
 
 const animalEmojiSets = [
@@ -30,15 +31,20 @@ const animalEmojiSets = [
   { emoji: '🦄', color: '$pink100' },
 ];
 
-interface Props {
+interface Props
+  extends Omit<ComponentProps<typeof Flex['Center']>, 'id' | 'children'> {
   id?: number;
 }
 
-export function EmojiProfile({ id }: Props) {
+export function EmojiProfile({ id, css, ...props }: Props) {
   const randomIndex = id ?? EmojiProfile.getRandom();
   const { emoji, color } = animalEmojiSets[randomIndex];
 
-  return <Circle css={{ backgroundColor: color }}>{emoji}</Circle>;
+  return (
+    <Circle css={mergeCss({ backgroundColor: color }, css)} {...(props as any)}>
+      {emoji}
+    </Circle>
+  );
 }
 
 EmojiProfile.getRandom = () =>
