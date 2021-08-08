@@ -7,47 +7,87 @@ import { format, formatDistanceToNow } from 'date-fns';
 import koLocale from 'date-fns/locale/ko';
 import React, { ReactText, useMemo } from 'react';
 import { styled } from 'stitches.config';
+import { motion } from 'framer-motion';
 
 interface Props {
   id: number;
 }
 
+const variants = {
+  hidden: {
+    height: 42,
+    overflow: 'hidden',
+    transition: {
+      damping: 5,
+      duration: 0.2,
+    },
+  },
+  visible: {
+    height: 'auto',
+    overflow: 'visible',
+  },
+};
+
 export function Comments({ id }: Props) {
   const [folded, fold, unfold] = useBooleanState(true);
-  const { data: comments } = useComments(id);
+  const { data: commentsData } = useComments(id);
 
-  if (comments == null || comments.length === 0) {
-    return null;
-  }
+  const comments = useMemo(() => {
+    if (commentsData == null || commentsData.length === 0) {
+      return {
+        first: null,
+        rest: [],
+      };
+    }
 
-  if (folded) {
-    return (
-      <div>
-        <CommentList>
-          {comments.slice(0, 1).map(({ id, message, createAt }) => {
-            return <Comment key={id} contents={message} createAt={createAt} />;
-          })}
-        </CommentList>
-        {comments.length - 1 > 0 ? (
-          <Button type="button" onClick={unfold}>
-            {comments.length - 1}개 더보기
-          </Button>
-        ) : null}
-      </div>
-    );
-  }
+    return {
+      first: commentsData[0],
+      rest: commentsData.slice(1),
+    };
+  }, [commentsData]);
+
+  const moreButtonProps = useMemo(() => {
+    if (commentsData == null || commentsData.length === 0) {
+      return null;
+    }
+
+    if (folded && commentsData.length - 1 > 0) {
+      return {
+        onClick: unfold,
+        text: `${commentsData.length - 1}개 더보기`,
+      };
+    }
+
+    return {
+      onClick: fold,
+      text: '접기',
+    };
+  }, [commentsData, fold, folded, unfold]);
 
   return (
-    <div>
-      <CommentList>
-        {comments.map(({ id, message, createAt }) => {
+    <>
+      <CommentList
+        initial="hidden"
+        animate={folded ? 'hidden' : 'visible'}
+        variants={variants}
+      >
+        {comments.first != null ? (
+          <Comment
+            contents={comments.first.message}
+            createAt={comments.first.createAt}
+          />
+        ) : null}
+
+        {comments.rest.map(({ id, message, createAt }) => {
           return <Comment key={id} contents={message} createAt={createAt} />;
         })}
       </CommentList>
-      <Button type="button" onClick={fold}>
-        접기
-      </Button>
-    </div>
+      {moreButtonProps != null ? (
+        <Button type="button" onClick={moreButtonProps.onClick}>
+          {moreButtonProps.text}
+        </Button>
+      ) : null}
+    </>
   );
 }
 
@@ -89,7 +129,7 @@ function Comment({
   );
 }
 
-const CommentList = styled('ul', {
+const CommentList = styled(motion.ol, {
   my: '$8',
   spaceY: '$6',
 });
