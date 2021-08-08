@@ -23,7 +23,6 @@ const animalEmojiSets = [
   { emoji: '🐔', color: '$pink100' },
   { emoji: '🐧', color: '$violet100' },
   { emoji: '🐤', color: '$amber100' },
-  { emoji: '🐦', color: '$emerald100' },
   { emoji: '🐙', color: '$red100' },
   { emoji: '🐡', color: '$lime100' },
   { emoji: '🐠', color: '$green100' },
@@ -42,7 +41,7 @@ export function EmojiProfile({ id, css, ...props }: Props) {
 
   return (
     <Circle css={mergeCss({ backgroundColor: color }, css)} {...(props as any)}>
-      {emoji}
+      <Emoji>{emoji}</Emoji>
     </Circle>
   );
 }
@@ -57,4 +56,9 @@ const Circle = styled(Flex.Center, {
   height: 24,
   border: '1px solid $gray100',
   fontSize: 'large',
+});
+
+// https://stackoverflow.com/questions/59558227/how-to-visually-horizontally-center-an-emoji-in-chrome
+const Emoji = styled('span', {
+  transform: 'translateX(3px)',
 });
