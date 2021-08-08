@@ -60,5 +60,5 @@ const Circle = styled(Flex.Center, {
 
 // https://stackoverflow.com/questions/59558227/how-to-visually-horizontally-center-an-emoji-in-chrome
 const Emoji = styled('span', {
-  transform: 'translateX(3px)',
+  transform: 'translateX(1px)',
 });

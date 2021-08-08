@@ -16,12 +16,22 @@ interface Props {
 
 const variants = {
   hidden: {
-    height: 47,
+    height: 42,
     overflow: 'hidden',
+    transition: {
+      type: 'spring',
+      damping: 40,
+      stiffness: 500,
+    },
   },
   visible: {
     height: 'auto',
     overflow: 'visible',
+    transition: {
+      type: 'spring',
+      damping: 40,
+      stiffness: 500,
+    },
   },
 };
 
