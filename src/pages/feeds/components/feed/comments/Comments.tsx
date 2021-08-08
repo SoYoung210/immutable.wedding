@@ -8,6 +8,7 @@ import koLocale from 'date-fns/locale/ko';
 import React, { ReactText, useMemo } from 'react';
 import { styled } from 'stitches.config';
 import { motion } from 'framer-motion';
+import { Button } from '@components/button';
 
 interface Props {
   id: number;
@@ -15,12 +16,8 @@ interface Props {
 
 const variants = {
   hidden: {
-    height: 42,
+    height: 47,
     overflow: 'hidden',
-    transition: {
-      damping: 5,
-      duration: 0.2,
-    },
   },
   visible: {
     height: 'auto',
@@ -83,7 +80,14 @@ export function Comments({ id }: Props) {
         })}
       </CommentList>
       {moreButtonProps != null ? (
-        <Button type="button" onClick={moreButtonProps.onClick}>
+        <Button
+          variant="text"
+          color="gray500"
+          type="button"
+          size="xs"
+          compact={true}
+          onClick={moreButtonProps.onClick}
+        >
           {moreButtonProps.text}
         </Button>
       ) : null}
@@ -132,8 +136,4 @@ function Comment({
 const CommentList = styled(motion.ol, {
   my: '$8',
   spaceY: '$6',
-});
-
-const Button = styled('button', {
-  color: '$gray500',
 });
