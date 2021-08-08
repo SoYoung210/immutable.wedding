@@ -69,6 +69,7 @@ const Form = styled('form', {
 
 const Input = styled('input', {
   flexGrow: 1,
+  cursor: 'text',
 });
 
 const SubmitButton = styled('button', {

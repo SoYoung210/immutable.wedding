@@ -488,6 +488,28 @@ const stitches = createCss({
         alignItems: 'center',
       };
     },
+    clickable: () => () => ({
+      position: 'relative',
+      cursor: 'pointer',
+      '&:after': {
+        content: '',
+        position: 'absolute',
+        width: '100%',
+        height: '100%',
+        top: '0',
+        left: '0',
+        backgroundColor: 'rgba(31, 46, 61, 0.04)',
+        pointerEvents: 'none',
+        borderRadius: 'inherit',
+        opacity: '0',
+        transition: 'opacity 0.2s',
+      },
+      '&:active': {
+        '&:after': {
+          opacity: 1,
+        },
+      },
+    }),
   },
 });
 
