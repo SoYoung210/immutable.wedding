@@ -83,16 +83,14 @@ function FeedItemContainer({
       <Header />
       {children}
       <DescriptionWrapper ref={descriptionRef}>
-        <Flex css={{ spaceX: '$8' }}>
-          <LikeIcon />
-          <CommentIcon onClick={handleCommentIconClick} />
-        </Flex>
-        <div className={css({ spaceX: '$8' })()}>
-          <Author>{account.name}</Author>
-          <Description>{description}</Description>
-        </div>
-        {tags != null ? <Tags values={tags} /> : null}
+        <LikeIcon />
+        <CommentIcon onClick={handleCommentIconClick} />
       </DescriptionWrapper>
+      <div className={css({ px: '$16' })()}>
+        <Author css={{ mr: '$12' }}>{account.name}</Author>
+        <Description>{description}</Description>
+        {tags != null ? <Tags values={tags} /> : null}
+      </div>
       <SSRSuspense fallback={null}>
         <CommentWrapper>
           {isInputMode ? (
@@ -110,9 +108,10 @@ const Wrapper = styled('section', {
   pb: '$32',
 });
 
-const DescriptionWrapper = styled('div', {
-  px: '$12',
-  mt: '-24px',
+const DescriptionWrapper = styled(Flex.CenterVertical, {
+  // FeedCarouselWrapper.DotSpace = mb - mt
+  margin: '-40px 16px 8px',
+  spaceX: '$8',
 });
 
 const CommentWrapper = styled('div', {

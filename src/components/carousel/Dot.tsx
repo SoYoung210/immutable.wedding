@@ -31,7 +31,7 @@ const RootElement = styled('div', {
   display: 'flex',
   justifyContent: 'center',
 });
-function Root({ gap = 7, css, children }: RootProps) {
+function Root({ gap = 6, css, children }: RootProps) {
   return (
     <RootElement css={mergeCss({ spaceX: gap }, css)}>{children}</RootElement>
   );

@@ -32,6 +32,7 @@ export function ActionCTA<ElementType extends keyof JSX.IntrinsicElements>({
         color: '$white',
         fontSize: 14,
         fontWeight: 'medium',
+        mt: '-3px',
         ...css,
       }}
       {...props}

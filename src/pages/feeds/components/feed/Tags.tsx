@@ -14,8 +14,8 @@ export function Tags({ values }: Props) {
           <Text
             key={value}
             weight="medium"
-            size="base"
-            css={{ color: '$blue500' }}
+            size="medium"
+            css={{ color: '$blue500', wordBreak: 'keep-all' }}
           >
             #{value}
           </Text>
