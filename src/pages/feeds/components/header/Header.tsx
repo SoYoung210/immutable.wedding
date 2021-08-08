@@ -1,8 +1,8 @@
-import { Flex } from '@components/util/layout/Flex';
-import React from 'react';
-import Image from '@components/image';
-import { EmptyHeart } from '@components/icon/Heart';
 import PaperAirplane from '@components/icon/PaperAirplane';
+import Image from '@components/image';
+import { Flex } from '@components/util/layout/Flex';
+import link from 'public/assets/data/link.json';
+import React from 'react';
 
 export function Header() {
   return (
@@ -25,8 +25,13 @@ export function Header() {
         </Image>
       </Flex>
       <Flex css={{ ml: 'auto', spaceX: '$24' }}>
-        <EmptyHeart />
-        <PaperAirplane />
+        <a
+          target="_blank"
+          rel="noreferrer noopener"
+          href={link['선물목록 노션 링크']}
+        >
+          <PaperAirplane />
+        </a>
       </Flex>
     </Flex.CenterVertical>
   );
