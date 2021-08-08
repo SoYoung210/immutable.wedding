@@ -9,11 +9,13 @@ export function Header() {
     <Flex.CenterVertical
       css={{
         zIndex: '$1',
-        py: '$20',
+        pt: '$20',
+        pb: '$12',
         position: 'sticky',
         top: 0,
         backgroundColor: '$white',
         px: '$15',
+        borderBottom: '1px solid $gray100',
       }}
     >
       <Flex
