@@ -59,6 +59,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
 
         <meta name="theme-color" content="#0135DB" />
+        <meta name="viewport" content="width=device-width,user-scalable=no" />
       </Head>
       <NotificationProvider>
         <PortalProvider>
