@@ -2,8 +2,8 @@ import { BottomSheet } from '@components/bottom-sheet';
 import { List } from '@components/list/List';
 import useBooleanState from '@hooks/useBooleanState';
 import { FeedAction } from '@models/Feed';
-import { BottomSheetActionCTA } from '@pages/feeds/components/feed/action-cta/BottomSheetActionCTA';
-import { useTransferData } from '@pages/feeds/components/feed/action-cta/useTransferData';
+import { BottomSheetActionCTA } from '@pages/feeds/components/feed/action-cta/bottom-sheet-action-cta/BottomSheetActionCTA';
+import { useTransferData } from '@pages/feeds/components/feed/action-cta/bottom-sheet-action-cta/toss-transfer/useTransferData';
 import React from 'react';
 
 interface Props {

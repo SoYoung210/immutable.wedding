@@ -1,8 +1,8 @@
 import { useNotifications } from '@components/notification/NotificationContext';
 import { useIsMobileWeb } from '@hooks/useIsMobileWeb';
-import { AccountTransferActionCTA } from '@pages/feeds/components/feed/action-cta/AccountTransferActionCTA';
 import { ActionCTA } from '@pages/feeds/components/feed/action-cta/ActionCTA';
-import { TossTransferActionCTA } from '@pages/feeds/components/feed/action-cta/TossTransferActionCTA';
+import { AccountTransferActionCTA } from '@pages/feeds/components/feed/action-cta/bottom-sheet-action-cta/account-transfer/AccountTransferActionCTA';
+import { TossTransferActionCTA } from '@pages/feeds/components/feed/action-cta/bottom-sheet-action-cta/toss-transfer/TossTransferActionCTA';
 import React from 'react';
 import {
   FeedAction,
