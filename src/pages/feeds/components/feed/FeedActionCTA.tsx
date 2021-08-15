@@ -1,4 +1,5 @@
 import { useNotifications } from '@components/notification/NotificationContext';
+import { useIsMobileWeb } from '@hooks/useIsMobileWeb';
 import { AccountTransferActionCTA } from '@pages/feeds/components/feed/action-cta/AccountTransferActionCTA';
 import { ActionCTA } from '@pages/feeds/components/feed/action-cta/ActionCTA';
 import { TossTransferActionCTA } from '@pages/feeds/components/feed/action-cta/TossTransferActionCTA';
@@ -17,6 +18,7 @@ interface Props {
 }
 
 export function FeedActionCTA({ action }: Props) {
+  const isMobileWeb = useIsMobileWeb();
   const { showNotification } = useNotifications();
 
   if (링크_액션인가(action)) {
@@ -24,7 +26,11 @@ export function FeedActionCTA({ action }: Props) {
       <ActionCTA
         as="a"
         backgroundColor={action.color}
-        href={action.href}
+        href={
+          isMobileWeb
+            ? action.mobileLink ?? action.href
+            : action.pcLink ?? action.href
+        }
         target="_blank"
         rel="noopener noreferrer"
       >

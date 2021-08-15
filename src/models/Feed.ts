@@ -27,6 +27,8 @@ interface Action {
 interface LinkAction extends Action {
   type: 'link';
   href: string;
+  mobileLink?: string;
+  pcLink?: string;
   message: never;
 }
 
