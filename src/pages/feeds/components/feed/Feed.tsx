@@ -2,6 +2,7 @@ import Image from '@components/image';
 import { Flex } from '@components/util/layout/Flex';
 import { SSRSuspense } from '@components/util/SSRSafeSusepnse';
 import useBooleanState from '@hooks/useBooleanState';
+import { useDoubleTap } from '@hooks/useDoubleTap';
 import { FeedEntity, 액션를_포함하는_피드인가 } from '@models/Feed';
 import { Author } from '@pages/feeds/components/feed/Author';
 import { CommentForm } from '@pages/feeds/components/feed/comment-form/CommentForm';
@@ -78,16 +79,16 @@ function FeedItemContainer({
     }
     toInputMode();
   }, [toInputMode]);
-  const handleFeedDbClick = useCallback(() => {
+  const { onClick: onDoubleClick } = useDoubleTap(() => {
     if (likeIconRef.current != null) {
       likeIconRef.current.click();
     }
-  }, []);
+  });
 
   return (
     <Wrapper key={id}>
       <Header />
-      <div onDoubleClick={handleFeedDbClick}>{children}</div>
+      <div onClick={onDoubleClick}>{children}</div>
       <DescriptionWrapper ref={descriptionRef}>
         <LikeIcon ref={likeIconRef} />
         <CommentIcon onClick={handleCommentIconClick} />
