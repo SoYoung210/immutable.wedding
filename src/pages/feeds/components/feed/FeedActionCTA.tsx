@@ -3,7 +3,6 @@ import { useIsMobileWeb } from '@hooks/useIsMobileWeb';
 import { AccountTransferActionCTA } from '@pages/feeds/components/feed/action-cta/AccountTransferActionCTA';
 import { ActionCTA } from '@pages/feeds/components/feed/action-cta/ActionCTA';
 import { TossTransferActionCTA } from '@pages/feeds/components/feed/action-cta/TossTransferActionCTA';
-import { copyToClipboard } from '@utils/copyToClipboard';
 import React from 'react';
 import {
   FeedAction,
@@ -47,7 +46,6 @@ export function FeedActionCTA({ action }: Props) {
         css={{ width: '100%' }}
         type="button"
         onClick={() => {
-          copyToClipboard('계좌번호지롱');
           showNotification({
             element: <ToastWrapper>✅ {action.message}</ToastWrapper>,
           });
