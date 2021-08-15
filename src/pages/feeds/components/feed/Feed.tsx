@@ -68,6 +68,7 @@ function FeedItemContainer({
   tags,
   children,
 }: FeedEntity & { children: ReactNode }) {
+  const likeIconRef = useRef<HTMLButtonElement | null>(null);
   const descriptionRef = useRef<HTMLDivElement | null>(null);
   const { data: account } = useAccount();
   const [isInputMode, toInputMode, toDisplayMode] = useBooleanState(false);
@@ -77,13 +78,18 @@ function FeedItemContainer({
     }
     toInputMode();
   }, [toInputMode]);
+  const handleFeedDbClick = useCallback(() => {
+    if (likeIconRef.current != null) {
+      likeIconRef.current.click();
+    }
+  }, []);
 
   return (
     <Wrapper key={id}>
       <Header />
-      {children}
+      <div onDoubleClick={handleFeedDbClick}>{children}</div>
       <DescriptionWrapper ref={descriptionRef}>
-        <LikeIcon />
+        <LikeIcon ref={likeIconRef} />
         <CommentIcon onClick={handleCommentIconClick} />
       </DescriptionWrapper>
       <div className={css({ px: '$16' })()}>
