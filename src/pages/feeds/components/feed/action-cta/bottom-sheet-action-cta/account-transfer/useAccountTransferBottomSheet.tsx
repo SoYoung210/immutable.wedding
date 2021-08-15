@@ -11,17 +11,17 @@ import React, { ComponentProps, useCallback, useMemo } from 'react';
 export function useAccountTransferBottomSheet() {
   const { open } = useDialog();
   const {
-    data: { groom, bridge },
+    data: { title, description, groom, bridge },
   } = useBankData();
 
   const openBottomSheet = useCallback(() => {
-    open(({ onConfirm }) => {
+    return open(({ onConfirm, onCancel }) => {
       return (
         <BottomSheet.Root
           open={true}
-          onClose={close}
-          title="소영, 재엽의 결혼을 축하해주세요 💖"
-          description="감사한 마음 잊지 않고 오랫동안 간직할게요."
+          onClose={onCancel}
+          title={title}
+          description={description}
         >
           <List css={{ my: '$16' }}>
             <List.Group title="신랑측">
@@ -38,7 +38,7 @@ export function useAccountTransferBottomSheet() {
         </BottomSheet.Root>
       );
     });
-  }, [bridge, groom, open]);
+  }, [bridge, description, groom, open, title]);
 
   return useMemo(() => ({ open: openBottomSheet }), [openBottomSheet]);
 }

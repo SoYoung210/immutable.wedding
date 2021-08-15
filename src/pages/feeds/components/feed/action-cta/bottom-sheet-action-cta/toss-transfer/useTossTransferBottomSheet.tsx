@@ -7,17 +7,17 @@ import React, { useCallback, useMemo } from 'react';
 export function useTossTransferBottomSheet() {
   const { open } = useDialog();
   const {
-    data: { transfer },
+    data: { title, description, transfer },
   } = useTransferData();
 
   const openBottomSheet = useCallback(() => {
-    open(({ onConfirm, onCancel }) => {
+    return open(({ onConfirm, onCancel }) => {
       return (
         <BottomSheet.Root
           open={true}
           onClose={onCancel}
-          title="소영, 재엽의 결혼을 축하해주세요 💖"
-          description="감사한 마음 잊지 않고 오랫동안 간직할게요."
+          title={title}
+          description={description}
         >
           <List css={{ my: '$16' }}>
             {transfer.map(({ message, link, logo }) => {
@@ -50,7 +50,7 @@ export function useTossTransferBottomSheet() {
         </BottomSheet.Root>
       );
     });
-  }, [open, transfer]);
+  }, [description, open, title, transfer]);
 
   return useMemo(() => ({ open: openBottomSheet }), [openBottomSheet]);
 }
