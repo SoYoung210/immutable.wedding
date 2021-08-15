@@ -21,7 +21,7 @@ import { css, styled } from 'stitches.config';
 import { FeedCarouselWrapper } from './FeedCarouselWrapper';
 import { Footer } from './footer/Footer';
 import { Header } from './header/Header';
-import { useAccount } from './useAccount';
+import { useAccount } from '@hooks/data/useAccount';
 
 interface Props {
   feeds: FeedEntity[];
