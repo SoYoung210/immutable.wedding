@@ -118,6 +118,8 @@ const DescriptionWrapper = styled(Flex.CenterVertical, {
   // FeedCarouselWrapper.DotSpace = mb - mt
   margin: '-40px 16px 8px',
   spaceX: '$8',
+  position: 'relative',
+  zIndex: '$1',
 });
 
 const CommentWrapper = styled('div', {

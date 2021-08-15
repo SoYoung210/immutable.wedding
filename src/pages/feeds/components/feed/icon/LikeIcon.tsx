@@ -16,6 +16,7 @@ import { ToastWrapper } from '../ToastWrapper';
 import iconStyles from './likeIcon.module.scss';
 import cx from 'classnames';
 import fadingZoom from '@utils/animation/fadingZoom';
+
 type Props = HTMLAttributes<HTMLButtonElement>;
 
 const StyledMotionDiv = styled(motion.div, {});
