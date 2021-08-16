@@ -9,6 +9,7 @@ import React, { useEffect } from 'react';
 import smoothscroll from 'smoothscroll-polyfill';
 import { styled } from 'stitches.config';
 import { SWRConfig } from 'swr';
+import og from 'public/assets/data/og.json';
 import '../styles/globals.css';
 
 const Main = styled('main', {
@@ -32,32 +33,40 @@ function MyApp({ Component, pageProps }: AppProps) {
           suspense: true,
         }}
       ></SWRConfig>
-      <NextSeo title="wedding.log" description="소영과 재엽의 웨딩로그" />
+      <NextSeo
+        title={og.title}
+        description={og.description}
+        openGraph={{
+          type: 'website',
+          url: og.url,
+          title: og.title,
+          description: og.description,
+          site_name: og.sitename,
+          images: [
+            {
+              url: '/assets/img/og_1200x630.jpg',
+              width: 1200,
+              height: 630,
+              alt: og.title,
+            },
+          ],
+        }}
+        twitter={{
+          cardType: 'summary_large_image',
+        }}
+        additionalLinkTags={[
+          {
+            rel: 'icon',
+            href: '/assets/favicon/icon_36x36.png',
+          },
+          {
+            rel: 'apple-touch-icon',
+            href: '/assets/favicon/icon_144x144.png',
+            sizes: '144x144',
+          },
+        ]}
+      />
       <Head>
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/assets/favicon/icon_36x36.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="48x48"
-          href="/assets/favicon/icon_48x48.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="96x96"
-          href="/assets/favicon/icon_96x96.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="144x144"
-          href="/assets/favicon/icon_144x144.png"
-        />
-
         <meta name="theme-color" content="#0135DB" />
         <meta name="viewport" content="width=device-width,user-scalable=no" />
       </Head>
