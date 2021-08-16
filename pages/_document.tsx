@@ -33,6 +33,7 @@ export default class Document extends NextDocument {
         <body>
           <Main />
           <NextScript />
+          <noscript>You need to enable JavaScript to run this app.</noscript>
         </body>
       </Html>
     );
