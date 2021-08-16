@@ -3,6 +3,7 @@ import { BottomSheetDescription } from '@components/bottom-sheet/BottomSheetDesc
 import { BottomSheetTitle } from '@components/bottom-sheet/BottomSheetTitle';
 import { Dimmer } from '@components/dimmer/Dimmer';
 import { Flex } from '@components/util/layout/Flex';
+import { useLockBodyScroll } from '@hooks/useBodyScrollLock';
 import { PortalConsumer } from '@providers/PortalProvider';
 import { fadeInOut } from '@utils/animation/fadeInOut';
 import { slideUpDown } from '@utils/animation/slideUpDown';
@@ -25,13 +26,13 @@ interface Props {
   children?: ReactNode;
 }
 
-// TODO: body scroll lock
-// TODO: focus trap
 export const BottomSheet = forwardRef(
   (
     { open, onClose, title, description, children, rightAddon }: Props,
     ref: Ref<HTMLDivElement>
   ) => {
+    useLockBodyScroll(open);
+
     return (
       <PortalConsumer>
         <AnimatePresence>
