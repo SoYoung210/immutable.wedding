@@ -6,6 +6,7 @@ import { useDoubleTap } from '@hooks/useDoubleTap';
 import { FeedEntity, 액션를_포함하는_피드인가 } from '@models/Feed';
 import { Author } from '@pages/feeds/components/feed/Author';
 import { CommentForm } from '@pages/feeds/components/feed/comment-form/CommentForm';
+import { SmallGrayButton } from '@pages/feeds/components/feed/comments/SmallGrayButton';
 import { Comments } from '@pages/feeds/components/feed/comments/Comments';
 import { Description } from '@pages/feeds/components/feed/Description';
 import { FeedActionCTA } from '@pages/feeds/components/feed/FeedActionCTA';
@@ -103,7 +104,14 @@ function FeedItemContainer({
           {isInputMode ? (
             <CommentForm id={id} onSubmit={toDisplayMode} />
           ) : (
-            <Comments id={id} />
+            <Comments
+              id={id}
+              inputModeButton={
+                <SmallGrayButton onClick={handleCommentIconClick}>
+                  댓글 남기기
+                </SmallGrayButton>
+              }
+            />
           )}
         </CommentWrapper>
       </SSRSuspense>

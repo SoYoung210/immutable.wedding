@@ -1,18 +1,10 @@
-import Text from '@components/text';
-import { Flex } from '@components/util/layout/Flex';
 import useBooleanState from '@hooks/useBooleanState';
+import { SmallGrayButton } from '@pages/feeds/components/feed/comments/SmallGrayButton';
+import { CommentRow } from '@pages/feeds/components/feed/comments/CommentRow';
 import { useComments } from '@pages/feeds/components/feed/comments/useComments';
-import { EmojiProfile } from '@pages/feeds/components/feed/emoji-profile/EmojiProfile';
-import { format, formatDistanceToNow } from 'date-fns';
-import koLocale from 'date-fns/locale/ko';
-import React, { ReactText, useMemo } from 'react';
-import { styled } from 'stitches.config';
 import { motion } from 'framer-motion';
-import { Button } from '@components/button';
-
-interface Props {
-  id: number;
-}
+import React, { ReactNode } from 'react';
+import { styled } from 'stitches.config';
 
 const variants = {
   hidden: {
@@ -35,44 +27,17 @@ const variants = {
   },
 };
 
-export function Comments({ id }: Props) {
-  const [folded, fold, unfold] = useBooleanState(true);
-  const { data: commentsData } = useComments(id);
+interface Props {
+  id: number;
+  inputModeButton: ReactNode;
+}
 
-  const comments = useMemo(() => {
-    if (commentsData == null || commentsData.length === 0) {
-      return {
-        first: null,
-        rest: [],
-      };
-    }
+export function Comments({ id, inputModeButton }: Props) {
+  const [folded, fold, unfold, toggle] = useBooleanState(true);
+  const { data: comments, isEmpty, hasOnlyOne } = useComments(id);
 
-    return {
-      first: commentsData[0],
-      rest: commentsData.slice(1),
-    };
-  }, [commentsData]);
-
-  const moreButtonProps = useMemo(() => {
-    if (commentsData == null || commentsData.length === 0) {
-      return null;
-    }
-
-    if (folded && commentsData.length - 1 > 0) {
-      return {
-        onClick: unfold,
-        text: `${commentsData.length - 1}개 더보기`,
-      };
-    }
-
-    return {
-      onClick: fold,
-      text: '접기',
-    };
-  }, [commentsData, fold, folded, unfold]);
-
-  if (comments.first == null) {
-    return null;
+  if (isEmpty) {
+    return <>{inputModeButton}</>;
   }
 
   return (
@@ -82,68 +47,28 @@ export function Comments({ id }: Props) {
         animate={folded ? 'hidden' : 'visible'}
         variants={variants}
       >
-        {comments.first != null ? (
-          <Comment
-            contents={comments.first.message}
-            createAt={comments.first.createAt}
-          />
-        ) : null}
-
-        {comments.rest.map(({ id, message, createAt }) => {
-          return <Comment key={id} contents={message} createAt={createAt} />;
+        {comments.map(comment => {
+          return (
+            <CommentRow
+              key={`${comment.id}--${comment.feedId}`}
+              createAt={comment.createAt}
+              onClick={toggle}
+            >
+              {comment.message}
+            </CommentRow>
+          );
         })}
       </CommentList>
-      {moreButtonProps != null ? (
-        <Button
-          variant="text"
-          color="gray500"
-          type="button"
-          size="xs"
-          compact={true}
-          onClick={moreButtonProps.onClick}
-        >
-          {moreButtonProps.text}
-        </Button>
-      ) : null}
+      {hasOnlyOne ? (
+        inputModeButton
+      ) : folded ? (
+        <SmallGrayButton onClick={unfold}>
+          {comments.length - 1}개 더보기
+        </SmallGrayButton>
+      ) : (
+        <SmallGrayButton onClick={fold}>접기</SmallGrayButton>
+      )}
     </>
-  );
-}
-
-function Comment({
-  contents,
-  createAt,
-}: {
-  contents: ReactText;
-  createAt: string;
-}) {
-  const uniqueId = useMemo(() => {
-    return EmojiProfile.getRandom();
-  }, []);
-
-  return (
-    <Flex elementType="li" css={{ spaceX: '$8' }}>
-      <EmojiProfile id={uniqueId} css={{ flexShrink: 0 }} />
-      <Flex css={{ spaceY: '$4' }} direction="column">
-        <Text
-          as="p"
-          size="lg"
-          css={{ flexGrow: 1, color: '$gray700', wordBreak: 'keep-all' }}
-        >
-          {contents}
-        </Text>
-        <Text
-          as="time"
-          dateTime={format(new Date(createAt), 'yyyy-MM-dd HH:mm:ss')}
-          size="sm"
-          css={{ flexShrink: 0, color: '$gray500' }}
-        >
-          {formatDistanceToNow(new Date(createAt), {
-            locale: koLocale,
-            addSuffix: true,
-          })}
-        </Text>
-      </Flex>
-    </Flex>
   );
 }
 

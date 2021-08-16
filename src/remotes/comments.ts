@@ -1,6 +1,6 @@
 import { api } from '@remotes/supabaseClient';
 
-interface Comment {
+export interface Comment {
   id: number;
   feedId: number;
   message: string;
