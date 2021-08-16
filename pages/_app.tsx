@@ -49,6 +49,12 @@ function MyApp({ Component, pageProps }: AppProps) {
               height: 630,
               alt: og.title,
             },
+            {
+              url: '/assets/img/og_800x418.jpg',
+              width: 800,
+              height: 418,
+              alt: og.title,
+            },
           ],
         }}
         twitter={{
