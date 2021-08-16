@@ -41,6 +41,7 @@ export async function getStaticProps({ params }: GetStaticPropsContext) {
   }
 
   const { base64, img } = await getPlaiceholder(rawHighlight.thumbnailImageSrc);
+
   const contents = await Promise.all(
     rawHighlight.contents.map(async content => {
       const { base64, img } = await getPlaiceholder(content.imageSrc);
@@ -104,13 +105,13 @@ export default function HighlightPage({ highlight, highlighIds }: Props) {
     <div
       style={{
         perspective: 800,
+        backgroundImage: `url(${대표_컨텐츠_이미지.blurDataURL})`,
+        backgroundSize: 'cover',
       }}
     >
       <StyledMotionWrapper
         style={{
-          position: 'relative',
           x: x,
-
           rotateY: rotateY,
         }}
         drag="x"
@@ -139,7 +140,6 @@ export default function HighlightPage({ highlight, highlighIds }: Props) {
                 <Image.Source src={대표_컨텐츠_이미지.src} alt="재여비" />
               </Image>
             </Image.Root>
-            {/* <CountdownBox /> */}
           </StyledMotionDiv>
         </Content>
       </StyledMotionWrapper>
@@ -155,7 +155,7 @@ const StyledMotionWrapper = styled(motion.section, {
 const Content = styled('div', {
   br: '$3',
   height: '100%',
-  position: 'relative',
+
   backgroundSize: 'cover',
 });
 
