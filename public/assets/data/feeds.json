@@ -14,18 +14,23 @@
         {
           "imageSrc": "/assets/img/invitation-chat_ui_1.jpg",
           "action": {
-            "type": "normal",
-            "text": "구글캘린더에 기록해두기",
-            "color": "#d97706"
+            "type": "link",
+            "text": "네이버 캘린더에 기록해두기",
+            "color": "#d97706",
+            "href": "https://m.map.naver.com/search2/site.naver?query=%EB%B9%8C%EB%9D%BC%EB%93%9C%EC%A7%80%EB%94%94%20%EC%B2%AD%EB%8B%B4&sm=hty&style=v5&code=1234779295#/map",
+            "mobileLink": "https://m.calendar.naver.com/#monthly/2021-10-23",
+            "pcLink": "https://calendar.naver.com/main#%7B%22sSection%22%3A%22scheduleEdit%22%2C%22oParameter%22%3A%7B%22sAction%22%3A%22insert%22%7D%7D"
           }
         },
         {
           "imageSrc": "/assets/img/invitation-chat_ui_2.jpg",
           "action": {
             "type": "link",
-            "text": "빌라드지디 청담 위치 검색하기",
+            "text": "빌라드지디 청담 위치 지도에서 보기",
             "color": "#3B6045",
-            "href": "https://m.map.naver.com/search2/site.naver?query=%EB%B9%8C%EB%9D%BC%EB%93%9C%EC%A7%80%EB%94%94%20%EC%B2%AD%EB%8B%B4&sm=hty&style=v5&code=1234779295#/map"
+            "href": "https://m.map.naver.com/search2/site.naver?query=%EB%B9%8C%EB%9D%BC%EB%93%9C%EC%A7%80%EB%94%94%20%EC%B2%AD%EB%8B%B4&sm=hty&style=v5&code=1234779295#/map",
+            "mobileLink": "https://m.map.naver.com/search2/site.naver?query=%EB%B9%8C%EB%9D%BC%EB%93%9C%EC%A7%80%EB%94%94%20%EC%B2%AD%EB%8B%B4&sm=hty&style=v5&code=1234779295#/map",
+            "pcLink": "https://map.naver.com/v5/entry/place/1234779295?c=14143750.278559763,4511859.040699022,13,0,0,0,dh&placePath=%2Fhome%3Fentry=plt"
           }
         },
         {

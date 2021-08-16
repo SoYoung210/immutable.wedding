@@ -1,4 +1,5 @@
 import { NotificationProvider } from '@components/notification/NotificationContext';
+import { DialogProvider } from '@hooks/useDialog';
 import { PortalProvider } from '@providers/PortalProvider';
 import { AnimateSharedLayout } from 'framer-motion';
 import { NextSeo } from 'next-seo';
@@ -58,14 +59,17 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
 
         <meta name="theme-color" content="#0135DB" />
+        <meta name="viewport" content="width=device-width,user-scalable=no" />
       </Head>
       <NotificationProvider>
         <PortalProvider>
-          <AnimateSharedLayout type="crossfade">
-            <Main>
-              <Component {...pageProps} />
-            </Main>
-          </AnimateSharedLayout>
+          <DialogProvider>
+            <AnimateSharedLayout type="crossfade">
+              <Main>
+                <Component {...pageProps} />
+              </Main>
+            </AnimateSharedLayout>
+          </DialogProvider>
         </PortalProvider>
       </NotificationProvider>
     </>

@@ -2,6 +2,7 @@ import Image from '@components/image';
 import { Flex } from '@components/util/layout/Flex';
 import { SSRSuspense } from '@components/util/SSRSafeSusepnse';
 import useBooleanState from '@hooks/useBooleanState';
+import { useDoubleTap } from '@hooks/useDoubleTap';
 import { FeedEntity, 액션를_포함하는_피드인가 } from '@models/Feed';
 import { Author } from '@pages/feeds/components/feed/Author';
 import { CommentForm } from '@pages/feeds/components/feed/comment-form/CommentForm';
@@ -68,6 +69,7 @@ function FeedItemContainer({
   tags,
   children,
 }: FeedEntity & { children: ReactNode }) {
+  const likeIconRef = useRef<HTMLButtonElement | null>(null);
   const descriptionRef = useRef<HTMLDivElement | null>(null);
   const { data: account } = useAccount();
   const [isInputMode, toInputMode, toDisplayMode] = useBooleanState(false);
@@ -77,13 +79,18 @@ function FeedItemContainer({
     }
     toInputMode();
   }, [toInputMode]);
+  const { onClick: onDoubleClick } = useDoubleTap(() => {
+    if (likeIconRef.current != null) {
+      likeIconRef.current.click();
+    }
+  });
 
   return (
     <Wrapper key={id}>
       <Header />
-      {children}
+      <div onClick={onDoubleClick}>{children}</div>
       <DescriptionWrapper ref={descriptionRef}>
-        <LikeIcon />
+        <LikeIcon ref={likeIconRef} />
         <CommentIcon onClick={handleCommentIconClick} />
       </DescriptionWrapper>
       <div className={css({ px: '$16' })()}>
@@ -112,6 +119,8 @@ const DescriptionWrapper = styled(Flex.CenterVertical, {
   // FeedCarouselWrapper.DotSpace = mb - mt
   margin: '-40px 16px 8px',
   spaceX: '$8',
+  position: 'relative',
+  zIndex: '$1',
 });
 
 const CommentWrapper = styled('div', {

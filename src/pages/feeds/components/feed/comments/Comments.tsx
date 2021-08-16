@@ -71,6 +71,10 @@ export function Comments({ id }: Props) {
     };
   }, [commentsData, fold, folded, unfold]);
 
+  if (comments.first == null) {
+    return null;
+  }
+
   return (
     <>
       <CommentList

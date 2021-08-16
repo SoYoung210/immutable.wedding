@@ -4,8 +4,10 @@ import { useNotifications } from '@components/notification/NotificationContext';
 import useBooleanState from '@hooks/useBooleanState';
 import { motion, useAnimation } from 'framer-motion';
 import React, {
+  forwardRef,
   HTMLAttributes,
   MouseEvent,
+  Ref,
   useCallback,
   useEffect,
 } from 'react';
@@ -14,11 +16,12 @@ import { ToastWrapper } from '../ToastWrapper';
 import iconStyles from './likeIcon.module.scss';
 import cx from 'classnames';
 import fadingZoom from '@utils/animation/fadingZoom';
+
 type Props = HTMLAttributes<HTMLButtonElement>;
 
 const StyledMotionDiv = styled(motion.div, {});
 
-export function LikeIcon({ onClick, ...props }: Props) {
+function _LikeIcon({ onClick, ...props }: Props, ref: Ref<HTMLButtonElement>) {
   const { showNotification } = useNotifications();
   const [like, , setLikeToFalse, toggleLike] = useBooleanState();
   const likeAnimationControl = useAnimation();
@@ -26,9 +29,7 @@ export function LikeIcon({ onClick, ...props }: Props) {
   const openToast = useCallback(() => {
     showNotification({
       element: (
-        <ToastWrapper>
-          💖 저희도 고마워요, 따로 저장은 하지 않을게요
-        </ToastWrapper>
+        <ToastWrapper>💖 저희도 고마워요, 댓글도 남겨주세요!</ToastWrapper>
       ),
     });
   }, [showNotification]);
@@ -58,6 +59,7 @@ export function LikeIcon({ onClick, ...props }: Props) {
 
   return (
     <Image.Root
+      ref={ref}
       as="button"
       type="button"
       onClick={handleClickLikeButton}
@@ -81,3 +83,4 @@ export function LikeIcon({ onClick, ...props }: Props) {
     </Image.Root>
   );
 }
+export const LikeIcon = forwardRef(_LikeIcon);

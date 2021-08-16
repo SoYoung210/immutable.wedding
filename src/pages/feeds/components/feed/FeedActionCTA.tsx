@@ -1,8 +1,8 @@
 import { useNotifications } from '@components/notification/NotificationContext';
-import { AccountTransferActionCTA } from '@pages/feeds/components/feed/action-cta/AccountTransferActionCTA';
+import { useIsMobileWeb } from '@hooks/useIsMobileWeb';
 import { ActionCTA } from '@pages/feeds/components/feed/action-cta/ActionCTA';
-import { TossTransferActionCTA } from '@pages/feeds/components/feed/action-cta/TossTransferActionCTA';
-import { copyToClipboard } from '@utils/copyToClipboard';
+import { AccountTransferActionCTA } from '@pages/feeds/components/feed/action-cta/bottom-sheet-action-cta/account-transfer/AccountTransferActionCTA';
+import { TossTransferActionCTA } from '@pages/feeds/components/feed/action-cta/bottom-sheet-action-cta/toss-transfer/TossTransferActionCTA';
 import React from 'react';
 import {
   FeedAction,
@@ -17,6 +17,7 @@ interface Props {
 }
 
 export function FeedActionCTA({ action }: Props) {
+  const isMobileWeb = useIsMobileWeb();
   const { showNotification } = useNotifications();
 
   if (링크_액션인가(action)) {
@@ -24,7 +25,11 @@ export function FeedActionCTA({ action }: Props) {
       <ActionCTA
         as="a"
         backgroundColor={action.color}
-        href={action.href}
+        href={
+          isMobileWeb
+            ? action.mobileLink ?? action.href
+            : action.pcLink ?? action.href
+        }
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -41,7 +46,6 @@ export function FeedActionCTA({ action }: Props) {
         css={{ width: '100%' }}
         type="button"
         onClick={() => {
-          copyToClipboard('계좌번호지롱');
           showNotification({
             element: <ToastWrapper>✅ {action.message}</ToastWrapper>,
           });
