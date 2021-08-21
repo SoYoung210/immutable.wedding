@@ -41,6 +41,10 @@ export default function ContentWrapper({
     if (exitX === FADE_OUT.RIGHT) {
       setPrev?.();
     }
+
+    return () => {
+      setExitX('100%');
+    };
   }, [exitX, setNext, setPrev]);
 
   function handleDragEnd(
