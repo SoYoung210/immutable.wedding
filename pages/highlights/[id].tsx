@@ -9,7 +9,7 @@ import { Header } from '@pages/highlights/components/Header';
 import { useAccount } from '@hooks/data/useAccount';
 
 import { styled } from 'stitches.config';
-import React, { useCallback, useLayoutEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import ContentWrapper from '@pages/highlights/components/ContentWrapper';
 
 async function fetchHighlights() {
@@ -78,7 +78,9 @@ export default function HighlightPage({
   highlighIds,
   highlightDataSet,
 }: Props) {
+  const { data: account } = useAccount();
   const router = useRouter();
+
   const [index, setIndex] = useState(() => {
     return (
       highlightDataSet?.findIndex(dataSet => dataSet.id === highlight?.id) ?? 0
@@ -93,10 +95,8 @@ export default function HighlightPage({
     setIndex(prev => prev + 1);
   }, []);
 
-  const { data: account } = useAccount();
-
-  useLayoutEffect(() => {
-    if (index > highlightDataSet!.length || index < 0) {
+  useEffect(() => {
+    if (index > highlightDataSet!.length - 1 || index < 0) {
       router.push('/');
     }
   }, [highlightDataSet, index, router]);
@@ -104,9 +104,8 @@ export default function HighlightPage({
   if (highlight == null || highlighIds == null || highlightDataSet == null) {
     return <div>잘못된 접근입니다</div>;
   }
+
   const 유효한_범위인가 = index > -1 && index < highlightDataSet.length;
-  const 이전_컨텐츠_대표_이미지 =
-    index > 0 ? highlightDataSet[index - 1].contents[0].image : null;
   const 다음_컨텐츠_대표_이미지 =
     index < highlightDataSet.length - 1
       ? highlightDataSet[index + 1].contents[0].image
@@ -178,13 +177,13 @@ export default function HighlightPage({
             </Image.Root>
           </StyledMotionDiv>
         </ContentWrapper>
-      ) : null}
+      ) : (
+        <div>다봤어욧</div>
+      )}
     </AnimatePresence>
   );
 }
 
 const StyledMotionDiv = styled(motion.div, {
-  position: 'absolute',
-  top: '50%',
-  transform: 'translateY(-50%)',
+  marginTop: `calc(25vh - 68px)`,
 });
