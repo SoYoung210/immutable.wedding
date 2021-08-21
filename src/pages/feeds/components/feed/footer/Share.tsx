@@ -15,8 +15,9 @@ export function Share() {
   const openBottomSheet = useOsShareBottomSheet({
     value: {
       title: '소영과 재엽의 wedding.log',
-      text: '소영과 재엽의 웨딩로그에 놀러오세요!',
-      url: !isServer() ? window.location.href : '',
+      text: `소영과 재엽의 웨딩로그에 놀러오세요! \n ${
+        !isServer() ? window.location.href : ''
+      }`,
     },
     onError: errorType => {
       if (errorType === 'ABORTED') {
