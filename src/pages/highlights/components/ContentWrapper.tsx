@@ -21,6 +21,7 @@ const FADE_OUT = {
   RIGHT: 250,
 };
 
+const DRAG_BREAK_POINT = 130;
 export default function ContentWrapper({
   imageContent,
   setNext,
@@ -46,11 +47,11 @@ export default function ContentWrapper({
     _: MouseEvent | TouchEvent | PointerEvent,
     info: PanInfo
   ) {
-    if (info.offset.x < -100) {
-      setExitX(FADE_OUT.LEFT);
+    if (info.offset.x < -DRAG_BREAK_POINT) {
+      return setExitX(FADE_OUT.LEFT);
     }
-    if (info.offset.x > 100) {
-      setExitX(FADE_OUT.RIGHT);
+    if (info.offset.x > DRAG_BREAK_POINT) {
+      return setExitX(FADE_OUT.RIGHT);
     }
   }
 
@@ -82,6 +83,7 @@ export default function ContentWrapper({
           style={{
             scale,
             backgroundImage: `url(${imageContent.blurDataURL})`,
+            width: '100%',
           }}
         >
           {children}
