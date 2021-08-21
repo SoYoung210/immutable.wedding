@@ -92,7 +92,7 @@ export default function HighlightPage({
   }, []);
 
   const setPrev = useCallback(() => {
-    setIndex(prev => prev + 1);
+    setIndex(prev => prev - 1);
   }, []);
 
   useEffect(() => {
