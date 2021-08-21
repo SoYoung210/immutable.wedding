@@ -3,6 +3,7 @@ import { Highlight, RawHighlightData } from '@models/Highlight';
 import {
   AnimatePresence,
   motion,
+  PanInfo,
   useMotionValue,
   useTransform,
 } from 'framer-motion';
@@ -14,8 +15,7 @@ import { Header } from '@pages/highlights/components/Header';
 import { useAccount } from '@hooks/data/useAccount';
 
 import { styled } from 'stitches.config';
-import React, { useEffect, useRef, useState } from 'react';
-import { useHighlightById } from '@pages/highlights/hooks/useHighlight';
+import React, { useLayoutEffect, useState } from 'react';
 
 async function fetchHighlights() {
   const highlightJson = (await import('public/assets/data/highlights.json'))
@@ -78,114 +78,101 @@ export async function getStaticProps({ params }: GetStaticPropsContext) {
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
+function Content2(props: any) {
+  const x = useMotionValue(0);
+  const scale = useTransform(x, [-150, 0, 150], [0.5, 1, 0.5]);
+  function handleDragEnd(_, info: PanInfo) {
+    if (info.offset.x < -100) {
+      props.setExitX('-250px');
+      props.setIndex(props.index + 1);
+    }
+    if (info.offset.x > 100) {
+      props.setExitX('250px');
+      props.setIndex(props.index - 1);
+    }
+  }
+
+  return (
+    <StyledMotionWrapper
+      style={{
+        x,
+        width: '100%',
+        cursor: 'grab',
+      }}
+      drag={props.drag}
+      dragConstraints={{
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0,
+      }}
+      onDragEnd={handleDragEnd}
+      whileTap={{ cursor: 'grabbing' }}
+      initial={props.initial}
+      animate={props.animate}
+      transition={props.transition}
+      exit={{
+        x: props.exitX,
+        opacity: 0,
+        scale: 0.5,
+        transition: { duration: 0.2 },
+      }}
+    >
+      <BackgroundMotionDiv
+        style={{
+          scale,
+          backgroundImage: `url(${props.대표_컨텐츠_이미지.blurDataURL})`,
+        }}
+      >
+        {props.children}
+      </BackgroundMotionDiv>
+    </StyledMotionWrapper>
+  );
+}
 export default function HighlightPage({
   highlight,
   highlighIds,
   highlightDataSet,
 }: Props) {
   const router = useRouter();
-  const [index, setIndex] = useState(0);
-  const pageId = router.query.id as string;
+  const [index, setIndex] = useState(() => {
+    return (
+      highlightDataSet?.findIndex(dataSet => dataSet.id === highlight?.id) ?? 0
+    );
+  });
+  const [exitX, setExitX] = useState('100%');
 
   const { data: account } = useAccount();
-  const routerChangeRef = useRef(true);
 
-  const x = useMotionValue(0);
-  console.log(highlightDataSet);
-  const [exitX, setExitX] = useState<string | number>(x.get());
+  useLayoutEffect(() => {
+    console.log('indx', index);
+    if (index > highlightDataSet!.length || index < 0) {
+      router.push('/');
+    }
+  }, [highlightDataSet, index, router]);
 
-  const scale = useTransform(x, [0, -80, -100], [1, 0.7, 0.5]);
-  const opacity = useTransform(x, [0, -80, -100], [1, 0.7, 0.5]);
-
-  const nextScale = useTransform(x, [0, -100], [0.5, 1]);
-  const nextPositionX = useTransform(x, [0, -100, -150], [520, 300, 0]);
-  const nextOpacity = useTransform(x, [0, -100, 150], [0.5, 0.7, 1]);
-  // const rotate = useTransform(x, [-150, 0, 150], [-45, 0, 45], {
-  //   clamp: false,
-  // });
-  // const rotateY = useTransform(x, [0, -60], [0, -60]);
-
-  useEffect(() => {
-    console.log('routerChangeRef', routerChangeRef.current);
-    // console.log('routerChangeRef', routerChangeRef.current);
-  }, []);
-
-  const currentIdIndex = highlighIds?.findIndex(id => id === Number(pageId));
-  const 유효한_접근인가 =
-    highlighIds != null &&
-    currentIdIndex != null &&
-    currentIdIndex !== highlighIds.length - 1;
-
-  const nextHrefId = !유효한_접근인가
-    ? null
-    : // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      highlighIds![currentIdIndex! + 1];
-  const nextHref = nextHrefId == null ? '/' : `/highlights/${nextHrefId}`;
-
-  const nextData = useHighlightById({
-    id: nextHrefId == null ? -1 : nextHrefId,
-  });
-
-  useEffect(() => {
-    const unsubscribeX = x.onChange(v => {
-      const 라우트_이동_액션인가 = x.getPrevious() > v;
-
-      console.log(routerChangeRef.current);
-      console.log('v: ', v);
-      if (라우트_이동_액션인가 && v < -30 && routerChangeRef.current) {
-        // router.push(nextHref);
-      }
-    });
-
-    return () => {
-      unsubscribeX();
-    };
-  }, [nextHref, router, x]);
-
-  if (highlight == null || highlighIds == null) {
+  if (highlight == null || highlighIds == null || highlightDataSet == null) {
     return <div>잘못된 접근입니다</div>;
   }
-
-  const 대표_컨텐츠_이미지 = highlight.contents[0].image;
-  const 다음_컨텐츠_이미지 = nextData?.contents[0].imageSrc;
+  const 이전_컨텐츠_대표_이미지 =
+    index > 0 ? highlightDataSet[index - 1].contents[0].image : null;
+  const 다음_컨텐츠_대표_이미지 =
+    index < highlightDataSet.length - 1
+      ? highlightDataSet[index + 1].contents[0].image
+      : null;
+  const 대표_컨텐츠_이미지 = highlightDataSet[index].contents[0].image;
 
   return (
-    <>
-      <StyledMotionWrapper
-        key={`${index}=${pageId}`}
-        style={{
-          x,
-          cursor: 'grab',
-          backgroundImage: `url(${대표_컨텐츠_이미지.blurDataURL})`,
-          backgroundSize: 'cover',
-          scale,
-          opacity,
-          position: 'relative',
-          overflow: 'hidden',
-        }}
-        // animate={{ scale: 1, y: 0, opacity: 1 }}
-        transition={{
-          opacity: { duration: 0.2 },
-        }}
-        drag="x"
-        dragConstraints={{
-          top: 0,
-          right: 0,
-          bottom: 0,
-          left: 0,
-        }}
-        // onDragEnd={handleDragEnd}
-        whileTap={{ cursor: 'grabbing' }}
-        // exit={{
-        //   x: exitX,
-        //   opacity: 0,
-        //   scale: 0.5,
-        //   transition: { duration: 0.2 },
-        // }}
-      >
-        <Content
-          style={{
-            backgroundImage: `url(${대표_컨텐츠_이미지.blurDataURL})`,
+    <AnimatePresence initial={false}>
+      {다음_컨텐츠_대표_이미지 != null ? (
+        <Content2
+          key={index + 1}
+          대표_컨텐츠_이미지={다음_컨텐츠_대표_이미지}
+          initial={{ scale: 0, y: 105, opacity: 0 }}
+          animate={{ scale: 0.75, y: 30, opacity: 0.5 }}
+          transition={{
+            scale: { duration: 0.2 },
+            opacity: { duration: 0.4 },
           }}
         >
           <Header
@@ -200,58 +187,62 @@ export default function HighlightPage({
             transition={{ duration: 0.3 }}
           >
             <Image.Root>
-              <Image {...대표_컨텐츠_이미지} width={520} height={520}>
-                <Image.Source src={대표_컨텐츠_이미지.src} alt="재여비" />
+              <Image {...다음_컨텐츠_대표_이미지} width={520} height={520}>
+                <Image.Source src={다음_컨텐츠_대표_이미지.src} alt="재여비" />
               </Image>
             </Image.Root>
           </StyledMotionDiv>
-        </Content>
-      </StyledMotionWrapper>
+        </Content2>
+      ) : null}
 
-      {/* <NextContent
-          style={{
-            backgroundImage: `url(${다음_컨텐츠_이미지})`,
-            scale: nextScale,
-            x: nextPositionX,
-            opacity: nextOpacity,
-          }}
+      <Content2
+        key={index}
+        대표_컨텐츠_이미지={대표_컨텐츠_이미지}
+        animate={{ scale: 1, y: 0, opacity: 1 }}
+        drag="x"
+        transition={{
+          type: 'spring',
+          stiffness: 300,
+          damping: 20,
+          opacity: { duration: 0.2 },
+        }}
+        exitX={exitX}
+        setExitX={setExitX}
+        index={index}
+        setIndex={setIndex}
+      >
+        <Header thumbnailImage={highlight.thumbnailImage} onClose={router.back}>
+          {account.name}
+        </Header>
+        <StyledMotionDiv
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
         >
-          {다음_컨텐츠_이미지 != null ? (
-            <StyledMotionDiv
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.3 }}
-            >
-              <Image.Root>
-                <Image width={520} height={520}>
-                  <Image.Source src={다음_컨텐츠_이미지} alt="재여비" />
-                </Image>
-              </Image.Root>
-            </StyledMotionDiv>
-          ) : null}
-        </NextContent> */}
-    </>
+          <Image.Root>
+            <Image {...대표_컨텐츠_이미지} width={520} height={520}>
+              <Image.Source src={대표_컨텐츠_이미지.src} alt="재여비" />
+            </Image>
+          </Image.Root>
+        </StyledMotionDiv>
+      </Content2>
+    </AnimatePresence>
   );
 }
 
 const StyledMotionWrapper = styled(motion.section, {
-  backgroundColor: '$black',
+  backgroundColor: '$transparent',
   height: '100vh',
 
-  position: 'relative',
-  // zIndex: '$1',
-});
-
-const Content = styled('div', {
-  br: '$3',
-  height: '100%',
-  backgroundSize: 'cover',
-});
-
-const NextContent = styled(motion.div, {
   position: 'absolute',
-  width: '100%',
-  top: '50%',
+  top: 0,
+});
+
+const BackgroundMotionDiv = styled(motion.div, {
+  height: '100%',
+  br: '$3',
+
+  backgroundSize: 'cover',
 });
 
 const StyledMotionDiv = styled(motion.div, {
