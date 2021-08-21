@@ -55,7 +55,7 @@ export function Feed({ feeds }: Props) {
   return (
     <motion.div {...fadeEntrance.y()} transition={{ duration: 0.4 }}>
       {feeds.map(feed => (
-        <FeedItemContainer {...feed}>
+        <FeedItemContainer key={feed.id} {...feed}>
           {renderContent(feed.contents)}
         </FeedItemContainer>
       ))}
