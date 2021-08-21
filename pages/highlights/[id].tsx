@@ -32,7 +32,6 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }: GetStaticPropsContext) {
   const rawHighlightDataSet = await fetchHighlights();
-  const highlighIds = rawHighlightDataSet.map(({ id }) => id);
 
   const highlightDataSet = await Promise.all(
     rawHighlightDataSet.map(async highlightData => {
@@ -67,17 +66,13 @@ export async function getStaticProps({ params }: GetStaticPropsContext) {
   }
 
   return {
-    props: { highlight: currentHighlight, highlighIds, highlightDataSet },
+    props: { highlight: currentHighlight, highlightDataSet },
   };
 }
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
-export default function HighlightPage({
-  highlight,
-  highlighIds,
-  highlightDataSet,
-}: Props) {
+export default function HighlightPage({ highlight, highlightDataSet }: Props) {
   const { data: account } = useAccount();
   const router = useRouter();
 
@@ -101,7 +96,7 @@ export default function HighlightPage({
     }
   }, [highlightDataSet, index, router]);
 
-  if (highlight == null || highlighIds == null || highlightDataSet == null) {
+  if (highlight == null || highlightDataSet == null) {
     return <div>잘못된 접근입니다</div>;
   }
 
