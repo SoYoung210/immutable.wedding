@@ -9,7 +9,7 @@ import { Header } from '@pages/highlights/components/Header';
 import { useAccount } from '@hooks/data/useAccount';
 
 import { styled } from 'stitches.config';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import ContentWrapper from '@pages/highlights/components/ContentWrapper';
 
 async function fetchHighlights() {
@@ -83,28 +83,31 @@ export default function HighlightPage({ highlight, highlightDataSet }: Props) {
   });
 
   const setNext = useCallback(() => {
+    if (index === highlightDataSet!.length - 1) {
+      router.push('/');
+      return;
+    }
+
     setIndex(prev => prev + 1);
-  }, []);
+  }, [highlightDataSet, index, router]);
 
   const setPrev = useCallback(() => {
-    setIndex(prev => prev - 1);
-  }, []);
-
-  useEffect(() => {
-    if (index > highlightDataSet!.length - 1 || index < 0) {
+    if (index === 0) {
       router.push('/');
+      return;
     }
-  }, [highlightDataSet, index, router]);
+
+    setIndex(prev => prev - 1);
+  }, [index, router]);
 
   if (highlight == null || highlightDataSet == null) {
     return <div>잘못된 접근입니다</div>;
   }
 
   const 유효한_범위인가 = index > -1 && index < highlightDataSet.length;
-  const 다음_컨텐츠_대표_이미지 =
-    index < highlightDataSet.length - 1
-      ? highlightDataSet[index + 1].contents[0].image
-      : null;
+  const 다음_컨텐츠_대표_이미지 = 유효한_범위인가
+    ? highlightDataSet[index + 1].contents[0].image
+    : null;
   const 대표_컨텐츠_이미지 = 유효한_범위인가
     ? highlightDataSet[index].contents[0].image
     : null;
@@ -172,9 +175,7 @@ export default function HighlightPage({ highlight, highlightDataSet }: Props) {
             </Image.Root>
           </StyledMotionDiv>
         </ContentWrapper>
-      ) : (
-        <div>다봤어욧</div>
-      )}
+      ) : null}
     </AnimatePresence>
   );
 }
