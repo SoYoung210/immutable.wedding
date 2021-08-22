@@ -21,7 +21,7 @@ const FADE_OUT = {
   RIGHT: 250,
 };
 
-const DRAG_BREAK_POINT = 130;
+const DRAG_BREAK_POINT = 180;
 export default function ContentWrapper({
   imageContent,
   setNext,
@@ -67,9 +67,9 @@ export default function ContentWrapper({
         cursor: 'grab',
       }}
       dragConstraints={{
-        top: 0,
+        // top: 0,
         right: 0,
-        bottom: 0,
+        // bottom: 0,
         left: 0,
       }}
       onDragEnd={handleDragEnd}
@@ -99,15 +99,17 @@ export default function ContentWrapper({
 
 const StyledMotionWrapper = styled(motion.section, {
   backgroundColor: '$transparent',
+
   height: '100vh',
+  maxHeight: '-webkit-fill-available',
 
   position: 'absolute',
   top: 0,
 });
 
 const BackgroundMotionDiv = styled(motion.div, {
-  height: '100%',
   br: '$3',
 
   backgroundSize: 'cover',
+  height: '100%',
 });
