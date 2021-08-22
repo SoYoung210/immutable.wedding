@@ -105,9 +105,11 @@ export default function HighlightPage({ highlight, highlightDataSet }: Props) {
   }
 
   const 유효한_범위인가 = index > -1 && index < highlightDataSet.length;
-  const 다음_컨텐츠_대표_이미지 = 유효한_범위인가
-    ? highlightDataSet[index + 1].contents[0].image
-    : null;
+
+  const 다음_컨텐츠_대표_이미지 =
+    index < highlightDataSet.length - 1
+      ? highlightDataSet[index + 1].contents[0].image
+      : null;
   const 대표_컨텐츠_이미지 = 유효한_범위인가
     ? highlightDataSet[index].contents[0].image
     : null;
