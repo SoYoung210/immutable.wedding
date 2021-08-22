@@ -21,7 +21,7 @@ const FADE_OUT = {
   RIGHT: 250,
 };
 
-const DRAG_BREAK_POINT = 180;
+const DRAG_BREAK_POINT = 150;
 export default function ContentWrapper({
   imageContent,
   setNext,
