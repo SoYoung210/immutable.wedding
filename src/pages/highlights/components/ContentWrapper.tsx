@@ -21,7 +21,7 @@ const FADE_OUT = {
   RIGHT: 250,
 };
 
-const DRAG_BREAK_POINT = 150;
+const DRAG_BREAK_POINT = 120;
 export default function ContentWrapper({
   imageContent,
   setNext,
@@ -67,9 +67,9 @@ export default function ContentWrapper({
         cursor: 'grab',
       }}
       dragConstraints={{
-        // top: 0,
+        top: 0,
         right: 0,
-        // bottom: 0,
+        bottom: 0,
         left: 0,
       }}
       onDragEnd={handleDragEnd}
@@ -101,10 +101,12 @@ const StyledMotionWrapper = styled(motion.section, {
   backgroundColor: '$transparent',
 
   height: '100vh',
-  maxHeight: '-webkit-fill-available',
 
   position: 'absolute',
   top: 0,
+
+  // framer-motion이 drag="x"때 pan-y넣는것 override
+  touchAction: 'pan-x !important',
 });
 
 const BackgroundMotionDiv = styled(motion.div, {
