@@ -52,7 +52,6 @@ export default function ContentWrapper({
       if (value > 20) {
         setPrevToBackgroundContent?.();
       }
-      console.log('value: ', value);
     });
 
     return () => {

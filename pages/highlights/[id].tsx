@@ -118,7 +118,6 @@ export default function HighlightPage({ highlight, highlightDataSet }: Props) {
     useState(다음_컨텐츠_대표_이미지);
 
   const setPrevToBackgroundContent = useCallback(() => {
-    console.log('set Prev');
     setBackgroundContent(이전_컨텐츠_대표_이미지);
   }, [이전_컨텐츠_대표_이미지]);
 
