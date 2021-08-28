@@ -2,8 +2,8 @@
   "data": [
     {
       "id": 1,
-      "name": "하이라이트1",
-      "thumbnailImageSrc": "/assets/img/temp.jpg",
+      "name": "빌라드지디 청담",
+      "thumbnailImageSrc": "/assets/img/ready_1.jpg",
       "contents": [{
         "id": 1,
         "imageSrc": "/assets/img/temp.jpg",
@@ -12,8 +12,8 @@
     },
     {
       "id": 2,
-      "name": "하이라이트2",
-      "thumbnailImageSrc": "/assets/img/temp.jpg",
+      "name": "신혼집 알아보기",
+      "thumbnailImageSrc": "/assets/img/ready_2.jpg",
       "contents": [{
         "id": 1,
         "imageSrc": "/assets/img/temp.jpg",
@@ -22,11 +22,11 @@
     },
     {
       "id": 3,
-      "name": "하이라이트3",
-      "thumbnailImageSrc": "/assets/img/temp.jpg",
+      "name": "상견례",
+      "thumbnailImageSrc": "/assets/img/ready_3.jpg",
       "contents": [{
         "id": 1,
-        "imageSrc": "/assets/img/temp.jpg",
+        "imageSrc": "/assets/img/ready_3.jpg",
         "theme": "dark"
       }]
     }

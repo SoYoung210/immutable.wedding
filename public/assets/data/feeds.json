@@ -4,10 +4,10 @@
       "id": 999,
       "contents": [
         {
-          "imageSrc": "/assets/img/temp.jpg",
+          "imageSrc": "/assets/img/intro_chat_ui_1.jpg",
           "action": {
             "type": "normal",
-            "text": "단순 메세지 노출",
+            "text": "출시하지 못한 모바일 청첩장 둘러보기",
             "color": "#7f1d1d"
           }
         },
@@ -57,13 +57,7 @@
       "id": 4,
       "contents": [
         {
-          "imageSrc": "/assets/img/temp.jpg"
-        },
-        {
-          "imageSrc": "/assets/img/temp.jpg"
-        },
-        {
-          "imageSrc": "/assets/img/temp.jpg"
+          "imageSrc": "/assets/img/feconf_1.jpg"
         },
         {
           "imageSrc": "/assets/img/temp.jpg"
@@ -82,7 +76,10 @@
           "imageSrc": "/assets/img/temp.jpg"
         },
         {
-          "imageSrc": "/assets/img/temp.jpg"
+          "imageSrc": "/assets/img/selfie_5.jpg"
+        },
+        {
+          "imageSrc": "/assets/img/selfie_6.jpg"
         }
       ],
       "description": "피드 설명",
