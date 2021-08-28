@@ -1,8 +1,6 @@
-# immutable.wedding
-
 <div align="center">
 
-  <img src="./public/assets/favicon/icon_144x144.png" width="144px" />
+  <img src="./assets/og_immutable.wedding.png" width="640px" />
 
 </div>
 
