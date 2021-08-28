@@ -34,7 +34,7 @@ wedding log template based on instagram design
 - Update `public/assets/data/*.json` with your information.
 - Add your contents image to `public/img`
 
-## 3. Publish with Vercel
+### 3. Publish with Vercel
 
 Deploy your wedding log using [Vercel](https://vercel.com/):
 
