@@ -1,17 +1,8 @@
-# immutable.wedding
-
 <div align="center">
 
-  <img src="./public/assets/favicon/icon_144x144.png" width="144px" />
+  <img src="./assets/og_immutable.wedding.png" width="480px" />
 
 </div>
-
-wedding log template based on instagram design
-
-![SoYoung GitHub](https://img.shields.io/github/followers/SoYoung210?label=soso&style=social)
-![JaeYeop GitHub](https://img.shields.io/github/followers/JaeYeopHan?label=Jbee&style=social)
-![JaeYeop Twitter Follow](https://img.shields.io/twitter/follow/JbeeLjyhanll?label=Follow%20Jbee&style=social)
-![SoYoung Twitter Follow](https://img.shields.io/twitter/follow/th096?label=Follow%20soso&style=social)
 
 ## 🍀 In this template
 
@@ -41,3 +32,14 @@ wedding log template based on instagram design
 Deploy your wedding log using [Vercel](https://vercel.com/):
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/SoYoung210/immutable.wedding)
+
+## ❣️ Authors
+
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+   <td align="center"><a href="https://github.com/JaeYeopHan"><img src="https://avatars.githubusercontent.com/u/17924127?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jbee</b></sub></a><br />📆 🎨 💻
+    <td align="center"><a href="https://so-so.dev"><img src="https://avatars0.githubusercontent.com/u/18658235?v=4?s=100" width="100px;" alt=""/><br /><sub><b>soso</b></sub></a><br />💻 🚇 📖
+  </tr>
+</table>
