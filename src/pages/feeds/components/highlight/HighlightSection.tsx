@@ -71,7 +71,9 @@ export function HighlightSection({ highlights }: Props) {
                     </StyledDiv>
                   </Image.Root>
                 </AnimatePresence>
-                <HighlightName css={{ mt: '$6', maxWidth: 60 }}>
+                <HighlightName
+                  css={{ mt: '$6', maxWidth: 60, wordBreak: 'keep-all' }}
+                >
                   {highlight.name}
                 </HighlightName>
               </StyledAnchor>
