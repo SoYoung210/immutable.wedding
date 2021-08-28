@@ -4,13 +4,6 @@
 
 </div>
 
-wedding log template based on instagram design
-
-![SoYoung GitHub](https://img.shields.io/github/followers/SoYoung210?label=soso&style=social)
-![JaeYeop GitHub](https://img.shields.io/github/followers/JaeYeopHan?label=Jbee&style=social)
-![JaeYeop Twitter Follow](https://img.shields.io/twitter/follow/JbeeLjyhanll?label=Follow%20Jbee&style=social)
-![SoYoung Twitter Follow](https://img.shields.io/twitter/follow/th096?label=Follow%20soso&style=social)
-
 ## 🍀 In this template
 
 - support anonymous comment with [supabase](https://supabase.io/)
@@ -39,3 +32,9 @@ wedding log template based on instagram design
 Deploy your wedding log using [Vercel](https://vercel.com/):
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/SoYoung210/immutable.wedding)
+
+## ❣️ Authors
+
+- soso: ![SoYoung GitHub](https://img.shields.io/github/followers/SoYoung210?label=soso&style=social) ![SoYoung Twitter Follow](https://img.shields.io/twitter/follow/th096?label=Follow%20soso&style=social)
+- Jbee: ![JaeYeop GitHub](https://img.shields.io/github/followers/JaeYeopHan?label=Jbee&style=social)
+![JaeYeop Twitter Follow](https://img.shields.io/twitter/follow/JbeeLjyhanll?label=Follow%20Jbee&style=social)
