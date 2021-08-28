@@ -5,11 +5,11 @@ import { AnimateSharedLayout } from 'framer-motion';
 import { NextSeo } from 'next-seo';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
+import og from 'public/assets/data/og.json';
 import React, { useEffect } from 'react';
 import smoothscroll from 'smoothscroll-polyfill';
 import { styled } from 'stitches.config';
 import { SWRConfig } from 'swr';
-import og from 'public/assets/data/og.json';
 import '../styles/globals.css';
 
 const Main = styled('main', {
@@ -43,13 +43,13 @@ function MyApp({ Component, pageProps }: AppProps) {
           site_name: og.sitename,
           images: [
             {
-              url: '/assets/img/og_1200x630.jpg',
+              url: '/assets/img/temp.jpg',
               width: 1200,
               height: 630,
               alt: og.title,
             },
             {
-              url: '/assets/img/og_800x418.jpg',
+              url: '/assets/img/temp.jpg',
               width: 800,
               height: 418,
               alt: og.title,
