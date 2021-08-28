@@ -4,7 +4,7 @@
       "id": 999,
       "contents": [
         {
-          "imageSrc": "/assets/img/hero.jpg",
+          "imageSrc": "/assets/img/intro_chat_ui_1.jpg",
           "action": {
             "type": "normal",
             "text": "우측으로 밀어서 모바일 청첩장 둘러보기",
@@ -15,8 +15,11 @@
           "imageSrc": "/assets/img/invitation-chat_ui_1.jpg",
           "action": {
             "type": "normal",
-            "text": "구글캘린더에 기록해두기",
-            "color": "#d97706"
+            "text": "네이버 캘린더에 기록해두기",
+            "color": "#d97706",
+            "href": "https://m.calendar.naver.com/#monthly/2021-10-23",
+            "mobileLink": "https://m.calendar.naver.com/#monthly/2021-10-23",
+            "pcLink": "https://calendar.naver.com/main#%7B%22sSection%22%3A%22scheduleEdit%22%2C%22oParameter%22%3A%7B%22sAction%22%3A%22insert%22%7D%7D"
           }
         },
         {
@@ -25,7 +28,9 @@
             "type": "link",
             "text": "빌라드지디 청담 위치 검색하기",
             "color": "#3B6045",
-            "href": "https://m.map.naver.com/search2/site.naver?query=%EB%B9%8C%EB%9D%BC%EB%93%9C%EC%A7%80%EB%94%94%20%EC%B2%AD%EB%8B%B4&sm=hty&style=v5&code=1234779295#/map"
+            "href": "https://m.map.naver.com/search2/site.naver?query=%EB%B9%8C%EB%9D%BC%EB%93%9C%EC%A7%80%EB%94%94%20%EC%B2%AD%EB%8B%B4&sm=hty&style=v5&code=1234779295#/map",
+            "mobileLink": "https://m.map.naver.com/search2/site.naver?query=%EB%B9%8C%EB%9D%BC%EB%93%9C%EC%A7%80%EB%94%94%20%EC%B2%AD%EB%8B%B4&sm=hty&style=v5&code=1234779295#/map",
+            "pcLink": "https://map.naver.com/v5/entry/place/1234779295?c=14143750.278559763,4511859.040699022,13,0,0,0,dh&placePath=%2Fhome%3Fentry=plt"
           }
         },
         {
@@ -98,22 +103,6 @@
       "id": 4,
       "contents": [
         {
-          "imageSrc": "/assets/img/ready_1.jpg"
-        },
-        {
-          "imageSrc": "/assets/img/ready_2.jpg"
-        },
-        {
-          "imageSrc": "/assets/img/ready_3.jpg"
-        }
-      ],
-      "description": "[준비로그] 본격적으로 웨딩홀을 알아보고 신혼집을 알아봤어요! 마지막 사진은 두근두근 상견례 사진입니다! 결혼 준비 소식은 상단 하이라이트로 계속 업로드 될 예정입니다!",
-      "tags": ["한눈에반해버린빌라드지디", "줄자대신몸으로", "이번생에상견례는처음이라", "밥이눈으로들어가는지", "코로들어가는지"]
-    },
-    {
-      "id": 5,
-      "contents": [
-        {
           "imageSrc": "/assets/img/feconf_1.jpg"
         },
         {
@@ -133,7 +122,7 @@
       "tags": ["국내최고", "프런트엔드컨퍼런스", "FEConf", "스태프와운영진사이", "올해도어김없이"]
     },
     {
-      "id": 6,
+      "id": 5,
       "contents": [
         {
           "imageSrc": "/assets/img/selfie_1.jpg"
@@ -149,6 +138,9 @@
         },
         {
           "imageSrc": "/assets/img/selfie_5.jpg"
+        },
+        {
+          "imageSrc": "/assets/img/selfie_6.jpg"
         }
       ],
       "description": "[셀카로그] 심심할 때마다 찍었던 저희 사진을 올려봐요. 저희는 스튜디오 촬영을 따로 안 했어요. 멋지게 차려입은 사진마고 소소한 일상 사진으로 청첩장을 구성해봤는데 어떠세요?\n👉  댓글로 신개념 모바일 청첩장 칭찬해주기",

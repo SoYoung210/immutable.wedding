@@ -1,4 +1,6 @@
 {
+  "title": "소영, 재엽의 결혼을 축하해주세요 💖",
+  "description": "감사한 마음 잊지 않고 오랫동안 간직할게요.",
   "transfer": [
     {
       "message": "재엽에게 송금하기",
@@ -7,7 +9,7 @@
     },
     {
       "message": "소영에게 송금하기",
-      "link": "https://toss.me/송금으로결혼축하하기",
+      "link": "https://toss.me/축하하는마음보내기",
       "logo": "/assets/svg/tossbank.svg"
     }
   ]
