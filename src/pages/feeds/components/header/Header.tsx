@@ -8,7 +8,7 @@ export function Header() {
   return (
     <Flex.CenterVertical
       css={{
-        zIndex: '$1',
+        zIndex: '$max',
         pt: '$20',
         pb: '$12',
         position: 'sticky',
