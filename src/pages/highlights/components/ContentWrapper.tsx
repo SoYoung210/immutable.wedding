@@ -39,6 +39,11 @@ export default function ContentWrapper({
   const [exitX, setExitX] = useState<string | number>('100%');
 
   useEffect(() => {
+    // 모바일에서 컨텐츠 넘겼을때 스크롤 밀리는 것 방지
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
+  useEffect(() => {
     const unsubscribeX = x.onChange(value => {
       if (value < -20) {
         setNextToBackgroundContent?.();
