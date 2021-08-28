@@ -14,6 +14,9 @@ interface Props extends DraggableProps, MotionProps {
   imageContent: NextImage | null;
   setNext?: () => void;
   setPrev?: () => void;
+
+  setPrevToBackgroundContent?: () => void;
+  setNextToBackgroundContent?: () => void;
 }
 
 const FADE_OUT = {
@@ -27,11 +30,30 @@ export default function ContentWrapper({
   setNext,
   setPrev,
   children,
+  setPrevToBackgroundContent,
+  setNextToBackgroundContent,
   ...props
 }: PropsWithChildren<Props>) {
   const x = useMotionValue(0);
   const scale = useTransform(x, [-150, 0, 150], [0.5, 1, 0.5]);
   const [exitX, setExitX] = useState<string | number>('100%');
+
+  useEffect(() => {
+    const unsubscribeX = x.onChange(value => {
+      if (value < -20) {
+        setNextToBackgroundContent?.();
+      }
+
+      if (value > 20) {
+        setPrevToBackgroundContent?.();
+      }
+      console.log('value: ', value);
+    });
+
+    return () => {
+      unsubscribeX();
+    };
+  }, [setNextToBackgroundContent, setPrevToBackgroundContent, x]);
 
   useEffect(() => {
     if (exitX === FADE_OUT.LEFT) {

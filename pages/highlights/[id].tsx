@@ -100,26 +100,40 @@ export default function HighlightPage({ highlight, highlightDataSet }: Props) {
     setIndex(prev => prev - 1);
   }, [index, router]);
 
-  if (highlight == null || highlightDataSet == null) {
-    return <div>잘못된 접근입니다</div>;
-  }
+  const dataLength = highlightDataSet?.length ?? 0;
+  const 유효한_범위인가 = index > -1 && index < dataLength;
 
-  const 유효한_범위인가 = index > -1 && index < highlightDataSet.length;
-
-  const 다음_컨텐츠_대표_이미지 =
-    index < highlightDataSet.length - 1
-      ? highlightDataSet[index + 1].contents[0].image
-      : null;
   const 대표_컨텐츠_이미지 = 유효한_범위인가
-    ? highlightDataSet[index].contents[0].image
+    ? highlightDataSet?.[index].contents[0].image
     : null;
 
-  return (
+  const 이전_컨텐츠_대표_이미지 =
+    index > 0 ? highlightDataSet?.[index - 1].contents[0].image : null;
+  const 다음_컨텐츠_대표_이미지 =
+    index < dataLength - 1
+      ? highlightDataSet?.[index + 1].contents[0].image
+      : null;
+
+  const [backgroundContent, setBackgroundContent] =
+    useState(다음_컨텐츠_대표_이미지);
+
+  const setPrevToBackgroundContent = useCallback(() => {
+    console.log('set Prev');
+    setBackgroundContent(이전_컨텐츠_대표_이미지);
+  }, [이전_컨텐츠_대표_이미지]);
+
+  const setNextToBackgroundContent = useCallback(() => {
+    setBackgroundContent(다음_컨텐츠_대표_이미지);
+  }, [다음_컨텐츠_대표_이미지]);
+
+  return highlight == null ? (
+    <div>잘못된 접근</div>
+  ) : (
     <AnimatePresence initial={false}>
-      {다음_컨텐츠_대표_이미지 != null ? (
+      {backgroundContent != null ? (
         <ContentWrapper
           key={index + 1}
-          imageContent={다음_컨텐츠_대표_이미지}
+          imageContent={backgroundContent}
           initial={{ scale: 0, y: 105, opacity: 0 }}
           animate={{ scale: 0.75, y: 30, opacity: 0.5 }}
           transition={{
@@ -139,8 +153,8 @@ export default function HighlightPage({ highlight, highlightDataSet }: Props) {
             transition={{ duration: 0.3 }}
           >
             <Image.Root>
-              <Image {...다음_컨텐츠_대표_이미지} width={520} height={520}>
-                <Image.Source src={다음_컨텐츠_대표_이미지.src} alt="재여비" />
+              <Image {...backgroundContent} width={520} height={520}>
+                <Image.Source src={backgroundContent.src} alt="재여비" />
               </Image>
             </Image.Root>
           </StyledMotionDiv>
@@ -158,6 +172,8 @@ export default function HighlightPage({ highlight, highlightDataSet }: Props) {
           transition={{
             opacity: { duration: 0.2 },
           }}
+          setPrevToBackgroundContent={setPrevToBackgroundContent}
+          setNextToBackgroundContent={setNextToBackgroundContent}
         >
           <Header
             thumbnailImage={highlight.thumbnailImage}
