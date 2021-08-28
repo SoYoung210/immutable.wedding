@@ -21,7 +21,7 @@ import { css, styled } from 'stitches.config';
 import { FeedCarouselWrapper } from './FeedCarouselWrapper';
 import { Footer } from './footer/Footer';
 import { Header } from './header/Header';
-import { useAccount } from './useAccount';
+import { useAccount } from '@hooks/data/useAccount';
 
 interface Props {
   feeds: FeedEntity[];
@@ -55,7 +55,7 @@ export function Feed({ feeds }: Props) {
   return (
     <motion.div {...fadeEntrance.y()} transition={{ duration: 0.4 }}>
       {feeds.map(feed => (
-        <FeedItemContainer {...feed}>
+        <FeedItemContainer key={feed.id} {...feed}>
           {renderContent(feed.contents)}
         </FeedItemContainer>
       ))}

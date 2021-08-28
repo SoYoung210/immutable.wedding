@@ -6,7 +6,7 @@
       "thumbnailImageSrc": "/assets/favicon/icon_48x48.png",
       "contents": [{
         "id": 1,
-        "imageSrc": "/assets/img/ready_2.jpg",
+        "imageSrc": "/assets/img/ready_1.jpg",
         "theme": "dark"
       }]
     },
@@ -26,7 +26,7 @@
       "thumbnailImageSrc": "/assets/favicon/icon_48x48.png",
       "contents": [{
         "id": 1,
-        "imageSrc": "/assets/img/ready_2.jpg",
+        "imageSrc": "/assets/img/ready_3.jpg",
         "theme": "dark"
       }]
     },
@@ -36,7 +36,7 @@
       "thumbnailImageSrc": "/assets/favicon/icon_48x48.png",
       "contents": [{
         "id": 1,
-        "imageSrc": "/assets/img/ready_2.jpg",
+        "imageSrc": "/assets/img/selfie_1.jpg",
         "theme": "dark"
       }]
     },
@@ -46,7 +46,7 @@
       "thumbnailImageSrc": "/assets/favicon/icon_48x48.png",
       "contents": [{
         "id": 1,
-        "imageSrc": "/assets/img/ready_2.jpg",
+        "imageSrc": "/assets/img/selfie_2.jpg",
         "theme": "dark"
       }]
     },
@@ -56,7 +56,7 @@
       "thumbnailImageSrc": "/assets/favicon/icon_48x48.png",
       "contents": [{
         "id": 1,
-        "imageSrc": "/assets/img/ready_2.jpg",
+        "imageSrc": "/assets/img/selfie_3.jpg",
         "theme": "dark"
       }]
     },
@@ -66,7 +66,7 @@
       "thumbnailImageSrc": "/assets/favicon/icon_48x48.png",
       "contents": [{
         "id": 1,
-        "imageSrc": "/assets/img/ready_2.jpg",
+        "imageSrc": "/assets/img/selfie_4.jpg",
         "theme": "dark"
       }]
     }

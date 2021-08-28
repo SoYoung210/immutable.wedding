@@ -1,7 +1,6 @@
 import Gradient from '@components/gradient';
 import Image from '@components/image';
 import { Flex } from '@components/util/layout/Flex';
-import { 스토리_애니메이션_레이아웃 } from '@constants/animationId';
 import { Highlight } from '@models/Highlight';
 import { AnimatePresence, motion, useAnimation } from 'framer-motion';
 import Link from 'next/link';
@@ -56,14 +55,12 @@ export function HighlightSection({ highlights }: Props) {
               <StyledAnchor>
                 <AnimatePresence>
                   <Image.Root className={highlightImageLayout()}>
-                    <motion.div layoutId={스토리_애니메이션_레이아웃(index)}>
-                      <SImage
-                        {...highlight.thumbnailImage}
-                        width={60}
-                        height={60}
-                        placeholder="blur"
-                      />
-                    </motion.div>
+                    <SImage
+                      {...highlight.thumbnailImage}
+                      width={60}
+                      height={60}
+                      placeholder="blur"
+                    />
                     <StyledDiv>
                       <Gradient.Circle
                         size={72}
