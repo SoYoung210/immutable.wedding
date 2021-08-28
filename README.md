@@ -1,6 +1,6 @@
 <div align="center">
 
-  <img src="./assets/og_immutable.wedding.png" width="640px" />
+  <img src="./assets/og_immutable.wedding.png" width="480px" />
 
 </div>
 
