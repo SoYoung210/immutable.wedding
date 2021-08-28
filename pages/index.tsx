@@ -1,6 +1,7 @@
 import { FeedEntity, RawFeedData } from '@models/Feed';
 import { Highlight, RawHighlightData } from '@models/Highlight';
 import { Feed } from '@pages/feeds/components/feed/Feed';
+import { Footer } from '@pages/feeds/components/footer/Footer';
 import { Header } from '@pages/feeds/components/header/Header';
 import { HighlightSection } from '@pages/feeds/components/highlight/HighlightSection';
 import { InferGetStaticPropsType } from 'next';
@@ -71,6 +72,7 @@ export default function FeedsPage({ feeds, highlights }: Props) {
       <Header />
       <HighlightSection highlights={highlights} />
       <Feed feeds={feeds} />
+      <Footer />
     </>
   );
 }
