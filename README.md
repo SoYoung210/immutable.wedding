@@ -35,6 +35,11 @@ Deploy your wedding log using [Vercel](https://vercel.com/):
 
 ## ❣️ Authors
 
-- soso: ![SoYoung GitHub](https://img.shields.io/github/followers/SoYoung210?label=soso&style=social) ![SoYoung Twitter Follow](https://img.shields.io/twitter/follow/th096?label=Follow%20soso&style=social)
-- Jbee: ![JaeYeop GitHub](https://img.shields.io/github/followers/JaeYeopHan?label=Jbee&style=social)
-![JaeYeop Twitter Follow](https://img.shields.io/twitter/follow/JbeeLjyhanll?label=Follow%20Jbee&style=social)
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+   <td align="center"><a href="https://github.com/JaeYeopHan"><img src="https://avatars.githubusercontent.com/u/17924127?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jbee</b></sub></a><br />📆 🎨 💻
+    <td align="center"><a href="https://so-so.dev"><img src="https://avatars0.githubusercontent.com/u/18658235?v=4?s=100" width="100px;" alt=""/><br /><sub><b>soso</b></sub></a><br />💻 🚇 📖
+  </tr>
+</table>
