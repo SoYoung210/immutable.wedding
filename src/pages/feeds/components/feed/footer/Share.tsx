@@ -1,12 +1,12 @@
-import React from 'react';
-import Text from '@components/text';
-import { useOsShareBottomSheet } from '@hooks/useOsShareBottomSheet';
-import { isServer } from '@utils/env/isServer';
-import { useNotifications } from '@components/notification/NotificationContext';
-import { copyToClipboard } from '@utils/copyToClipboard';
-import { ToastWrapper } from '../ToastWrapper';
 import Image from '@components/image';
+import { useNotifications } from '@components/notification/NotificationContext';
+import Text from '@components/text';
+import { ToastWrapper } from '@components/toast/ToastWrapper';
 import { Flex } from '@components/util/layout/Flex';
+import { useOsShareBottomSheet } from '@hooks/useOsShareBottomSheet';
+import { copyToClipboard } from '@utils/copyToClipboard';
+import { isServer } from '@utils/env/isServer';
+import React from 'react';
 
 const 공유하기_아이콘_크기 = 16;
 export function Share() {

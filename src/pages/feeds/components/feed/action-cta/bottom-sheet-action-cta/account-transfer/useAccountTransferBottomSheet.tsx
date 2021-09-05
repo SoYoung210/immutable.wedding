@@ -4,7 +4,7 @@ import { useNotifications } from '@components/notification/NotificationContext';
 import { useDialog } from '@hooks/useDialog';
 import { BankInfo } from '@models/Bank';
 import { useBankData } from '@pages/feeds/components/feed/action-cta/bottom-sheet-action-cta/account-transfer/useBankData';
-import { ToastWrapper } from '@pages/feeds/components/feed/ToastWrapper';
+import { ToastWrapper } from '@components/toast/ToastWrapper';
 import { copyToClipboard } from '@utils/copyToClipboard';
 import React, { ComponentProps, useCallback, useMemo } from 'react';
 

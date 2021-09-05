@@ -1,6 +1,6 @@
 import { useNotifications } from '@components/notification/NotificationContext';
 import { EmojiProfile } from '@pages/feeds/components/feed/emoji-profile/EmojiProfile';
-import { ToastWrapper } from '@pages/feeds/components/feed/ToastWrapper';
+import { ToastWrapper } from '@components/toast/ToastWrapper';
 import { addComment } from '@remotes/comments';
 import React, { useCallback, useMemo } from 'react';
 import { useForm } from 'react-hook-form';

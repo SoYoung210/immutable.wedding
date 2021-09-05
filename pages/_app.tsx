@@ -43,13 +43,13 @@ function MyApp({ Component, pageProps }: AppProps) {
           site_name: og.sitename,
           images: [
             {
-              url: '/assets/img/temp.jpg',
+              url: '/assets/img/og_1200x630.jpg',
               width: 1200,
               height: 630,
               alt: og.title,
             },
             {
-              url: '/assets/img/temp.jpg',
+              url: '/assets/img/og_800x418.jpg',
               width: 800,
               height: 418,
               alt: og.title,

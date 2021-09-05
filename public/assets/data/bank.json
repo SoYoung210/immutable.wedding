@@ -1,31 +1,31 @@
 {
-  "title": "저희의 결혼을 축하해주세요 💖",
+  "title": "소영, 재엽의 결혼을 축하해주세요 💖",
   "description": "감사한 마음 잊지 않고 오랫동안 간직할게요.",
   "groom": [
     {
-      "holderName": "예금주명",
-      "bankName": "은행이름",
-      "accountNumber": "계좌번호",
+      "holderName": "한용덕",
+      "bankName": "KB국민",
+      "accountNumber": "01063349281",
       "logo": "/assets/svg/kb.svg"
     },
     {
-      "holderName": "예금주명",
-      "bankName": "은행이름",
-      "accountNumber": "계좌번호",
+      "holderName": "한재엽",
+      "bankName": "토스뱅크",
+      "accountNumber": "01055549281",
       "logo": "/assets/svg/tossbank.svg"
     }
   ],
   "bridge": [
     {
-      "holderName": "예금주명",
-      "bankName": "은행이름",
-      "accountNumber": "계좌번호",
+      "holderName": "이호식",
+      "bankName": "IBK기업은행",
+      "accountNumber": "13300050202021",
       "logo": "/assets/svg/ibk.svg"
     },
     {
-      "holderName": "예금주명",
-      "bankName": "은행이름",
-      "accountNumber": "계좌번호",
+      "holderName": "이소영",
+      "bankName": "카카오뱅크",
+      "accountNumber": "3333033931447",
       "logo": "/assets/svg/kakaobank.svg"
     }
   ]

@@ -1,10 +1,20 @@
 import PaperAirplane from '@components/icon/PaperAirplane';
 import Image from '@components/image';
+import { useNotifications } from '@components/notification/NotificationContext';
 import { Flex } from '@components/util/layout/Flex';
-import link from 'public/assets/data/link.json';
-import React from 'react';
+import { ToastWrapper } from '@components/toast/ToastWrapper';
+import React, { useCallback } from 'react';
 
 export function Header() {
+  const { showNotification } = useNotifications();
+  const openToast = useCallback(() => {
+    showNotification({
+      element: (
+        <ToastWrapper>🛫 결혼식이 정해지면 다시 찾아올게요!</ToastWrapper>
+      ),
+    });
+  }, [showNotification]);
+
   return (
     <Flex.CenterVertical
       css={{
@@ -27,13 +37,9 @@ export function Header() {
         </Image>
       </Flex>
       <Flex css={{ ml: 'auto', spaceX: '$24' }}>
-        <a
-          target="_blank"
-          rel="noreferrer noopener"
-          href={link['선물목록 노션 링크']}
-        >
+        <button type="button" onClick={openToast}>
           <PaperAirplane />
-        </a>
+        </button>
       </Flex>
     </Flex.CenterVertical>
   );

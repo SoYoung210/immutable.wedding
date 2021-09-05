@@ -1,4 +1,5 @@
 import { useNotifications } from '@components/notification/NotificationContext';
+import { ToastWrapper } from '@components/toast/ToastWrapper';
 import { useIsMobileWeb } from '@hooks/useIsMobileWeb';
 import { ActionCTA } from '@pages/feeds/components/feed/action-cta/ActionCTA';
 import { AccountTransferActionCTA } from '@pages/feeds/components/feed/action-cta/bottom-sheet-action-cta/account-transfer/AccountTransferActionCTA';
@@ -10,7 +11,6 @@ import {
   바텀싯_액션인가,
   팝업_액션인가,
 } from 'src/models/Feed';
-import { ToastWrapper } from './ToastWrapper';
 
 interface Props {
   action: FeedAction;

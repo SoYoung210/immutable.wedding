@@ -4,89 +4,186 @@
       "id": 999,
       "contents": [
         {
-          "imageSrc": "/assets/img/temp.jpg",
+          "imageSrc": "/assets/img/moonshot.jpg",
           "action": {
             "type": "normal",
-            "text": "단순 메세지 노출",
+            "text": "완성하지 못한 우리의 결혼식 이야기",
+            "color": "#232323"
+          }
+        },
+        {
+          "imageSrc": "/assets/img/intro_chat_ui_1.jpg",
+          "action": {
+            "type": "normal",
+            "text": "우측으로 밀어서 모바일 청첩장 둘러보기",
             "color": "#7f1d1d"
           }
         },
         {
-          "imageSrc": "/assets/img/temp.jpg",
+          "imageSrc": "/assets/img/invitation-chat_ui_1.jpg",
           "action": {
-            "type": "link",
-            "text": "링크 열기 기능 (결혼식장 안내)",
+            "type": "normal",
+            "text": "네이버 캘린더에 기록해두기",
             "color": "#d97706",
-            "href": "https://m.calendar.naver.com",
-            "mobileLink": "https://m.calendar.naver.com",
-            "pcLink": "https://calendar.naver.com"
+            "href": "https://m.calendar.naver.com/#monthly/2021-10-23",
+            "mobileLink": "https://m.calendar.naver.com/#monthly/2021-10-23",
+            "pcLink": "https://calendar.naver.com/main#%7B%22sSection%22%3A%22scheduleEdit%22%2C%22oParameter%22%3A%7B%22sAction%22%3A%22insert%22%7D%7D"
           }
         },
         {
-          "imageSrc": "/assets/img/temp.jpg",
+          "imageSrc": "/assets/img/invitation-chat_ui_2.jpg",
           "action": {
             "type": "link",
-            "text": "링크 열기 기능",
+            "text": "빌라드지디 청담 위치 검색하기",
             "color": "#3B6045",
-            "href": "https://m.map.naver.com/",
-            "mobileLink": "https://m.map.naver.com/",
-            "pcLink": "https://map.naver.com/"
+            "href": "https://m.map.naver.com/search2/site.naver?query=%EB%B9%8C%EB%9D%BC%EB%93%9C%EC%A7%80%EB%94%94%20%EC%B2%AD%EB%8B%B4&sm=hty&style=v5&code=1234779295#/map",
+            "mobileLink": "https://m.map.naver.com/search2/site.naver?query=%EB%B9%8C%EB%9D%BC%EB%93%9C%EC%A7%80%EB%94%94%20%EC%B2%AD%EB%8B%B4&sm=hty&style=v5&code=1234779295#/map",
+            "pcLink": "https://map.naver.com/v5/entry/place/1234779295?c=14143750.278559763,4511859.040699022,13,0,0,0,dh&placePath=%2Fhome%3Fentry=plt"
           }
         },
         {
-          "imageSrc": "/assets/img/temp.jpg",
+          "imageSrc": "/assets/img/invitation-chat_ui_3.jpg",
           "action": {
             "type": "bottom-sheet_toss",
-            "text": "바텀싯 열기 기능 (송금기능)",
-            "color": "#3182F6"
+            "text": "토스로 축의금 송금해주기",
+            "color": "#3182F6",
+            "href": "https://toss.me/송금으로결혼축하하기"
           }
         },
         {
-          "imageSrc": "/assets/img/temp.jpg",
+          "imageSrc": "/assets/img/invitation-chat_ui_4.jpg",
           "action": {
             "type": "bottom-sheet_account",
-            "text": "바텀싯 열기 기능 (계좌 목록)",
-            "color": "#6B31E7"
+            "text": "계좌로 축의금 송금해주기",
+            "color": "#6B31E7",
+            "message": "계좌번호를 복사했어요"
           }
         }
       ],
-      "description": "저희 결혼해요! 20xx년 xx월 xx일 토요일 오전 xx시 xx분 서울특별시 강남구 청담동 xx로 xxx, xxxxx",
+      "description": "결혼식을 무기한 연기했어요. 재밌게 하고 싶어서 여러가지를 준비했는데 아쉬워요. 하루빨리 마스크없는 일상으로 돌아가길 기원합니다.",
       "createdAt": "2018-11-27"
+    },
+    {
+      "id": 1,
+      "contents": [
+        {
+          "imageSrc": "/assets/img/picture_2.jpg"
+        },
+        {
+          "imageSrc": "/assets/img/picture_3.jpg"
+        },
+        {
+          "imageSrc": "/assets/img/picture_4.jpg"
+        },
+        {
+          "imageSrc": "/assets/img/picture_5.jpg"
+        },
+        {
+          "imageSrc": "/assets/img/picture_6.jpg"
+        },
+        {
+          "imageSrc": "/assets/img/picture_7.jpg"
+        },
+        {
+          "imageSrc": "/assets/img/picture_8.jpg"
+        },
+        {
+          "imageSrc": "/assets/img/picture_9.jpg"
+        }
+      ],
+      "description": "[셀프촬영] 저희는 스튜디오 촬영을 따로 안 했어요. 셀프사진관가서 찍은 사진과 소소한 일상 사진으로 청첩장을 구성해봤어요!\n👉  댓글로 잘 나온 사진 투표하기(1~8)",
+      "tags": ["함께면어디든스튜디오", "맥북못참지", "생각보다어려움"]
+    },
+    {
+      "id": 2,
+      "contents": [
+        {
+          "imageSrc": "/assets/img/travel_1.jpg"
+        },
+        {
+          "imageSrc": "/assets/img/travel_2.jpg"
+        },
+        {
+          "imageSrc": "/assets/img/travel_3.jpg"
+        },
+        {
+          "imageSrc": "/assets/img/travel_4.jpg"
+        },
+        {
+          "imageSrc": "/assets/img/travel_5.jpg"
+        }
+      ],
+      "description": "[여행로그] 기억에 남는 여행이 있으신가요? 저희도 그동안 여기 저기 여행을 다녔는데요, 그 중 딱 5장만 골라봤어요. 코로나 때문에 신혼여행도 아직 계획하지 못했는데 추천해주고 싶은 곳이 있나요?\n👉  댓글로 신혼 여행지를 추천해주기!",
+      "tags": ["사이판에서의크리스마스", "갈때마다즐거운제주도", "하늘을날다담양"]
+    },
+    {
+      "id": 3,
+      "contents": [
+        {
+          "imageSrc": "/assets/img/gift_1.jpg"
+        },
+        {
+          "imageSrc": "/assets/img/gift_2.jpg"
+        },
+        {
+          "imageSrc": "/assets/img/gift_3.jpg"
+        },
+        {
+          "imageSrc": "/assets/img/gift_4.jpg"
+        },
+        {
+          "imageSrc": "/assets/img/gift_5.jpg"
+        }
+      ],
+      "description": "[선물로그] 서로 주고 받은 선물을 모아봤어요. 사진으로 남기지 못한 선물이 훨씬 많네요 😂  혹시라도 저희에게 주고 싶으신 선물이 있다면 '오른쪽 상단의 종이비행기'를 눌러보세요! 🛫",
+      "tags": ["커플안경", "블루라이트안경전파차단", "첫월급으로쏜저녁", "꼬부기랑 파이리"]
     },
     {
       "id": 4,
       "contents": [
         {
-          "imageSrc": "/assets/img/temp.jpg"
+          "imageSrc": "/assets/img/feconf_1.jpg"
         },
         {
-          "imageSrc": "/assets/img/temp.jpg"
+          "imageSrc": "/assets/img/feconf_2.jpg"
         },
         {
-          "imageSrc": "/assets/img/temp.jpg"
+          "imageSrc": "/assets/img/feconf_3.jpg"
         },
         {
-          "imageSrc": "/assets/img/temp.jpg"
+          "imageSrc": "/assets/img/feconf_4.jpg"
+        },
+        {
+          "imageSrc": "/assets/img/feconf_5.jpg"
         }
       ],
-      "description": "피드 설명",
-      "tags": ["태그1", "태그2"]
+      "description": "[개발로그] 저희 둘 다 소프트웨어 제품을 만드는 개발자입니다. 첫 만남도 개발자 행사였는데요, 함께 다녔던 여러 개발자 행사 사진을 담아봤어요. FEConf, DEVIEW, GDG 많은 행사를 다녔네요. 어서 오프라인 행사가 열렸으면 좋겠어요!",
+      "tags": ["국내최고", "프런트엔드컨퍼런스", "FEConf", "스태프와운영진사이", "올해도어김없이"]
     },
     {
       "id": 5,
       "contents": [
         {
-          "imageSrc": "/assets/img/temp.jpg"
+          "imageSrc": "/assets/img/selfie_1.jpg"
         },
         {
-          "imageSrc": "/assets/img/temp.jpg"
+          "imageSrc": "/assets/img/selfie_2.jpg"
         },
         {
-          "imageSrc": "/assets/img/temp.jpg"
+          "imageSrc": "/assets/img/selfie_3.jpg"
+        },
+        {
+          "imageSrc": "/assets/img/selfie_4.jpg"
+        },
+        {
+          "imageSrc": "/assets/img/selfie_5.jpg"
+        },
+        {
+          "imageSrc": "/assets/img/selfie_6.jpg"
         }
       ],
-      "description": "피드 설명",
-      "tags": ["태그1", "태그2"]
+      "description": "[셀카로그] 심심할 때마다 찍었던 저희 사진을 올려봐요. \n👉  누가 더 웃기게 생겼는지 댓글로 응원하기",
+      "tags": ["풋풋한소영과", "뽀얀재엽", "서로웃기게생겼다고난리"]
     }
   ]
 }
