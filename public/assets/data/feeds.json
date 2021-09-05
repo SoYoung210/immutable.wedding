@@ -56,6 +56,37 @@
       "createdAt": "2018-11-27"
     },
     {
+      "id": 1,
+      "contents": [
+        {
+          "imageSrc": "/assets/img/picture_2.jpg"
+        },
+        {
+          "imageSrc": "/assets/img/picture_3.jpg"
+        },
+        {
+          "imageSrc": "/assets/img/picture_4.jpg"
+        },
+        {
+          "imageSrc": "/assets/img/picture_5.jpg"
+        },
+        {
+          "imageSrc": "/assets/img/picture_6.jpg"
+        },
+        {
+          "imageSrc": "/assets/img/picture_7.jpg"
+        },
+        {
+          "imageSrc": "/assets/img/picture_8.jpg"
+        },
+        {
+          "imageSrc": "/assets/img/picture_9.jpg"
+        }
+      ],
+      "description": "[셀프촬영] 저희는 스튜디오 촬영을 따로 안 했어요. 멋지게 차려입은 사진말고 셀프사진관가서 찍은 사진과 소소한 일상 사진으로 청첩장을 구성해봤는데 어떠세요?\n👉  댓글로 모바일 청첩장 칭찬해주기",
+      "tags": ["함께면어디든스튜디오", "맥북못참지", "생각보다어려움"]
+    },
+    {
       "id": 2,
       "contents": [
         {
@@ -143,7 +174,7 @@
           "imageSrc": "/assets/img/selfie_6.jpg"
         }
       ],
-      "description": "[셀카로그] 심심할 때마다 찍었던 저희 사진을 올려봐요. 저희는 스튜디오 촬영을 따로 안 했어요. 멋지게 차려입은 사진마고 소소한 일상 사진으로 청첩장을 구성해봤는데 어떠세요?\n👉  댓글로 신개념 모바일 청첩장 칭찬해주기",
+      "description": "[셀카로그] 심심할 때마다 찍었던 저희 사진을 올려봐요. \n👉  누가 더 웃기게 생겼는지 댓글로 응원하기",
       "tags": ["풋풋한소영과", "뽀얀재엽", "서로웃기게생겼다고난리"]
     }
   ]
