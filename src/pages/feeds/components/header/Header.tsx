@@ -9,7 +9,9 @@ export function Header() {
   const { showNotification } = useNotifications();
   const openToast = useCallback(() => {
     showNotification({
-      element: <ToastWrapper>결혼식이 정해지면 다시 찾아올게요!</ToastWrapper>,
+      element: (
+        <ToastWrapper>🛫 결혼식이 정해지면 다시 찾아올게요!</ToastWrapper>
+      ),
     });
   }, [showNotification]);
 
