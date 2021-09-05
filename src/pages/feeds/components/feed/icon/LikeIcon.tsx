@@ -1,7 +1,10 @@
 import { EmptyHeart, FillHeart } from '@components/icon/Heart';
 import Image from '@components/image';
 import { useNotifications } from '@components/notification/NotificationContext';
+import { ToastWrapper } from '@components/toast/ToastWrapper';
 import useBooleanState from '@hooks/useBooleanState';
+import fadingZoom from '@utils/animation/fadingZoom';
+import cx from 'classnames';
 import { motion, useAnimation } from 'framer-motion';
 import React, {
   forwardRef,
@@ -12,10 +15,7 @@ import React, {
   useEffect,
 } from 'react';
 import { styled } from 'stitches.config';
-import { ToastWrapper } from '../ToastWrapper';
 import iconStyles from './likeIcon.module.scss';
-import cx from 'classnames';
-import fadingZoom from '@utils/animation/fadingZoom';
 
 type Props = HTMLAttributes<HTMLButtonElement>;
 
