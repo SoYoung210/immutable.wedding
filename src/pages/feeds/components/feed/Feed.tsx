@@ -89,7 +89,9 @@ function FeedItemContainer({
   return (
     <Wrapper key={id}>
       <Header />
-      <div onClick={onDoubleClick}>{children}</div>
+      <div tabIndex={0} role="button" onClick={onDoubleClick}>
+        {children}
+      </div>
       <div ref={descriptionRef}>
         <DescriptionWrapper>
           <LikeIcon ref={likeIconRef} />
