@@ -29,6 +29,36 @@
         "imageSrc": "/assets/img/ready_3.jpg",
         "theme": "dark"
       }]
+    },
+    {
+      "id": 4,
+      "name": "피그마로 디자인하기",
+      "thumbnailImageSrc": "/assets/img/immutable_figma.jpg",
+      "contents": [{
+        "id": 1,
+        "imageSrc": "/assets/img/immutable_figma.jpg",
+        "theme": "dark"
+      }]
+    },
+    {
+      "id": 5,
+      "name": "티켓 만들기",
+      "thumbnailImageSrc": "/assets/img/immutable_task.jpg",
+      "contents": [{
+        "id": 1,
+        "imageSrc": "/assets/img/immutable_task.jpg",
+        "theme": "dark"
+      }]
+    },
+    {
+      "id": 6,
+      "name": "개발하기",
+      "thumbnailImageSrc": "/assets/img/github_pulse.jpg",
+      "contents": [{
+        "id": 1,
+        "imageSrc": "/assets/img/github_pulse.jpg",
+        "theme": "dark"
+      }]
     }
   ]
 }
